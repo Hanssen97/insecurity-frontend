@@ -5,7 +5,7 @@ import Button from '@material-ui/core/Button';
 import './login.min.css';
 
 
-class Portal extends Component {
+class Login extends Component {
   constructor(props) {
     super(props);
     this.dispatch = props.dispatch;
@@ -31,4 +31,4 @@ class Portal extends Component {
   }
 }
 
-export default Portal;
+export default Login;
