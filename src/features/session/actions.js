@@ -25,7 +25,7 @@ export const sagas = {
 
     yield put({
       type: actiontypes.FETCH_USER_SUCCESS,
-      info: 'Fetched users',
+      info: 'Fetched user',
       user: {name: 'test'}
     })
   },

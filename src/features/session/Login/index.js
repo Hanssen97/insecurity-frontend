@@ -8,12 +8,7 @@ import './login.min.css';
 class Login extends Component {
   constructor(props) {
     super(props);
-    this.dispatch = props.dispatch;
-    document.title = 'Morten og Jørgen er kule';
-  }
-
-  fetchUsers = () => {
-    this.props.fetchUser();
+    document.title = 'Login';
   }
 
   render() {
@@ -21,10 +16,10 @@ class Login extends Component {
       <div className="Login">
         <h1> Fancy login </h1>
 
-          <p> {this.props.session.info} </p>
+        <p> {this.props.session.info} </p>
 
-        <Button onClick={this.fetchUsers}>
-          press me!
+        <Button onClick={this.props.fetchUser}>
+          Login
         </Button>
       </div>
     )
