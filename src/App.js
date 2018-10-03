@@ -32,8 +32,6 @@ sagaMiddleware.run(rootSaga);
 
 
 
-
-
 class App extends Component {
   render() {
     return (
