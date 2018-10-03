@@ -16,7 +16,10 @@ class Login extends Component {
       <div className="Login">
         <h1> Fancy login </h1>
 
-        <p> {this.props.session.info} </p>
+        <div>
+          <p> {this.props.session.info} </p>
+          <p> {this.props.session.user ? this.props.session.user.name : ""} </p>
+        </div>
 
         <Button onClick={this.props.fetchUser}>
           Login
