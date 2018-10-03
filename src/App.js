@@ -1,25 +1,34 @@
 import React, { Component } from 'react';
 import { Provider } from 'react-redux';
+import createSagaMiddleware from 'redux-saga'
+import logger from 'redux-logger';
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 import { Router, Route, Redirect, Switch } from 'react-router-dom';
-import logger from 'redux-logger';
 
 import './Assets/css/App.min.css';
 
-// Import reducers
-import * as reducers from './store/index.js';
+// Import store
+import * as reducers from './store/reducers.js';
+import rootSaga from './store/sagas'
 
 // Import components
-import * as Session from './features/session/index';
+import Session from './features/session/index';
 
 // Create history objects
 import createHistory from 'history/createBrowserHistory';
 let history = createHistory();
 
+
+const sagaMiddleware = createSagaMiddleware();
+
 // Create store
-const createStoreWithMiddleware = applyMiddleware(logger)(createStore);
-const reducer = combineReducers(reducers);
-const store = createStoreWithMiddleware(reducer);
+const store = createStore(
+  combineReducers(reducers),
+  applyMiddleware(logger),
+  applyMiddleware(sagaMiddleware)
+)
+
+sagaMiddleware.run(rootSaga);
 
 
 

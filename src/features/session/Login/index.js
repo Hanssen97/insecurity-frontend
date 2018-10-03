@@ -1,11 +1,34 @@
-import React from 'react';
+import React, {Component} from 'react';
 
-function Login(props) {
+import Button from '@material-ui/core/Button';
 
-  return (
-    <h1> Login :D </h1>
-  );
+import '../../../Assets/css/features/session/Login/login.min.css';
+
+
+class Portal extends Component {
+  constructor(props) {
+    super(props);
+    this.dispatch = props.dispatch;
+    document.title = 'Morten og Jørgen er kule';
+  }
+
+  fetchUsers = () => {
+    this.props.fetchUser();
+  }
+
+  render() {
+    return (
+      <div className="Login">
+        <h1> Fancy login </h1>
+
+          <p> {this.props.session.info} </p>
+
+        <Button onClick={this.fetchUsers}>
+          press me!
+        </Button>
+      </div>
+    )
+  }
 }
 
-
-export default Login;
+export default Portal;
