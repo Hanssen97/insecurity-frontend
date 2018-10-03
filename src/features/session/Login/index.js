@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 
 import Button from '@material-ui/core/Button';
 
-import '../../../Assets/css/features/session/Login/login.min.css';
+import './login.min.css';
 
 
 class Portal extends Component {

@@ -5,7 +5,7 @@ import logger from 'redux-logger';
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 import { Router, Route, Redirect, Switch } from 'react-router-dom';
 
-import './Assets/css/App.min.css';
+import './App.min.css';
 
 // Import store
 import * as reducers from './store/reducers.js';

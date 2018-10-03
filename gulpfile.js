@@ -10,7 +10,7 @@ var changed = require('gulp-changed');
 
 
 var SCSS_SRC = './src/**/*.scss';
-var SCSS_DEST = './src/Assets/css';
+var SCSS_DEST = './src';
 
 
 gulp.task('compile_css', function() {
