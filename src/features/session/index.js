@@ -28,8 +28,9 @@ export default {
   NotFound
 };
 
-// Store
+
 export {
+  actions,
   sagas,
   reducer
 }
