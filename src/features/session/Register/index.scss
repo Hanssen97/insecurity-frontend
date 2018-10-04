@@ -1,3 +1,6 @@
+@import "../../../common/styles.scss";
+
+
 .Register {
   height: 100%;
   width: 100%;
@@ -15,9 +18,8 @@
     justify-content: center;
     align-items: center;
 
-    background: #0099ee;
-
-    box-shadow: 0 1px 3px rgba(0,0,0,0.6);
+    background: $blue;
+    box-shadow: $boxShadow;
 
     img {
       display: block;
@@ -56,22 +58,18 @@
 
       .spinner {
         padding: 10px;
-        color: #0099ee;
+        color: $blue;
       }
 
       p {
         margin-top: 10px;
-        color: #999;
+        color: $lightText;
 
         a {
           cursor: pointer;
-          color: #0099ee;
+          color: $blue;
         }
       }
     }
-  }
-
-  h1 {
-    color: hotpink;
   }
 }
