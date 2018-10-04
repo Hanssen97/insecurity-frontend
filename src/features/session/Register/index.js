@@ -28,6 +28,12 @@ class Register extends Component {
           <div className="Fields">
             <div>
               <TextField
+                label="Username"
+                margin="normal"
+                variant="outlined"
+                fullWidth
+              />
+              <TextField
                 label="Email"
                 type="email"
                 autoComplete="email"
