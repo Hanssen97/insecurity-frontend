@@ -16,6 +16,7 @@
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
     "react-i18next": "^8.0.6",
+    "react-image": "^1.5.1",
     "react-lazyload": "^2.3.0",
     "react-redux": "^5.0.7",
     "react-router": "^4.3.1",

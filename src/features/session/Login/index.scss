@@ -1,0 +1,61 @@
+.Login {
+  height: 100%;
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+
+  .Title {
+    width: 100%;
+    flex: 1;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background: #0099ee;
+
+    box-shadow: 0 1px 3px rgba(0,0,0,0.6);
+  }
+
+  .Form {
+    flex: 3;
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+
+    .Fields {
+      width: 60%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      align-items: center;
+    }
+
+    .Submit {
+      text-align: center;
+
+      button {
+        margin-bottom: 20px;
+      }
+
+      p {
+        color: #999;
+
+        a {
+          cursor: pointer;
+          color: #0099ee;
+        }
+      }
+    }
+  }
+
+  h1 {
+    color: hotpink;
+  }
+}

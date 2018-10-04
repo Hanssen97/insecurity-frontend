@@ -12,6 +12,8 @@ import * as reducers from './store/reducers.js';
 import rootSaga from './store/sagas'
 
 // Import components
+import { AuthLayout } from './layouts/index';
+
 import Session from './features/session/index';
 
 // Create history objects
@@ -30,16 +32,23 @@ const store = createStore(
 
 sagaMiddleware.run(rootSaga);
 
-
-
 class App extends Component {
   render() {
     return (
       <Router history={history}>
         <Provider store={store}>
           <Switch>
-            <Route path="/login"  component={Session.Login}/>
-            <Route                component={Session.NotFound}/>
+            <Route path="/member">
+              <AuthLayout>
+                <Switch>
+                  <Route exact path="/member/login" component={Session.Login}/>
+                  <Route path="/member/register" component={Session.Login}/>
+                  <Redirect to="/" />
+                </Switch>
+              </AuthLayout>
+            </Route>
+
+            <Route component={Session.NotFound}/>
           </Switch>
         </Provider>
       </Router>

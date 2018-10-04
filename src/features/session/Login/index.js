@@ -1,8 +1,9 @@
 import React, {Component} from 'react';
 
 import Button from '@material-ui/core/Button';
+import TextField from '@material-ui/core/TextField';
 
-import './login.min.css';
+import './index.min.css';
 
 
 class Login extends Component {
@@ -11,19 +12,52 @@ class Login extends Component {
     document.title = 'Login';
   }
 
+
+  gotoRegister = () => {
+    this.props.history.replace('/auth/register');
+  };
+
   render() {
     return (
       <div className="Login">
-        <h1> Fancy login </h1>
-
-        <div>
-          <p> {this.props.session.info} </p>
-          <p> {this.props.session.user ? this.props.session.user.name : ""} </p>
+        <div className="Title">
+          <img src="logo.png"/>
         </div>
 
-        <Button onClick={this.props.fetchUser}>
-          Login
-        </Button>
+        <div className="Form">
+          <div className="Fields">
+            <TextField
+              label="Email"
+              type="email"
+              autoComplete="email"
+              margin="normal"
+              variant="outlined"
+              fullWidth
+            />
+            <TextField
+              label="Password"
+              type="password"
+              autoComplete="password"
+              margin="normal"
+              variant="outlined"
+              fullWidth
+            />
+          </div>
+
+          <div className="Submit">
+            <Button
+              onClick={this.props.fetchUser}
+              size="large"
+            >
+              Login
+            </Button>
+            <p> Not a member?
+              <a onClick={() => {
+                this.props.history.replace('/member/register');
+              }}> Register </a>
+            </p>
+          </div>
+        </div>
       </div>
     )
   }
