@@ -42,7 +42,7 @@ class App extends Component {
               <AuthLayout>
                 <Switch>
                   <Route exact path="/member/login" component={Session.Login}/>
-                  <Route exact path="/member/register" component={Session.Login}/>
+                  <Route exact path="/member/register" component={Session.Register}/>
                   <Redirect to="/" />
                 </Switch>
               </AuthLayout>

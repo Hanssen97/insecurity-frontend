@@ -6,10 +6,10 @@ import TextField from '@material-ui/core/TextField';
 import './index.min.css';
 
 
-class Login extends Component {
+class Register extends Component {
   constructor(props) {
     super(props);
-    document.title = 'Login';
+    document.title = 'Register';
   }
 
 
@@ -19,7 +19,7 @@ class Login extends Component {
 
   render() {
     return (
-      <div className="Login">
+      <div className="Register">
         <div className="Title">
           <img src="logo.png"/>
         </div>
@@ -34,7 +34,7 @@ class Login extends Component {
                 margin="normal"
                 variant="outlined"
                 fullWidth
-                />
+              />
               <TextField
                 label="Password"
                 type="password"
@@ -42,7 +42,15 @@ class Login extends Component {
                 margin="normal"
                 variant="outlined"
                 fullWidth
-                />
+              />
+              <TextField
+                label="Repeat Password"
+                type="password"
+                autoComplete="password"
+                margin="none"
+                variant="outlined"
+                fullWidth
+              />
             </div>
           </div>
 
@@ -51,12 +59,12 @@ class Login extends Component {
               onClick={this.props.fetchUser}
               size="large"
             >
-              Login
+              Register
             </Button>
-            <p> Not a member?
+            <p> Already a member?
               <a onClick={() => {
-                this.props.history.replace('/member/register');
-              }}> Register </a>
+                this.props.history.replace('/member/login');
+              }}> Log in </a>
             </p>
           </div>
         </div>
@@ -65,4 +73,4 @@ class Login extends Component {
   }
 }
 
-export default Login;
+export default Register;

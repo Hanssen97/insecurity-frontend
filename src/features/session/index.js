@@ -6,6 +6,7 @@ import reducer from './reducer';
 
 // Components
 import Login from './Login/index';
+import Register from './Register/index';
 import NotFound from './404/index';
 
 
@@ -23,6 +24,7 @@ function mapStateToProps(state) {
 // Components
 export default {
   Login: connect(mapStateToProps, mapDispatchToProps)(Login),
+  Register: connect(mapStateToProps, mapDispatchToProps)(Register),
   NotFound
 };
 
