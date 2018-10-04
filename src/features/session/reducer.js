@@ -19,7 +19,9 @@ export default function session(state = initialState, action) {
         info: action.info
       };
     }
-  }
 
-  return state;
+    default: {
+      return state;
+    }
+  }
 }

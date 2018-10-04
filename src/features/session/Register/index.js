@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 import './index.min.css';
 
@@ -67,11 +68,25 @@ class Register extends Component {
             >
               Register
             </Button>
+
+            <div>
+              {
+                this.props.feedback.fetching && (
+                  <CircularProgress
+                    className="spinner"
+                    size={30}
+                  />
+                )
+              }
+            </div>
+
+
             <p> Already a member?
               <a onClick={() => {
                 this.props.history.replace('/member/login');
               }}> Log in </a>
             </p>
+
           </div>
         </div>
       </div>

@@ -51,10 +51,16 @@
       text-align: center;
 
       button {
-        margin-bottom: 20px;
+        margin-bottom: 5px;
+      }
+
+      .spinner {
+        padding: 10px;
+        color: #0099ee;
       }
 
       p {
+        margin-top: 10px;
         color: #999;
 
         a {

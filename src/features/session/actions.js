@@ -1,4 +1,3 @@
-import { delay } from 'redux-saga'
 import { put, call, takeEvery } from 'redux-saga/effects'
 
 export const actiontypes = {
@@ -13,7 +12,7 @@ async function testAsyncFetchUser() {
   return new Promise((resolve, reject) => {
      setTimeout(() => {
        resolve({name: "Morten"});
-     }, 1000);
+     }, 2000);
    }).then(data => data)
 }
 

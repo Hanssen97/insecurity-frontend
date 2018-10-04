@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 import './index.min.css';
 
@@ -21,7 +22,7 @@ class Login extends Component {
     return (
       <div className="Login">
         <div className="Title">
-          <img src="logo.png"/>
+          <img alt='' src="logo.png"/>
         </div>
 
         <div className="Form">
@@ -53,11 +54,25 @@ class Login extends Component {
             >
               Login
             </Button>
+
+            <div>
+              {
+                this.props.feedback.fetching && (
+                  <CircularProgress
+                    className="spinner"
+                    size={30}
+                  />
+                )
+              }
+            </div>
+
+
             <p> Not a member?
               <a onClick={() => {
                 this.props.history.replace('/member/register');
               }}> Register </a>
             </p>
+
           </div>
         </div>
       </div>
