@@ -18,6 +18,14 @@
     background: #0099ee;
 
     box-shadow: 0 1px 3px rgba(0,0,0,0.6);
+
+    img {
+      display: block;
+      width: 25%;
+      max-width: 140px;
+      min-width: 100px;
+      height: auto;
+    }
   }
 
   .Form {
