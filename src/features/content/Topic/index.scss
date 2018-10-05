@@ -1,0 +1,118 @@
+@import "../../../common/styles.scss";
+
+.TopicPage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    
+    .container {
+        display: flex;
+        flex-direction: column;
+        width: 90vw;
+        height: 90vh;
+        background: $componentBackground;
+        box-shadow: $pageShadow;
+        border-radius: 10px;
+        align-items: center;
+
+        .topic {
+            width: 100%;
+            
+
+            .header {
+                display: flex;
+                flex-direction: row;
+                margin-top: 20px;
+                align-self: center;
+                justify-content: space-between;
+                align-items: center;
+                height: 50%;
+                padding: 10px 0;
+
+                h1 {
+                    padding: 0 50px;
+                }
+
+                p {
+                    color: black;
+                }
+
+                .meta {
+                    display: flex;
+                    flex-direction: row;
+                    padding-right: 50px;
+
+                    p {
+                        padding: 0 5px;    
+                    }
+                    .timestamp {
+                        color: $lightText;
+                    }
+                }
+            }
+
+            .description {
+                padding: 20px 0;
+                padding-bottom: 50px;
+                padding: 20px 50px;
+            }
+
+            h1 {
+                color: $blue;
+            }
+        }
+        
+        .replies {
+            width: 100%;
+
+            .reply {
+                width: 97%;
+                height: 100%;
+                padding-left: 3%;
+
+                .rHeader {
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                    padding: 10px;
+
+                    .rTimestamp {
+                        margin-left: 10px;
+                    }
+
+                    p {
+                        font-size: 18px;
+                    }
+
+                    .profileImg {
+                        height: 30px;
+                        width: 30px;
+                        background: $blue;
+                        border-radius: 15px;
+                        margin-right: 10px;
+                    }
+                }
+
+                .rBody {
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: space-between;
+                    margin: 5px 50px;
+
+                    a {
+                        color: red;
+                    }
+                }
+                
+                .rLikes {
+                    color: $red;
+                    margin: 5px 50px;
+                }
+            }
+        }
+        
+    }
+}
+
