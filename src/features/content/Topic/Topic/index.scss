@@ -1,4 +1,4 @@
-@import "../../../common/styles.scss";
+@import "../../../../common/styles.scss";
 
 .TopicPage {
     display: flex;
@@ -6,7 +6,7 @@
     align-items: center;
     width: 100vw;
     height: 100vh;
-    
+
     .container {
         display: flex;
         flex-direction: column;
@@ -19,7 +19,7 @@
 
         .topic {
             width: 100%;
-            
+
 
             .header {
                 display: flex;
@@ -45,7 +45,7 @@
                     padding-right: 50px;
 
                     p {
-                        padding: 0 5px;    
+                        padding: 0 5px;
                     }
                     .timestamp {
                         color: $lightText;
@@ -64,7 +64,7 @@
                 color: $blue;
             }
         }
-        
+
         .replies {
             width: 100%;
 
@@ -106,14 +106,13 @@
                         color: red;
                     }
                 }
-                
+
                 .rLikes {
                     color: $red;
                     margin: 5px 50px;
                 }
             }
         }
-        
+
     }
 }
-

@@ -51,6 +51,9 @@ class CreateTopic extends Component {
           NEW TOPIC
         </Typography>
 
+
+
+
         <Paper className="TitleInput">
           <input
             placeholder="Title..." onChange={e => this.setState({
@@ -82,7 +85,9 @@ class CreateTopic extends Component {
             <Icon fontSize='small' > send </Icon>
           </Button>
 
-          <p> or go <a onClick={this.discardTopic}>back</a> </p>
+          <p>
+            or go <b onClick={this.discardTopic}>back</b>
+          </p>
         </div>
 
       </Paper>
