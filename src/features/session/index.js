@@ -13,6 +13,7 @@ import NotFound from './404/index';
 const mapDispatchToProps = {
   fetchUser: actions.fetchUser
 }
+
 function mapStateToProps(state) {
   const { session, feedback } = state;
   return {

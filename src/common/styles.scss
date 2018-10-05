@@ -4,9 +4,15 @@
 
 /* Primary color */
 $blue: #0099ee;
+$red: #f44336;
+$mainBackground: #efefff;
+$componentBackground: #fff;
+
 
 /* Less visible text */
 $lightText: #999;
+$whiteText: #fff;
 
 /* Small box shadow */
-$boxShadow: 0 1px 3px rgba(0,0,0,0.6);
+$authShadow: 0 1px 3px rgba(0,0,0,0.6);
+$pageShadow: 0 2px 2px rgba(0,0,0,0.6);

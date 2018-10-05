@@ -15,6 +15,7 @@ import rootSaga from './store/sagas'
 import { AuthLayout } from './layouts/index';
 
 import Session from './features/session/index';
+import Content from './features/content/index';
 
 // Create history objects
 import createHistory from 'history/createBrowserHistory';
@@ -47,7 +48,7 @@ class App extends Component {
                 </Switch>
               </AuthLayout>
             </Route>
-
+            <Route exact path="/createtopic" component={Content.CreateTopic}/>
             <Route component={Session.NotFound}/>
           </Switch>
         </Provider>
