@@ -16,3 +16,17 @@ $whiteText: #fff;
 /* Small box shadow */
 $authShadow: 0 1px 3px rgba(0,0,0,0.6);
 $pageShadow: 0 2px 2px rgba(0,0,0,0.6);
+
+
+:export {
+  blue : $blue;
+  red: $red;
+  mainBackground: $mainBackground;
+  componentBackground: $componentBackground;
+
+  lightText: $lightText;
+  whiteText: $whiteText;
+
+  authShadow: $authShadow;
+  pageShadow: $pageShadow;
+}
