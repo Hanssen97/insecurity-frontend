@@ -14,7 +14,7 @@ class Topic extends Component {
         }
     }
 
-    
+
     componentWillMount() {
         this.props.getTopic("22");
     }
@@ -37,7 +37,7 @@ class Topic extends Component {
                 </Paper>
             );
         });
-                
+
         return (
             <div className="TopicPage">
                 <div className="container">

@@ -4,8 +4,8 @@ import { sagas, actions } from './actions';
 import reducer from './reducer';
 
 // Components
-import CreateTopic from './CreateTopic/index';
-import Topic from './Topic/index';
+import CreateTopic from './topic/Create/index';
+import Topic from './topic/Topic/index';
 
 
 const mapDispatchToProps = {
