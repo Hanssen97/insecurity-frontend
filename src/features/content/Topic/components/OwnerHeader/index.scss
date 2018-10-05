@@ -1,0 +1,26 @@
+@import "../../../../../common/styles.scss";
+
+.OwnerHeader {
+  height: 20px;
+
+  display: flex;
+  align-items: center;
+
+  img {
+    margin: 0 10px;
+    height: auto;
+    width: 1.7em;
+    border-radius: 50%;
+  }
+
+  .Text, .Date {
+    margin-top: 3px;
+  }
+  .Text {
+    text-align: left;
+  }
+  .Date {
+    margin-left: 40px;
+    color: $lightText;
+  }
+}

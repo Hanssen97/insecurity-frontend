@@ -4,7 +4,7 @@ export const actiontypes = {
   POST_TOPIC_REQUEST: 'POST_TOPIC_REQUEST',
   POST_TOPIC_SUCCESS: 'POST_TOPIC_SUCCESS',
   POST_TOPIC_FAILURE: 'POST_TOPIC_FAILURE',
-  
+
   GET_TOPIC_REQUEST: 'GET_TOPIC_REQUEST',
   GET_TOPIC_SUCCESS: 'GET_TOPIC_SUCCESS',
   GET_TOPIC_FAILURE: 'GET_TOPIC_FAILURE',
@@ -30,18 +30,18 @@ const getTopicFromServer = (id) => {
   return {
     title: "Long title for forum. lorem lorem lorem etc",
     description: "Long question for forum. Lorem Ipsum dolor sit amet etc..... ",
-    author: "morten",
-    timestamp: "12.12.2018",
+    owner: "morten",
+    date: "12.12.2018",
     replies: [
         {
-            author: "jørgen",
-            timestamp: "12.02.2018",
+            owner: "jørgen",
+            date: "12.02.2018",
             text: "Reply because lorem ipsum blah blah blah",
             likes: "23",
         },
         {
-            author: "bjarte",
-            timestamp: "12.02.2018",
+            owner: "bjarte",
+            date: "12.02.2018",
             text: "Reply because lorem ipsum blah blah blah",
             likes: "23",
         },
