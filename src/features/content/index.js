@@ -5,10 +5,12 @@ import reducer from './reducer';
 
 // Components
 import CreateTopic from './CreateTopic/index';
+import Topic from './Topic/index';
 
 
 const mapDispatchToProps = {
-  postTopic: actions.postTopic
+  postTopic: actions.postTopic,
+  getTopic: actions.getTopic,
 }
 
 function mapStateToProps(state) {
@@ -22,6 +24,7 @@ function mapStateToProps(state) {
 // Components
 export default {
   CreateTopic: connect(mapStateToProps, mapDispatchToProps)(CreateTopic),
+  Topic: connect(mapStateToProps, mapDispatchToProps)(Topic),
 };
 
 export {
