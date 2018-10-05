@@ -51,17 +51,20 @@ class App extends Component {
               </AuthLayout>
             </Route>
 
-
+      
             <Route path="/">
               <MainLayout>
                 <Switch>
                   <Route exact path="/createtopic" component={Content.CreateTopic}/>
+                  <Route exact path="/topic" component={Content.Topic}/>
                 </Switch>
               </MainLayout>
             </Route>
-
-
+      
+      
             <Route component={Session.NotFound}/>
+      
+      
           </Switch>
         </Provider>
       </Router>
