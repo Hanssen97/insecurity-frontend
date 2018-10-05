@@ -9,7 +9,8 @@ import Topic from './Topic/index';
 
 
 const mapDispatchToProps = {
-  postTopic: actions.postTopic
+  postTopic: actions.postTopic,
+  getTopic: actions.getTopic,
 }
 
 function mapStateToProps(state) {
