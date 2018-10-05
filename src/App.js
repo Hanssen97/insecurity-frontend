@@ -39,6 +39,8 @@ class App extends Component {
       <Router history={history}>
         <Provider store={store}>
           <Switch>
+
+
             <Route path="/member">
               <AuthLayout>
                 <Switch>
@@ -48,6 +50,8 @@ class App extends Component {
                 </Switch>
               </AuthLayout>
             </Route>
+
+      
             <Route path="/">
               <MainLayout>
                 <Switch>
@@ -56,7 +60,11 @@ class App extends Component {
                 </Switch>
               </MainLayout>
             </Route>
+      
+      
             <Route component={Session.NotFound}/>
+      
+      
           </Switch>
         </Provider>
       </Router>
