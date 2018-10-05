@@ -15,8 +15,9 @@ export default function content(state = initialState, action) {
 
     case actiontypes.POST_TOPIC_SUCCESS: {
       return {...state,
+        info: action.info,
         redirect: action.redirect,
-        info: action.info
+        topic: action.topic,
       };
     }
 

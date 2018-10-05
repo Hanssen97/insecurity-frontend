@@ -8,24 +8,28 @@ export const actiontypes = {
 
 
 export const actions = {
-  postTopic: () => ({
+  postTopic: (topic) => ({
     type: actiontypes.POST_TOPIC_REQUEST,
-    info: "posting topic..."
+    info: "posting topic...",
+    topic: topic,
   })
 }
 
 
 export const sagas = {
-  postTopic: function*() {
-    const redirect = "topicurl";
+  postTopic: function*(action) {
+    const redirect = "topic/topicIdFromBackend";
+    
     yield put({
       type: actiontypes.POST_TOPIC_SUCCESS,
-      info: 'Topic posted',
-      redirect
+      info: 'topic posted',
+      topic: action.topic,
+      redirect,
     })
   },
 
   actionWatcher: function*() {
     yield takeEvery(actiontypes.POST_TOPIC_REQUEST, sagas.postTopic)
   }
+
 }
