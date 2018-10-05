@@ -1,0 +1,46 @@
+@import "../../common/styles.scss";
+
+.MainLayout {
+  height: 100vh;
+  width: 100vw;
+
+
+  .AppBar {
+    flex-grow: 1;
+    background: $blue;
+
+    .Toolbar {
+      display: flex;
+      justify-content: space-between;
+
+      div {
+        height: 100%;
+        flex: 1;
+      }
+
+      .MenuButton {
+        margin-left: -12;
+        margin-right: 20;
+      }
+
+      .SearchBar {
+        flex: 1.5;
+        height: 40px;
+        max-width: 800px;
+        min-width: 400px;
+      }
+
+      .User {
+        display: flex;
+        justify-content: flex-end;
+      }
+    }
+  }
+
+
+
+  .MainLayout-Content {
+    height: calc(100vh - 60px);
+    margin-top: 60px;
+  }
+}

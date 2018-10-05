@@ -12,7 +12,7 @@ import * as reducers from './store/reducers.js';
 import rootSaga from './store/sagas'
 
 // Import components
-import { AuthLayout } from './layouts/index';
+import { AuthLayout, MainLayout } from './layouts/index';
 
 import Session from './features/session/index';
 import Content from './features/content/index';
@@ -48,8 +48,14 @@ class App extends Component {
                 </Switch>
               </AuthLayout>
             </Route>
-            <Route exact path="/createtopic" component={Content.CreateTopic}/>
-            <Route exact path="/topic" component={Content.Topic}/>
+            <Route path="/">
+              <MainLayout>
+                <Switch>
+                  <Route exact path="/createtopic" component={Content.CreateTopic}/>
+                  <Route exact path="/topic" component={Content.Topic}/>
+                </Switch>
+              </MainLayout>
+            </Route>
             <Route component={Session.NotFound}/>
           </Switch>
         </Provider>
@@ -59,4 +65,3 @@ class App extends Component {
 }
 
 export default App;
-export {store};
