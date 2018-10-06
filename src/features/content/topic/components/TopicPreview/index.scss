@@ -1,24 +1,36 @@
+@import '../../../../../common/styles.scss';
+
 .TopicPreview {
-    padding: 20px;
+  padding: 15px 80px;
 
-    .body {
-        width: 100%;
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
+  .body {
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
 
-        .topic {
-            .title {
-                font-weight: 500;
-            }
-            .description {
-                padding: 3px;
-            }
-        }
+      .topic {
+          .title {
+              font-weight: 500;
+          }
+          .description {
+              padding: 3px;
+          }
+      }
+  }
+
+  .meta {
+    padding: 2px;
+
+    display: flex;
+
+    .likes {
+      color: $red;
+      padding-right: 30px;
     }
-
-    .meta {
-        padding: 10px 0;
+    .replies {
+      color: $blue;
     }
+  }
 }

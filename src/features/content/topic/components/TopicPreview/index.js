@@ -30,8 +30,8 @@ class TopicPreview extends PureComponent {
                     {description}
                 </Typography>
             </div>
-            
-            
+
+
 
             <OwnerHeader
               type="post"
@@ -44,6 +44,7 @@ class TopicPreview extends PureComponent {
 
         <div className="meta">
           <Typography className="likes" component="p"><b>{likes}</b> likes</Typography>
+          <Typography className="replies" component="p"><b>{likes}</b> replies</Typography>
         </div>
 
 
