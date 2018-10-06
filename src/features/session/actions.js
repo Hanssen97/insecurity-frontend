@@ -1,19 +1,10 @@
 import { put, call, takeEvery } from 'redux-saga/effects'
+import {testAsyncFetchUser} from '../backendMock';
 
 export const actiontypes = {
   FETCH_USER_REQUEST: 'FETCH_USER_REQUEST',
   FETCH_USER_SUCCESS: 'FETCH_USER_SUCCESS',
   FETCH_USER_FAILURE: 'FETCH_USER_FAILURE',
-}
-
-
-// FUNCTION IS FOR TEST PURPOSES
-async function testAsyncFetchUser() {
-  return new Promise((resolve, reject) => {
-     setTimeout(() => {
-       resolve({name: "Morten"});
-     }, 2000);
-   }).then(data => data)
 }
 
 

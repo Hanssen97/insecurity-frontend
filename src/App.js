@@ -59,6 +59,7 @@ class App extends Component {
                 <Switch>
                   <Route exact path="/:category/new" component={Content.Topic.Create}/>
                   <Route exact path="/:category/:topic" component={Content.Topic.View}/>
+                  <Route exact path="/:category" component={Content.Category.CategoryView}/>
                   <Redirect to="/nope" />
                 </Switch>
               </MainLayout>

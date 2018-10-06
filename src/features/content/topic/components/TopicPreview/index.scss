@@ -1,0 +1,24 @@
+.TopicPreview {
+    padding: 20px;
+
+    .body {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+
+        .topic {
+            .title {
+                font-weight: 500;
+            }
+            .description {
+                padding: 3px;
+            }
+        }
+    }
+
+    .meta {
+        padding: 10px 0;
+    }
+}
