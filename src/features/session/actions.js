@@ -1,5 +1,5 @@
 import { put, call, takeEvery } from 'redux-saga/effects'
-import {testAsyncFetchUser} from '../backendMock';
+import {testAsyncFetchUser} from '../../common/http/api/API';
 
 export const actiontypes = {
   FETCH_USER_REQUEST: 'FETCH_USER_REQUEST',

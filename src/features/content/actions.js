@@ -1,7 +1,7 @@
 import { put, takeEvery } from 'redux-saga/effects'
 
-import {getTopicsFromServer} from '../backendMock';
-import {getTopicFromServer} from '../backendMock';
+import {getTopicsFromServer} from '../../common/http/api/API';
+import {getTopicFromServer} from '../../common/http/api/API';
 
 export const actiontypes = {
   POST_TOPIC_REQUEST: 'POST_TOPIC_REQUEST',
