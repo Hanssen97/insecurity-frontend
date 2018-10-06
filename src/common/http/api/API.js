@@ -125,6 +125,6 @@ export const getCurrentSettingsFromServer = (uId) => {
   return {
     username: "morten",
     email: "morten@morten.no",
-    profilePicture: "https://i0.wp.com/media.boingboing.net/wp-content/uploads/2013/03/potato2.jpg?w=970",
+    profilePicture: "https://cdn0.tnwcdn.com/wp-content/blogs.dir/1/files/2018/05/Wyvern-programming-languages-in-one.jpg",
   }
 }
