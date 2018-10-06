@@ -1,62 +1,31 @@
 @import "../../../../common/styles.scss";
 
-$imgSize: 14vh;
+.SettingsView {
+  margin: 80px;
+  margin-top: 120px;
+  width: 100%;
 
-.container {
-    margin-top: 20px;
-    width: $componentWidth;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
-    .imgContainer {
-        position: absolute;
+  img {
+    $size: 160px;
+    width: $size;
+    height: $size;
+    border-radius: calc(#{$size} / 2);
+    margin-top: calc(-#{$size} / 2);
+    margin-bottom: 60px;
 
-        .profileImg {
-            width: $imgSize;
-            height: $imgSize;
-            border-radius: calc( #{$imgSize} / 2 );
-            background: $blue;
-        }
-    }
-    
+    box-shadow: 0 4px 12px rgba(0,0,0,0.6);
+  }
 
-    .SettingsView {
-        margin-top: calc( #{$imgSize} / 2 );
-        width: 100%;
-        height: 90%;
+  .Panels {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 
-        .form {
-            margin-top: 15vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-
-            .header {
-                color: $blue;
-                font-weight: 600;
-                font-size: 32px;
-            }
-
-            .input {
-                width: 350px;
-            }
-
-            .buttons {
-                margin-top: 5vh;
-            }
-
-            .submit, .discard {
-                background: $lightGrey;
-                color: white;
-                margin: 10px;
-            }
-
-            .submit {
-                background: $blue;
-            }
-
-            .discard {
-                background: $red;
-            }
-        }
-    }
+    width: 100%;
+    padding: 60px;
+  }
 }

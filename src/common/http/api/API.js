@@ -121,7 +121,7 @@ export const getSearchResultFromServer = (query) => {
 
 
 export const getCurrentSettingsFromServer = (uId) => {
-  console.log("Fetch current settings from server with user id =", uId); 
+  console.log("Fetch current settings from server with user id =", uId);
   return {
     username: "morten",
     email: "morten@morten.no",

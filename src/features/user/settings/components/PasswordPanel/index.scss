@@ -1,0 +1,32 @@
+@import "../../../../../common/styles.scss";
+
+
+.PasswordPanel {
+  width: 60%;
+
+  .Heading {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+
+    .Title {
+      flex: 1;
+    }
+
+    .Description {
+      flex: 3;
+      color: $lightText;
+    }
+  }
+
+  .Password {
+    flex: 1;
+  }
+  .RepeatPassword {
+    flex: 1;
+  }
+
+  .SaveAction {
+    color: $blue;
+  }
+}
