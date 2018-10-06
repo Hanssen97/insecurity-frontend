@@ -7,9 +7,13 @@ $TOPBAR_HEIGHT: 60px;
 $RESPONSIVE_MEDIUM: 959px;
 $RESPONSIVE_LOW: 600px;
 
+$componentWidth: 80%;
+
 /* Primary color */
 $blue: #0099ee;
 $red: #f96c0e;
+$lightGrey: #e3e3e3;
+
 $mainBackground: #efefff;
 $componentBackground: #fff;
 
@@ -37,4 +41,6 @@ $topicShadow: 0 2px 0 rgba(0,0,0,0.4);
   pageShadow: $pageShadow;
 
   TOPBAR_HEIGHT: $TOPBAR_HEIGHT;
+  componentWidth: $componentWidth;
+  lightGrey: $lightGrey;
 }

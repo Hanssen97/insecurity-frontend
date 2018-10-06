@@ -57,6 +57,7 @@ class App extends Component {
             <Route path="/">
               <MainLayout>
                 <Switch>
+                  <Route exact path="/search/:query" component={Content.Search.SearchView}/>
                   <Route exact path="/:category/new" component={Content.Topic.Create}/>
                   <Route exact path="/:category/:topic" component={Content.Topic.View}/>
                   <Route exact path="/:category" component={Content.Category.CategoryView}/>

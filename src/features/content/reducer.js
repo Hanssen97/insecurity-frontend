@@ -9,7 +9,11 @@ const initialState = {
     replies:[]
   },
   info: "Post Topic",
-  topics:[]
+  topics:[],
+  searchResult: {
+    categories: [],
+    topics: [],
+  },
 }
 
 export default function content(state = initialState, action) {
@@ -40,6 +44,14 @@ export default function content(state = initialState, action) {
       return {...state,
         info: action.info,
         topics: action.topics,
+      };
+    }
+
+    case actiontypes.GET_SEARCH_RESULT_SUCCESS: {
+      return {...state,
+        info: action.info,
+        query: action.query,
+        searchResult: action.searchResult,
       };
     }
 
