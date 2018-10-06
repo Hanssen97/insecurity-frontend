@@ -10,13 +10,13 @@ import './index.min.css';
 class Login extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      email: "",
+      password: ""
+    }
     document.title = 'Login';
   }
 
-
-  gotoRegister = () => {
-    this.props.history.replace('/auth/register');
-  };
 
   render() {
     return (
@@ -35,6 +35,10 @@ class Login extends Component {
                 margin="normal"
                 variant="outlined"
                 fullWidth
+                value={this.state.email}
+                onChange={e => {
+                  this.setState({email: e.target.value})
+                }}
                 />
               <TextField
                 label="Password"
@@ -43,6 +47,10 @@ class Login extends Component {
                 margin="normal"
                 variant="outlined"
                 fullWidth
+                value={this.state.password}
+                onChange={e => {
+                  this.setState({password: e.target.value})
+                }}
                 />
             </div>
           </div>
@@ -69,7 +77,7 @@ class Login extends Component {
 
             <p> Not a member?
               <a onClick={() => {
-                this.props.history.replace('/member/register');
+                this.props.history.push('/member/register');
               }}> Register </a>
             </p>
 
