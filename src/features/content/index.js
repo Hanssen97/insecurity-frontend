@@ -14,6 +14,7 @@ const mapDispatchToProps = {
   postTopic: actions.postTopic,
   getTopic: actions.getTopic,
   getCategory: actions.getCategory,
+  getCategories: actions.getCategories,
 }
 
 function mapStateToProps(state) {

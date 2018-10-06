@@ -1,7 +1,10 @@
-import { put, takeEvery } from 'redux-saga/effects'
+import { put, call, takeEvery, takeLatest } from 'redux-saga/effects'
 
-import {getTopicsFromServer} from '../../common/http/api/API';
-import {getTopicFromServer} from '../../common/http/api/API';
+import {
+  getTopicsFromServer,
+  getTopicFromServer,
+  getCategoriesFromServer
+} from '../../common/http/api/API';
 
 export const actiontypes = {
   POST_TOPIC_REQUEST: 'POST_TOPIC_REQUEST',
@@ -15,6 +18,10 @@ export const actiontypes = {
   GET_CATEGORY_REQUEST: 'GET_CATEGORY_REQUEST',
   GET_CATEGORY_SUCCESS: 'GET_CATEGORY_SUCCESS',
   GET_CATEGORY_FAILURE: 'GET_CATEGORY_FAILURE',
+
+  GET_CATEGORIES_REQUEST: 'GET_CATEGORIES_REQUEST',
+  GET_CATEGORIES_SUCCESS: 'GET_CATEGORIES_SUCCESS',
+  GET_CATEGORIES_FAILURE: 'GET_CATEGORIES_FAILURE',
 }
 
 
@@ -33,6 +40,10 @@ export const actions = {
     type: actiontypes.GET_CATEGORY_REQUEST,
     info: "fetching topic...",
     category,
+  }),
+  getCategories: () => ({
+    type: actiontypes.GET_CATEGORIES_REQUEST,
+    info: "fetching categories..."
   }),
 }
 
@@ -57,9 +68,7 @@ export const sagas = {
   },
 
   getCategory: function*(action) {
-    
     const topics = getTopicsFromServer(action.category);
-
     yield put({
       type: actiontypes.GET_CATEGORY_SUCCESS,
       info: 'category received',
@@ -67,10 +76,20 @@ export const sagas = {
     })
   },
 
+  getCategories: function*(action) {
+    let categories = yield call(getCategoriesFromServer);
+    yield put({
+      type: actiontypes.GET_CATEGORIES_SUCCESS,
+      info: 'categories received',
+      categories,
+    })
+  },
+
   actionWatcher: function*() {
     yield takeEvery(actiontypes.POST_TOPIC_REQUEST, sagas.postTopic);
     yield takeEvery(actiontypes.GET_TOPIC_REQUEST, sagas.getTopic);
     yield takeEvery(actiontypes.GET_CATEGORY_REQUEST, sagas.getCategory);
+    yield takeLatest(actiontypes.GET_CATEGORIES_REQUEST, sagas.getCategories);
   }
 
 }

@@ -9,7 +9,8 @@ const initialState = {
     replies:[]
   },
   info: "Post Topic",
-  topics:[]
+  topics:[],
+  categories: [],
 }
 
 export default function content(state = initialState, action) {
@@ -40,6 +41,13 @@ export default function content(state = initialState, action) {
       return {...state,
         info: action.info,
         topics: action.topics,
+      };
+    }
+
+    case actiontypes.GET_CATEGORIES_SUCCESS: {
+      return {...state,
+        info: action.info,
+        categories: action.categories,
       };
     }
 
