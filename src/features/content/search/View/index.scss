@@ -3,8 +3,8 @@
 .container {
     width: $componentWidth;
     display: flex;
-    flex-direction: column;
-    
+    flex-direction: column;    
+    align-items: center;
     .header {
         align-self: center;
         margin: 40px 10px;
