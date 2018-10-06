@@ -118,3 +118,13 @@ export const getSearchResultFromServer = (query) => {
       ]
     }
 }
+
+
+export const getCurrentSettingsFromServer = (uId) => {
+  console.log("Fetch current settings from server with user id =", uId); 
+  return {
+    username: "morten",
+    email: "morten@morten.no",
+    profilePicture: "https://i0.wp.com/media.boingboing.net/wp-content/uploads/2013/03/potato2.jpg?w=970",
+  }
+}
