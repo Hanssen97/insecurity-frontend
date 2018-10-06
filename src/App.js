@@ -40,13 +40,15 @@ class App extends Component {
         <Provider store={store}>
           <Switch>
 
+            <Route path="/nope" component={Session.NotFound}/>
+
 
             <Route path="/member">
               <AuthLayout>
                 <Switch>
                   <Route exact path="/member/login" component={Session.Login}/>
                   <Route exact path="/member/register" component={Session.Register}/>
-                  <Redirect to="/" />
+                  <Redirect to="/nope" />
                 </Switch>
               </AuthLayout>
             </Route>
@@ -55,14 +57,12 @@ class App extends Component {
             <Route path="/">
               <MainLayout>
                 <Switch>
-                  <Route exact path="/createtopic" component={Content.Topic.Create}/>
-                  <Route exact path="/topic" component={Content.Topic.View}/>
+                  <Route exact path="/:category/new" component={Content.Topic.Create}/>
+                  <Route exact path="/:category/:topic" component={Content.Topic.View}/>
+                  <Redirect to="/nope" />
                 </Switch>
               </MainLayout>
             </Route>
-
-
-            <Route component={Session.NotFound}/>
 
 
           </Switch>
