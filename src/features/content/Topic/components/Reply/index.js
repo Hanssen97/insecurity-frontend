@@ -24,7 +24,7 @@ class Reply extends PureComponent {
         />
 
         <div className="Body">
-            <Typography component="p" color='inherit'>{text}</Typography>
+            <Typography component="p" color='inherit'>{text}{text}{text}{text}{text}{text}{text}{text}{text}{text}</Typography>
             <Typography component="p" onClick={this.props.onReply}><b>Reply</b></Typography>
         </div>
 
