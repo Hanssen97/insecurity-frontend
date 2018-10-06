@@ -4,7 +4,9 @@ import {
   getTopicsFromServer,
   getTopicFromServer,
   getCategoriesFromServer
+  getSearchResultFromServer,
 } from '../../common/http/api/API';
+
 
 export const actiontypes = {
   POST_TOPIC_REQUEST: 'POST_TOPIC_REQUEST',
@@ -22,6 +24,10 @@ export const actiontypes = {
   GET_CATEGORIES_REQUEST: 'GET_CATEGORIES_REQUEST',
   GET_CATEGORIES_SUCCESS: 'GET_CATEGORIES_SUCCESS',
   GET_CATEGORIES_FAILURE: 'GET_CATEGORIES_FAILURE',
+
+  GET_SEARCH_RESULT_REQUEST: 'GET_SEARCH_RESULT_REQUEST',
+  GET_SEARCH_RESULT_SUCCESS: 'GET_SEARCH_RESULT_SUCCESS',
+  GET_SEARCH_RESULT_FAILURE: 'GET_SEARCH_RESULT_FAILURE',
 }
 
 
@@ -45,6 +51,11 @@ export const actions = {
     type: actiontypes.GET_CATEGORIES_REQUEST,
     info: "fetching categories..."
   }),
+  getSearchResult: (query) => ({
+    type: actiontypes.GET_SEARCH_RESULT_REQUEST,
+    info: "fetching search result...",
+    query,
+  }),
 }
 
 export const sagas = {
@@ -59,7 +70,7 @@ export const sagas = {
   },
 
   getTopic: function*(action) {
-    const topic = getTopicFromServer(action.topicId);
+    const topic = yield call(getTopicFromServer, action.topicId);
     yield put({
       type: actiontypes.POST_TOPIC_SUCCESS,
       info: 'topic received',
@@ -68,7 +79,7 @@ export const sagas = {
   },
 
   getCategory: function*(action) {
-    const topics = getTopicsFromServer(action.category);
+    const topics = yield call(getTopicsFromServer, action.category);
     yield put({
       type: actiontypes.GET_CATEGORY_SUCCESS,
       info: 'category received',
@@ -77,11 +88,21 @@ export const sagas = {
   },
 
   getCategories: function*(action) {
-    let categories = yield call(getCategoriesFromServer);
+    const categories = yield call(getCategoriesFromServer);
     yield put({
       type: actiontypes.GET_CATEGORIES_SUCCESS,
       info: 'categories received',
       categories,
+    })
+  },
+
+  getSearchResult: function*(action) {
+    const searchResult = yield call(getSearchResultFromServer, action.query);
+    yield put({
+      type: actiontypes.GET_SEARCH_RESULT_SUCCESS,
+      info: 'Search completed',
+      query: action.query,
+      searchResult,
     })
   },
 
@@ -90,6 +111,7 @@ export const sagas = {
     yield takeEvery(actiontypes.GET_TOPIC_REQUEST, sagas.getTopic);
     yield takeEvery(actiontypes.GET_CATEGORY_REQUEST, sagas.getCategory);
     yield takeLatest(actiontypes.GET_CATEGORIES_REQUEST, sagas.getCategories);
+    yield takeEvery(actiontypes.GET_SEARCH_RESULT_REQUEST, sagas.getSearchResult);
   }
 
 }

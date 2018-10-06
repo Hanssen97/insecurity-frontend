@@ -1,7 +1,13 @@
 @import '../../../../../common/styles.scss';
 
 .TopicPreview {
-  padding: 15px 80px;
+  padding: 15px;
+  margin: 15px 80px;
+
+  &:hover {
+    cursor: pointer;
+    background: $lightGrey;
+  }
 
   .body {
       width: 100%;

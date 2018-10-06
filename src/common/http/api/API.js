@@ -81,3 +81,36 @@ export const getTopicFromServer = (id) => {
         ],
     };
 }
+
+
+export const getSearchResultFromServer = (query) => {
+  console.log("Fetch search result from server with query =", query);
+    return {
+      categories: [
+        {
+          name: "JavaScript",
+          description: "JavaScript nerds, assemble!!",
+        },
+        {
+          name: "Assembly",
+          description: "FML",
+        },
+      ],
+      topics: [
+        {
+          title: "Long title for forum. lorem lorem lorem etc",
+          description: "Long question for forum. Lorem Ipsum dolor sit amet etc..... ",
+          owner: "morten",
+          date: "12.12.2018",
+          likes: "2",
+        },
+        {
+          title: "Long title for forum. lorem lorem lorem etc",
+          description: "Long question for forum. Lorem Ipsum dolor sit amet etc..... ",
+          owner: "morten",
+          date: "12.12.2018",
+          likes: "12",
+        }
+      ]
+    }
+}
