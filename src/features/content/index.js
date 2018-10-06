@@ -6,11 +6,13 @@ import reducer from './reducer';
 // Components
 import Create from './topic/Create/index';
 import View from './topic/View/index';
+import CategoryView from './category/View';
 
 
 const mapDispatchToProps = {
   postTopic: actions.postTopic,
   getTopic: actions.getTopic,
+  getCategory: actions.getCategory,
 }
 
 function mapStateToProps(state) {
@@ -27,11 +29,14 @@ let Topic = {
   View: connect(mapStateToProps, mapDispatchToProps)(View),
 }
 
-
+let Category = {
+  CategoryView: connect(mapStateToProps, mapDispatchToProps)(CategoryView),
+}
 
 
 export default {
-  Topic
+  Topic,
+  Category,
 };
 
 export {
