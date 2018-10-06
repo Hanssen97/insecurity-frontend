@@ -5,11 +5,13 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    padding: 15px;
-    margin: 15px 70px;
-    
+    padding: 15px 15px;
+    margin: 0 80px;
+
+    transition: $hoverTransitionTime;
+
     &:hover {
         cursor: pointer;
-        background: $lightGrey;
+        box-shadow: -3px 0 0 0 $lightGrey;
     }
 }
