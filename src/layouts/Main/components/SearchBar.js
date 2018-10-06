@@ -77,7 +77,7 @@ class SearchBar extends PureComponent {
         redirect: true
       });
 
-      this.forceUpdate()
+      e.target.value = "";
     }
   }
 
