@@ -6,6 +6,7 @@ const initialState = {
     description: "",
     author: "",
     timestamp: "",
+    category: "",
     replies:[]
   },
   info: "Post Topic",

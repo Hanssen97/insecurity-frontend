@@ -50,6 +50,7 @@ class SearchView extends Component {
         <CategoryPreview key={key}
             name={category.name}
             description={category.description}
+            onClick={() => this.props.history.push(`/${category.name}`)}
           />
       );
     });
@@ -62,35 +63,43 @@ class SearchView extends Component {
             description={topic.description}
             date={topic.date}
             likes={topic.likes}
+            onClick={() => this.props.history.push(`/${topic.category}/${topic.title}`)}
           />
       );
     });
 
+    let categoryTitle;
+    if (categories.length > 0) {
+      categoryTitle = (
+        <Typography
+          className="seperator"
+          variant="headline"
+          >
+          Categories
+        </Typography>
+      );
+    }
+
+    let topicTitle;
+    if (topics.length > 0) {
+      topicTitle = (
+        <Typography
+          className="seperator"
+          variant="headline"
+          >
+          Topics
+        </Typography>
+      );
+    }
+
     return (
       <div className="container">
-
         <h1 className="header">Search results for "{query}"</h1>
-
         <Paper className="SearchView">
-
-          <Typography
-              className="seperator"
-              variant="headline"
-              >
-              Topics
-            </Typography>
-
+          {topicTitle}
           {topics}
-
-          <Typography
-            className="seperator"
-            variant="headline"
-            >
-            Categories
-          </Typography>
-
+          {categoryTitle}
           {categories}
-
         </Paper>
       </div>
     )

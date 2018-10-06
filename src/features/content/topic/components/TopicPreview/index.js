@@ -9,11 +9,12 @@ import './index.min.css';
 
 
 class TopicPreview extends PureComponent {
+
   render() {
     let {owner, date, title, description, likes} = this.props;
-
+  
     return (
-      <div className="TopicPreview">
+      <div className="TopicPreview" onClick={this.props.onClick}>
 
         <div className="body">
             <div className="topic">

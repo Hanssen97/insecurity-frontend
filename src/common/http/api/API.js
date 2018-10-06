@@ -47,13 +47,15 @@ export const getTopicsFromServer = (category) => {
         owner: "bjarte",
         date: "12.12.2018",
         likes: "1",
+        category: "progamming",
       },
       {
-        title: "Long title for forum. lorem lorem lorem etc",
+        title: "Topic 2",
         description: "Long question for forum. Lorem Ipsum dolor sit amet etc..... ",
         owner: "jørgen",
         date: "1.12.2018",
         likes: "12",
+        category: "progamming",
       },
     ]
   }
@@ -103,6 +105,7 @@ export const getSearchResultFromServer = (query) => {
           owner: "morten",
           date: "12.12.2018",
           likes: "2",
+          category: "progamming",
         },
         {
           title: "Long title for forum. lorem lorem lorem etc",
@@ -110,6 +113,7 @@ export const getSearchResultFromServer = (query) => {
           owner: "morten",
           date: "12.12.2018",
           likes: "12",
+          category: "progamming",
         }
       ]
     }

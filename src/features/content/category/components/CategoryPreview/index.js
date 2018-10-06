@@ -11,7 +11,7 @@ class CategoryPreview extends PureComponent {
     const {name, description} = this.props;
 
     return (
-      <div className="CategoryPreview">
+      <div className="CategoryPreview" onClick={this.props.onClick}>
         <Typography
           className="name"
           variant="headline"
