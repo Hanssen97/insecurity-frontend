@@ -1,0 +1,15 @@
+@import '../../../../../common/styles.scss';
+
+.CategoryPreview {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px;
+    margin: 15px 70px;
+    
+    &:hover {
+        cursor: pointer;
+        background: $lightGrey;
+    }
+}
