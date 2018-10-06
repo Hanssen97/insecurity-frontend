@@ -6,6 +6,38 @@ export async function testAsyncFetchUser() {
      }).then(data => data)
   }
 
+export async function getCategoriesFromServer() {
+  console.log("Fetching categories");
+  return new Promise((resolve, reject) => {
+    setTimeout(() => resolve([
+      {
+       title: "Akward Situations",
+      },
+      {
+       title: "Bored",
+      },
+      {
+       title: "Cars",
+      },
+      {
+       title: "Dogs",
+      },
+      {
+       title: "Everyday Problems",
+      },
+      {
+       title: "Funny",
+      },
+      {
+       title: "Happy",
+      },
+      {
+       title: "Programming Humour",
+      },
+    ]), 2000);
+  }).then(data => data)
+}
+
 export const getTopicsFromServer = (category) => {
     console.log("Fetch topics by category =", category);
     return [
@@ -25,7 +57,7 @@ export const getTopicsFromServer = (category) => {
       },
     ]
   }
-  
+
 export const getTopicFromServer = (id) => {
     console.log("Fetch topic from server with id =", id);
     return {
@@ -49,6 +81,7 @@ export const getTopicFromServer = (id) => {
         ],
     };
 }
+
 
 export const getSearchResultFromServer = (query) => {
   console.log("Fetch search result from server with query =", query);

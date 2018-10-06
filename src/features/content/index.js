@@ -4,16 +4,18 @@ import { sagas, actions } from './actions';
 import reducer from './reducer';
 
 // Components
-import Create from './topic/Create/index';
-import View from './topic/View/index';
-import CategoryView from './category/View';
-import SearchView from './search/View';
+import HomeView from './home/View/index';
+import TopicCreate from './topic/Create/index';
+import TopicView from './topic/View/index';
+import CategoryView from './category/View/index';
+import SearchView from './search/View(index';
 
 
 const mapDispatchToProps = {
   postTopic: actions.postTopic,
   getTopic: actions.getTopic,
   getCategory: actions.getCategory,
+  getCategories: actions.getCategories,
   getSearchResult: actions.getSearchResult,
 }
 
@@ -25,14 +27,17 @@ function mapStateToProps(state) {
   }
 }
 
-// Topic
 let Topic = {
-  Create: connect(mapStateToProps, mapDispatchToProps)(Create),
-  View: connect(mapStateToProps, mapDispatchToProps)(View),
+  Create: connect(mapStateToProps, mapDispatchToProps)(TopicCreate),
+  View: connect(mapStateToProps, mapDispatchToProps)(TopicView),
 }
 
 let Category = {
-  CategoryView: connect(mapStateToProps, mapDispatchToProps)(CategoryView),
+  View: connect(mapStateToProps, mapDispatchToProps)(CategoryView),
+}
+
+let Home = {
+  View: connect(mapStateToProps, mapDispatchToProps)(HomeView),
 }
 
 let Search = {
@@ -43,7 +48,8 @@ let Search = {
 export default {
   Topic,
   Category,
-  Search,
+  Home,
+  Search
 };
 
 export {

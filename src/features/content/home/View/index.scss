@@ -1,0 +1,61 @@
+@import "../../../../common/styles.scss";
+
+.Home {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  width: 100%;
+  min-height: 100%;
+
+  padding-top: 40px;
+
+
+
+
+  .Header {
+    text-align: center;
+
+    img {
+      margin-left: -10px;
+      height: 200px;
+    }
+  }
+
+
+
+  .Categories {
+    width: 100%;
+    padding: 40px 0;
+    margin: 40px 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .Progress {
+      color: $blue;
+    }
+
+    .CategoryList {
+      flex-grow: 1;
+      max-width: 50%;
+
+      justify-content: center;
+
+      * {
+        margin: 10px;
+        transition: 0.15s;
+      }
+
+      .Item {
+
+      }
+      & :hover {
+        color: $blue;
+        cursor: pointer;
+      }
+    }
+
+  }
+}
