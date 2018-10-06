@@ -73,8 +73,6 @@ class SearchBar extends PureComponent {
   setRedirect = (path) => {
     this.setState({
       path: `/search/${path}`,
-    });
-    this.setState({
       redirect: true
     });
   }
