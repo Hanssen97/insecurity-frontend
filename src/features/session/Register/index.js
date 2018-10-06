@@ -10,13 +10,15 @@ import './index.min.css';
 class Register extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      username: "",
+      email: "",
+      password: "",
+      passwordRepeat: ""
+    }
     document.title = 'Register';
   }
 
-
-  gotoRegister = () => {
-    this.props.history.replace('/auth/register');
-  };
 
   render() {
     return (
@@ -33,6 +35,10 @@ class Register extends Component {
                 margin="normal"
                 variant="outlined"
                 fullWidth
+                value={this.state.username}
+                onChange={e => {
+                  this.setState({username: e.target.value})
+                }}
               />
               <TextField
                 label="Email"
@@ -41,6 +47,10 @@ class Register extends Component {
                 margin="normal"
                 variant="outlined"
                 fullWidth
+                value={this.state.email}
+                onChange={e => {
+                  this.setState({email: e.target.value})
+                }}
               />
               <TextField
                 label="Password"
@@ -49,6 +59,10 @@ class Register extends Component {
                 margin="normal"
                 variant="outlined"
                 fullWidth
+                value={this.state.password}
+                onChange={e => {
+                  this.setState({password: e.target.value})
+                }}
               />
               <TextField
                 label="Repeat Password"
@@ -57,6 +71,10 @@ class Register extends Component {
                 margin="none"
                 variant="outlined"
                 fullWidth
+                value={this.state.passwordRepeat}
+                onChange={e => {
+                  this.setState({passwordRepeat: e.target.value})
+                }}
               />
             </div>
           </div>
@@ -83,7 +101,7 @@ class Register extends Component {
 
             <p> Already a member?
               <a onClick={() => {
-                this.props.history.replace('/member/login');
+                this.props.history.push('/member/login');
               }}> Log in </a>
             </p>
 
