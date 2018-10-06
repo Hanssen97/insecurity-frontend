@@ -13,7 +13,7 @@ import Icon from '@material-ui/core/Icon';
 
 import Img from 'react-image'
 
-import SearchBar from './Components/SearchBar';
+import SearchBar from './components/SearchBar';
 
 
 import './index.min.css';
