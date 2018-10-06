@@ -46,11 +46,13 @@ export default function content(state = initialState, action) {
         topics: action.topics,
       };
     }
-      
+
     case actiontypes.GET_CATEGORIES_SUCCESS: {
       return {...state,
         info: action.info,
         categories: action.categories,
+      };
+    }
 
     case actiontypes.GET_SEARCH_RESULT_SUCCESS: {
       return {...state,

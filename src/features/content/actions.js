@@ -3,7 +3,7 @@ import { put, call, takeEvery, takeLatest } from 'redux-saga/effects'
 import {
   getTopicsFromServer,
   getTopicFromServer,
-  getCategoriesFromServer
+  getCategoriesFromServer,
   getSearchResultFromServer,
 } from '../../common/http/api/API';
 

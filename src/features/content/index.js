@@ -8,7 +8,7 @@ import HomeView from './home/View/index';
 import TopicCreate from './topic/Create/index';
 import TopicView from './topic/View/index';
 import CategoryView from './category/View/index';
-import SearchView from './search/View(index';
+import SearchView from './search/View/index';
 
 
 const mapDispatchToProps = {
