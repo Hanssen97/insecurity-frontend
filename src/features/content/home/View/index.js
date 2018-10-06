@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 
 import Typography from '@material-ui/core/Typography';
+import Paper from '@material-ui/core/Paper';
 
 import './index.min.css';
 
@@ -13,7 +14,14 @@ class Home extends Component {
   render() {
     return (
       <div className="Home">
-        <h1> here comes home </h1>
+        <div className="Header">
+          <img src='media/teacup.gif' />
+          <Typography variant='display1'> What's your cup of tea? </Typography>
+        </div>
+
+        <Paper className="Categories">
+
+        </Paper>
       </div>
     )
   }

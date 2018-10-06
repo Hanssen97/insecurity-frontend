@@ -1,7 +1,5 @@
 @import "../../../../common/styles.scss";
 
-$containerWidth: 90%;
-
 .Home {
   display: flex;
   flex-direction: column;
@@ -9,4 +7,25 @@ $containerWidth: 90%;
 
   width: 100%;
   min-height: 100%;
+
+  padding-top: 30px;
+
+
+
+
+  .Header {
+    text-align: center;
+
+    img {
+      margin-left: -10px;
+      height: 200px;
+    }
+  }
+
+
+
+  .Categories {
+    width: 100%;
+    margin: 40px;
+  }
 }
