@@ -1,4 +1,4 @@
-import { put, takeEvery } from 'redux-saga/effects'
+import { put, takeEvery, call } from 'redux-saga/effects'
 
 import {
   getTopicsFromServer,
@@ -61,7 +61,7 @@ export const sagas = {
   },
 
   getTopic: function*(action) {
-    const topic = getTopicFromServer(action.topicId);
+    const topic = yield call(getTopicFromServer, action.topicId);
     yield put({
       type: actiontypes.POST_TOPIC_SUCCESS,
       info: 'topic received',
@@ -71,7 +71,7 @@ export const sagas = {
 
   getCategory: function*(action) {
 
-    const topics = getTopicsFromServer(action.category);
+    const topics = yield call(getTopicsFromServer, action.category);
 
     yield put({
       type: actiontypes.GET_CATEGORY_SUCCESS,
@@ -81,7 +81,7 @@ export const sagas = {
   },
 
   getSearchResult: function*(action) {
-    const searchResult = getSearchResultFromServer(action.query);
+    const searchResult = yield call(getSearchResultFromServer, action.query);
 
     yield put({
       type: actiontypes.GET_SEARCH_RESULT_SUCCESS,
