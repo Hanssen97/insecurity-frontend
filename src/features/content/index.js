@@ -4,8 +4,8 @@ import { sagas, actions } from './actions';
 import reducer from './reducer';
 
 // Components
-import CreateTopic from './topic/Create/index';
-import Topic from './topic/Topic/index';
+import Create from './topic/Create/index';
+import View from './topic/View/index';
 
 
 const mapDispatchToProps = {
@@ -21,10 +21,17 @@ function mapStateToProps(state) {
   }
 }
 
-// Components
+// Topic
+let Topic = {
+  Create: connect(mapStateToProps, mapDispatchToProps)(Create),
+  View: connect(mapStateToProps, mapDispatchToProps)(View),
+}
+
+
+
+
 export default {
-  CreateTopic: connect(mapStateToProps, mapDispatchToProps)(CreateTopic),
-  Topic: connect(mapStateToProps, mapDispatchToProps)(Topic),
+  Topic
 };
 
 export {
