@@ -10,6 +10,7 @@ const initialState = {
   },
   info: "Post Topic",
   topics:[],
+  categories: [],
   searchResult: {
     categories: [],
     topics: [],
@@ -39,11 +40,17 @@ export default function content(state = initialState, action) {
       };
     }
 
-
     case actiontypes.GET_CATEGORY_SUCCESS: {
       return {...state,
         info: action.info,
         topics: action.topics,
+      };
+    }
+
+    case actiontypes.GET_CATEGORIES_SUCCESS: {
+      return {...state,
+        info: action.info,
+        categories: action.categories,
       };
     }
 
