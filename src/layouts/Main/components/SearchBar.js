@@ -10,7 +10,7 @@ import Button from '@material-ui/core/Button';
 import Input from '@material-ui/core/Input';
 import { fade } from '@material-ui/core/styles/colorManipulator';
 import Icon from '@material-ui/core/Icon';
-
+import { Redirect } from 'react-router-dom';
 import Img from 'react-image'
 
 
@@ -64,17 +64,36 @@ const styles = theme => ({
 class SearchBar extends PureComponent {
   constructor(props, context) {
     super(props);
+    this.state = {
+      path: "",
+      redirect: false,
+    }
   }
 
+  setRedirect = (path) => {
+    this.setState({
+      path: `/search/${path}`,
+    });
+    this.setState({
+      redirect: true
+    });
+  }
+
+  renderRedirect = () => {
+    if (this.state.redirect) {
+      window.location.reload()
+      return <Redirect to={this.state.path} />
+    }
+  }
 
   render() {
     const { classes } = this.props;
-
     return (
         <div className={classes.search}>
           <div className={classes.searchIcon}>
             <Icon> search </Icon>
           </div>
+          {this.renderRedirect()}
           <Input
             placeholder="Search…"
             disableUnderline
@@ -82,9 +101,15 @@ class SearchBar extends PureComponent {
               root: classes.inputRoot,
               input: classes.inputInput,
             }}
+            onKeyPress={(e) => {
+              if (e.key == 'Enter') {
+                this.setRedirect(e.target.value);
+              }
+            }}
             />
         </div>
     );
+
   }
 }
 

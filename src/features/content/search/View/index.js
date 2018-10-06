@@ -20,16 +20,16 @@ class SearchView extends Component {
   }
 
   componentWillMount() {
-      let query = this.props.location.pathname.replace("/search/", "");
-      this.setState({query});
+    let query = this.props.location.pathname.replace("/search/", "");
+    this.props.getSearchResult(query);
+    setTimeout(() => {
+      console.log(this.props.content);
+    }, 0);
   }
 
-  componentDidMount() {
-    this.props.getSearchResult(this.state.query);
-  }
 
   render() {
-    let {searchResult} = this.props.content;
+    let {searchResult, query} = this.props.content;
     
     let categories = searchResult.categories.map((category, key) => {
       return (
@@ -55,7 +55,7 @@ class SearchView extends Component {
     return (
       <div className="container">
 
-        <h1 className="header">Search results for "{this.state.query}"</h1>
+        <h1 className="header">Search results for "{query}"</h1>
 
         <Paper className="SearchView">
 
