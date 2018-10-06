@@ -70,17 +70,21 @@ class SearchBar extends PureComponent {
     }
   }
 
-  setRedirect = (path) => {
-    this.setState({
-      path: `/search/${path}`,
-      redirect: true
-    });
+  handleRedirect = (e) => {
+    if (e.key === 'Enter') {
+      this.setState({
+        path: `/search/${e.target.value}`,
+        redirect: true
+      });
+
+      this.forceUpdate()
+    }
   }
 
   renderRedirect = () => {
+    let path = this.state.path;
     if (this.state.redirect) {
-      window.location.reload()
-      return <Redirect to={this.state.path} />
+      this.context.router.history.push(path);
     }
   }
 
@@ -99,11 +103,7 @@ class SearchBar extends PureComponent {
               root: classes.inputRoot,
               input: classes.inputInput,
             }}
-            onKeyPress={(e) => {
-              if (e.key == 'Enter') {
-                this.setRedirect(e.target.value);
-              }
-            }}
+            onKeyPress={(e) => this.handleRedirect(e)}
             />
         </div>
     );

@@ -16,15 +16,29 @@ class SearchView extends Component {
     document.title = 'Search Page';
     this.state = {
       query: "",
+      fullPath: "",
     }
   }
 
   componentWillMount() {
-    let query = this.props.location.pathname.replace("/search/", "");
+    this.getSearchQuery();
+  }
+
+  componentWillReceiveProps(newProps) {
+    if(newProps.location.pathname != this.state.fullPath) {
+      this.getSearchQuery();
+    }
+  }
+
+  getSearchQuery() {
+    const fullPath = this.props.location.pathname;
+    const query = fullPath.replace("/search/", "");
+    
     this.props.getSearchResult(query);
-    setTimeout(() => {
-      console.log(this.props.content);
-    }, 0);
+    this.setState({
+      query,
+      fullPath,
+    });
   }
 
 
