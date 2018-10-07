@@ -12,7 +12,7 @@
 
   .Title {
     flex: 1;
-    color: $blue;
+    color: $primary;
 
     display: flex;
     align-items: center;
@@ -68,7 +68,7 @@
     align-items: center;
 
     .Button {
-      background: $blue;
+      background: $primary;
       color: white;
 
       * {
