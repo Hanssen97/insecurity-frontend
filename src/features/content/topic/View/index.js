@@ -14,12 +14,8 @@ class Topic extends Component {
     super(props);
     document.title = 'Topic Page';
     this.state = {
-
     }
-  }
-
-
-  componentWillMount() {
+    
     this.props.getTopic("22");
   }
 

@@ -17,13 +17,8 @@ class SettingsView extends Component {
       email: "",
       password: ""
     }
-  }
 
-  componentWillMount() {
-      this.props.getCurrentSettings("morten");
-      setTimeout(() => {
-        console.log(this.props.user.currentSettings);
-      }, 0);
+    this.props.getCurrentSettings("morten");
   }
 
   render() {

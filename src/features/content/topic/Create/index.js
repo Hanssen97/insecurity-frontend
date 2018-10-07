@@ -32,13 +32,6 @@ class CreateTopic extends Component {
     });
   }
 
-
-  componentWillReceiveProps(props) {
-    // Redirect to redirect url
-    console.log("Redirect to: " + props.content.redirect);
-  }
-
-
   render() {
     return (
       <Paper className="CreateTopic">
