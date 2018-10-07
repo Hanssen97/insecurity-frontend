@@ -2,16 +2,14 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 import Dialog from '@material-ui/core/Dialog';
-import DialogTitle from '@material-ui/core/DialogTitle';
 import DialogContent from '@material-ui/core/DialogContent';
 import withMobileDialog from '@material-ui/core/withMobileDialog';
-import Typography from '@material-ui/core/Typography';
 
 import Session from '../../../../features/session/index';
 
 import './index.min.css';
 
-let {Login, Register} = Session;
+let {Login} = Session;
 
 
 class LoginDialog extends Component {

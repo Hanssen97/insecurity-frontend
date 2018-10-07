@@ -26,7 +26,7 @@ class SearchView extends Component {
   }
 
   componentDidUpdate() {
-    if(this.props.location.pathname != this.state.fullPath) {
+    if(this.props.location.pathname !== this.state.fullPath) {
       this.getSearchQuery();
     }
   }

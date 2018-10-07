@@ -61,15 +61,21 @@
         color: $primary;
       }
 
+      .footer {
+        display: flex;
+        flex-direction: row;
+       
+        .login {
+          cursor: pointer;
+          color: $primary;
+        }
+      }
+
       p {
         font-weight: 300;
         margin-top: 10px;
         color: $lightText;
-
-        a {
-          cursor: pointer;
-          color: $primary;
-        }
+        padding-right: 10px;
       }
     }
   }

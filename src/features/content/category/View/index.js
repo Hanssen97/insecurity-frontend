@@ -19,7 +19,7 @@ class CategoryView extends Component {
   }
 
   componentDidUpdate() {
-    if(this.props.location.pathname != this.state.fullPath) {
+    if(this.props.location.pathname !== this.state.fullPath) {
       this.getCategoryName();
     }
   }

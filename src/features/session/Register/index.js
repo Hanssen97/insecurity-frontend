@@ -94,12 +94,12 @@ class Register extends Component {
               }
             </div>
 
-
-            <p> Already a member?
-              <a onClick={() => {
+            <div className="footer"> 
+              <p>Already a member?</p>
+              <p className="login" onClick={() => { 
                 this.props.history.push('/member/login');
-              }}> Log in </a>
-            </p>
+              }}> Log in </p>
+            </div>
 
           </div>
         </div>

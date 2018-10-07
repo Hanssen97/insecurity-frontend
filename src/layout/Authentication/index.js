@@ -17,7 +17,7 @@ class AuthLayout extends Component {
       <div className="AuthLayout">
         <div className="DialogLayout">
           <div className="Title">
-            <img alt='' src="logo.png"/>
+            <img alt="" src="logo.png"/>
           </div>
           
           {this.props.children}
@@ -31,6 +31,7 @@ class AuthLayout extends Component {
             <img
               className="ImageLayout_Placeholder"
               src="media/authBackground_low.jpg"
+              alt=""
             />
           }
         />

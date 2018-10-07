@@ -19,7 +19,7 @@ class Home extends Component {
   render() {
     let content;
 
-    if (this.props.feedback.fetching && this.props.content.categories.length == 0) {
+    if (this.props.feedback.fetching && this.props.content.categories.length === 0) {
       content = <CircularProgress className="Progress" />
     } else {
       content = (
@@ -46,7 +46,7 @@ class Home extends Component {
     return (
       <div className="Home">
         <div className="Header">
-          <img src='media/teacup.gif' />
+          <img src="media/teacup.gif" alt="" />
           <Typography variant='display1'> What's your cup of tea? </Typography>
         </div>
 

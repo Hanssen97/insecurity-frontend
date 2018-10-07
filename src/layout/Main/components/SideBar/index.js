@@ -12,8 +12,6 @@ import './index.min.css';
 
 class SideBar extends PureComponent {
   render() {
-    const { classes } = this.props;
-
     const sideList = (
       <div className="Sidebar">
 

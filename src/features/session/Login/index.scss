@@ -42,16 +42,24 @@
         color: $primary;
       }
 
-      p {
-        font-weight: 300;
-        margin-top: 10px;
-        color: $lightText;
-
-        a {
+      .footer {
+        display: flex;
+        flex-direction: row;
+       
+        .register {
           cursor: pointer;
           color: $primary;
         }
       }
+
+      p {
+        font-weight: 300;
+        margin-top: 10px;
+        color: $lightText;
+        padding-left: 10px;
+      }
     }
   }
 }
+
+

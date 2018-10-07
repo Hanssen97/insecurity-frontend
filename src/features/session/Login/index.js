@@ -72,11 +72,10 @@ class Login extends Component {
             </div>
 
 
-            <p> Not a member?
-              <a onClick={() => {
-                this.context.router.history.push('/member/register');
-              }}> Register </a>
-            </p>
+            <div className="footer"> 
+              <p>Not a member?</p>
+              <p className="register" onClick={() => {this.context.router.history.push('/member/register')}}> Register </p>
+            </div>
 
           </div>
         </div>

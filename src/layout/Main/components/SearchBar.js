@@ -2,19 +2,10 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 
 import { withStyles } from '@material-ui/core/styles';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import IconButton from '@material-ui/core/IconButton';
-import Typography from '@material-ui/core/IconButton';
-import Button from '@material-ui/core/Button';
 import Input from '@material-ui/core/Input';
 import { fade } from '@material-ui/core/styles/colorManipulator';
 import Icon from '@material-ui/core/Icon';
-import { Redirect } from 'react-router-dom';
-import Img from 'react-image'
 
-
-import variables from '../../../common/styles.scss';
 
 const styles = theme => ({
   searchIcon: {

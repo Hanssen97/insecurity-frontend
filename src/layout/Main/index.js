@@ -1,17 +1,11 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import { withStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
-import Typography from '@material-ui/core/IconButton';
 import Button from '@material-ui/core/Button';
-import Input from '@material-ui/core/Input';
-import { fade } from '@material-ui/core/styles/colorManipulator';
 import Icon from '@material-ui/core/Icon';
-
-import Img from 'react-image'
 
 import SearchBar from './components/SearchBar';
 import SideBar from './components/SideBar';
@@ -23,7 +17,7 @@ import './index.min.css';
 
 
 class MainLayout extends Component {
-  constructor(props, context) {
+  constructor(props) {
     super(props);
     this.state = {
       showSidebar: false,
