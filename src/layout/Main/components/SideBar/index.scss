@@ -1,7 +1,7 @@
 @import '../../../../common/styles.scss';
 
 .Sidebar {
-  min-width: 350px;
+  width: 350px;
 
   .Title {
     width: 100%;
@@ -18,7 +18,7 @@
       padding: 20px;
       display: block;
       width: 30%;
-      max-width: 100px;
+      max-width: 80px;
       min-width: 60px;
       height: auto;
     }
@@ -28,7 +28,7 @@
     margin-left: -4px;
   }
 
-  @media (max-width: $RESPONSIVE_MEDIUM) {
+  @media (max-width: $RESPONSIVE_LOW) {
     width: 250px;
     min-width: 250px;
   }

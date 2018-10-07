@@ -21,7 +21,11 @@ function ListItem(props) {
         <Icon> {props.icon} </Icon>
       </ListItemIcon>
 
-      <ListItemText> {props.title} </ListItemText>
+      <ListItemText
+        primaryTypographyProps={{noWrap: true}}
+      >
+        {props.title}
+      </ListItemText>
 
 
     </MenuItem>
