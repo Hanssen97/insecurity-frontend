@@ -15,6 +15,7 @@ import Img from 'react-image'
 
 import SearchBar from './components/SearchBar';
 import SideBar from './components/SideBar';
+import LoginDialog from './components/LoginDialog';
 
 
 import './index.min.css';
@@ -25,7 +26,8 @@ class MainLayout extends Component {
   constructor(props, context) {
     super(props);
     this.state = {
-      showSidebar: false
+      showSidebar: false,
+      showLogin: false,
     }
   }
 
@@ -51,10 +53,21 @@ class MainLayout extends Component {
               </div>
 
               <div className="User">
-                <Button color="inherit">Login</Button>
+                <Button
+                  color="inherit"
+                  onClick={() => this.setState({showLogin: true})}
+                >
+                  Login
+                </Button>
               </div>
 
             </Toolbar>
+
+            <LoginDialog
+                open={this.state.showLogin}
+                onClose={() => this.setState({showLogin: false})}
+            />
+
           </AppBar>
 
           <SideBar
