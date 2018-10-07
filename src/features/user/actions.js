@@ -1,6 +1,6 @@
 import { put, call, takeEvery } from 'redux-saga/effects'
 import {
-    getCurrentSettingsFromServer,
+    fetchSettings,
     changeUsername,
     changeEmail,
   } from '../../common/http/api/API';
@@ -50,7 +50,7 @@ export const actions = {
 
 export const sagas = {
     getSettings: function*(action) {
-      const settings = yield call(getCurrentSettingsFromServer, action.userId);
+      const settings = yield call(fetchSettings, action.userId);
       yield put({
         type: actiontypes.GET_SETTINGS_SUCCESS,
         info: 'settings fetched',
@@ -80,7 +80,7 @@ export const sagas = {
   },
 
   changePassword: function*(action) {
-    const settings = yield call(getCurrentSettingsFromServer, action.userId);
+    const settings = yield call(fetchSettings, action.userId);
     yield put({
       type: actiontypes.CHANGE_PASSWORD_SUCCESS,
       info: 'password changed',

@@ -1,5 +1,5 @@
 import { put, call, takeEvery } from 'redux-saga/effects'
-import {testAsyncFetchUser} from '../../common/http/api/API';
+import {fetchUser} from '../../common/http/api/API';
 
 export const actiontypes = {
   FETCH_USER_REQUEST: 'FETCH_USER_REQUEST',
@@ -22,7 +22,7 @@ export const actions = {
 
 export const sagas = {
   fetchUsers: function*() {
-    let user = yield call(testAsyncFetchUser);
+    let user = yield call(fetchUser);
 
     yield put({
       type: actiontypes.FETCH_USER_SUCCESS,

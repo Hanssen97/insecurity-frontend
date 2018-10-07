@@ -1,10 +1,10 @@
 import { put, call, takeEvery, takeLatest } from 'redux-saga/effects'
 
 import {
-  getTopicsFromServer,
-  getTopicFromServer,
-  getCategoriesFromServer,
-  getSearchResultFromServer,
+  fetchTopics,
+  fetchTopic,
+  fetchAllCategories,
+  search,
 } from '../../common/http/api/API';
 
 
@@ -37,10 +37,10 @@ export const actions = {
     info: "posting topic...",
     topic,
   }),
-  getTopic: (topicId) => ({
+  getTopic: (topic) => ({
     type: actiontypes.GET_TOPIC_REQUEST,
     info: "fetching topic...",
-    topicId,
+    topic,
   }),
   getCategory: (category) => ({
     type: actiontypes.GET_CATEGORY_REQUEST,
@@ -70,7 +70,7 @@ export const sagas = {
   },
 
   getTopic: function*(action) {
-    const topic = yield call(getTopicFromServer, action.topicId);
+    const topic = yield call(fetchTopic, action.topic);
     yield put({
       type: actiontypes.POST_TOPIC_SUCCESS,
       info: 'topic received',
@@ -79,7 +79,7 @@ export const sagas = {
   },
 
   getCategory: function*(action) {
-    const topics = yield call(getTopicsFromServer, action.category);
+    const topics = yield call(fetchTopics, action.category);
     yield put({
       type: actiontypes.GET_CATEGORY_SUCCESS,
       info: 'category received',
@@ -88,7 +88,7 @@ export const sagas = {
   },
 
   getCategories: function*(action) {
-    const categories = yield call(getCategoriesFromServer);
+    const categories = yield call(fetchAllCategories);
     yield put({
       type: actiontypes.GET_CATEGORIES_SUCCESS,
       info: 'categories received',
@@ -97,7 +97,7 @@ export const sagas = {
   },
 
   getSearchResult: function*(action) {
-    const searchResult = yield call(getSearchResultFromServer, action.query);
+    const searchResult = yield call(search, action.query);
     yield put({
       type: actiontypes.GET_SEARCH_RESULT_SUCCESS,
       info: 'Search completed',

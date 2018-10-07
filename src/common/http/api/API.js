@@ -1,4 +1,4 @@
-export async function testAsyncFetchUser() {
+export async function fetchUser() {
     return new Promise((resolve, reject) => {
        setTimeout(() => {
          resolve({name: "Morten"});
@@ -6,7 +6,7 @@ export async function testAsyncFetchUser() {
      }).then(data => data)
   }
 
-export async function getCategoriesFromServer() {
+export async function fetchAllCategories() {
   console.log("Fetching categories");
   return new Promise((resolve, reject) => {
     setTimeout(() => resolve([
@@ -38,7 +38,7 @@ export async function getCategoriesFromServer() {
   }).then(data => data)
 }
 
-export const getTopicsFromServer = (category) => {
+export const fetchTopics = (category) => {
     console.log("Fetch topics by category =", category);
     return [
       {
@@ -60,8 +60,8 @@ export const getTopicsFromServer = (category) => {
     ]
   }
 
-export const getTopicFromServer = (id) => {
-    console.log("Fetch topic from server with id =", id);
+export const fetchTopic = (topic) => {
+    console.log("Fetch topic from server with topic =", topic);
     return {
         title: "Long title for forum. lorem lorem lorem etc",
         description: "Long question for forum. Lorem Ipsum dolor sit amet etc..... ",
@@ -85,7 +85,7 @@ export const getTopicFromServer = (id) => {
 }
 
 
-export const getSearchResultFromServer = (query) => {
+export const search = (query) => {
     return {
       categories: [
         {
@@ -119,7 +119,7 @@ export const getSearchResultFromServer = (query) => {
 }
 
 
-export const getCurrentSettingsFromServer = (uId) => {
+export const fetchSettings = (uId) => {
   return {
     username: "morten",
     email: "morten@morten.no",
