@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
+
 import TopicPreview from '../../topic/components/TopicPreview';
 import Paper from '@material-ui/core/Paper';
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 import './index.min.css';
 
@@ -13,7 +15,7 @@ class CategoryView extends Component {
       name: "",
     }
   }
-  
+
   componentDidMount() {
     this.getCategoryName();
   }
@@ -23,7 +25,7 @@ class CategoryView extends Component {
       this.getCategoryName();
     }
   }
-  
+
   getCategoryName() {
     const fullPath = this.props.location.pathname;
     const name = fullPath.replace(/[/]/g, ' ');
@@ -38,25 +40,35 @@ class CategoryView extends Component {
 
 
   render() {
-    let topics = this.props.content.topics;
-    topics = topics.map((topic, key) => {
-      return (
-          <TopicPreview key={key}
-                owner={topic.owner}
-                date={topic.date}
-                title={topic.title}
-                description={topic.description}
-                likes={topic.likes}
-                category={this.state.name}
-                onClick={() => this.props.history.push(`/${topic.category}/${topic.title}`)}
-              />
+    let { classes } = this.props;
+    let content = null;
+
+    if (this.props.feedback.fetching && this.props.content.topics == 0) {
+      content = (
+        <div className="Progress">
+          <CircularProgress color="inherit"/>
+        </div>
       )
-    })
+    } else {
+      content = this.props.content.topics.map((topic, key) => {
+        return (
+          <TopicPreview key={key}
+            owner={topic.owner}
+            date={topic.date}
+            title={topic.title}
+            description={topic.description}
+            likes={topic.likes}
+            category={this.state.name}
+            onClick={() => this.props.history.push(`/${topic.category}/${topic.title}`)}
+          />
+        )
+      })
+    }
     return (
       <Paper className="CategoryView">
           <h1 className="catTitle">{this.state.name}</h1>
           <div className="topics">
-            {topics}
+            {content}
           </div>
       </Paper>
     )

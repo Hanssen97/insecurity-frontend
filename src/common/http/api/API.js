@@ -58,7 +58,7 @@ export const fetchTopics = (category) => {
           likes: "12",
           category: "progamming",
         },
-      ]), 700);
+      ]), 800);
     }).then(data => data)
   }
 

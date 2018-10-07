@@ -11,13 +11,16 @@ $componentWidth: 90%;
 
 $hoverTransitionTime: 0.15s;
 
-/* Primary color */
+/* colors */
 $primary: #0099ee;
 $red: #f96c0e;
 $lightGrey: #e3e3e3;
 
 $mainBackground: #efefff;
 $componentBackground: #fff;
+
+/* colors light*/
+$primary: #0099ee;
 
 
 /* Less visible text */
@@ -31,7 +34,7 @@ $topicShadow: 0 2px 0 rgba(0,0,0,0.4);
 
 
 :export {
-  blue : $primary;
+  primary : $primary;
   red: $red;
   mainBackground: $mainBackground;
   componentBackground: $componentBackground;

@@ -8,8 +8,10 @@ $containerWidth: 90%;
   align-items: center;
 
   width: 100%;
+  height: 100%;
   margin: 80px;
-  
+  padding-bottom: 40px;
+
   .catTitle {
     font-size: 30px;
     font-weight: 500;
@@ -19,5 +21,11 @@ $containerWidth: 90%;
 
   .topics {
       width: 100%;
+  }
+
+  .Progress {
+    padding: 40px 0;
+    width: 100%;
+    text-align: center;
   }
 }
