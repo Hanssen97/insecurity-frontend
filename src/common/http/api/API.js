@@ -32,7 +32,7 @@ export async function getCategoriesFromServer() {
        title: "Happy",
       },
       {
-       title: "Programming Humour",
+       title: "Programming Humor",
       },
     ]), 2000);
   }).then(data => data)

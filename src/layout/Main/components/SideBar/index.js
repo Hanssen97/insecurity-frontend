@@ -8,13 +8,9 @@ import ListSubheader from '@material-ui/core/ListSubheader';
 
 import ListItem from './components/ListItem';
 
+import './index.min.css';
+
 const styles = {
-  list: {
-    width: 300,
-  },
-  fullList: {
-    width: 'auto',
-  },
   subheader: {
     marginLeft: '-8px'
   }
@@ -25,9 +21,14 @@ class SideBar extends PureComponent {
     const { classes } = this.props;
 
     const sideList = (
-      <div className={classes.list}>
-        <List>
+      <div className="Sidebar">
 
+        <div className="Title">
+          <img alt='' src="logo.png"/>
+        </div>
+
+
+        <List>
 
           <ListItem
             icon='home'
@@ -51,6 +52,12 @@ class SideBar extends PureComponent {
           <ListItem
             title="Music"
             link='/Music'
+            onClick={e => this.context.router.history.push(e.currentTarget.id)}
+          />
+
+          <ListItem
+            title="Programming Humor"
+            link='/Programming Humor'
             onClick={e => this.context.router.history.push(e.currentTarget.id)}
           />
 
