@@ -16,12 +16,8 @@ class CategoryView extends Component {
 
   componentWillMount() {
     this.setState({name: this.props.location.pathname.replace("/", "")});
-    this.props.getCategory(this.state.name);
-  }
-
-
-  componentWillMount() {
     this.getCategoryName();
+    this.props.getCategory(this.state.name);
   }
 
   componentWillReceiveProps(newProps) {
@@ -33,7 +29,6 @@ class CategoryView extends Component {
   getCategoryName() {
     const fullPath = this.props.location.pathname;
     const name = fullPath.replace(/[/]/g, ' ');
-    
     this.props.getSearchResult(name);
     this.setState({
       name,
