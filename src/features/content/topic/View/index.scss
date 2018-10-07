@@ -2,6 +2,16 @@
 
 $containerWidth: 90%;
 
+
+.Progress {
+  width: 100%;
+  padding: 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .Topic {
   display: flex;
   flex-direction: column;

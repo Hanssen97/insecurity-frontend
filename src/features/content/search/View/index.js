@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
+
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 
 // Components
@@ -20,7 +22,7 @@ class SearchView extends Component {
     }
 
   }
-  
+
   componentDidMount() {
     this.getSearchQuery();
   }
@@ -34,7 +36,7 @@ class SearchView extends Component {
   getSearchQuery() {
     const fullPath = this.props.location.pathname;
     const query = fullPath.replace("/search/", "");
-    
+
     this.props.getSearchResult(query);
     this.setState({
       query,
@@ -44,8 +46,19 @@ class SearchView extends Component {
 
 
   render() {
+
+    if (this.props.feedback.fetching) {
+      return (
+        <div className="Progress">
+          <CircularProgress color="inherit"/>
+        </div>
+      )
+    }
+
+
+
     let {searchResult, query} = this.props.content;
-    
+
     let categories = searchResult.categories.map((category, key) => {
       return (
         <CategoryPreview key={key}

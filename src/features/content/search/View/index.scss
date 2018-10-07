@@ -1,26 +1,31 @@
 @import '../../../../common/styles.scss';
 
+.Progress {
+  padding: 40px 0;
+  width: 100%;
+  text-align: center;
+}
+
 .container {
     width: $componentWidth;
     display: flex;
-    flex-direction: column;    
+    flex-direction: column;
     align-items: center;
+
     .header {
         align-self: center;
         margin: 40px 10px;
         font-weight: 400;
-        font-size: 24px; 
+        font-size: 22px;
     }
 
     .SearchView {
         width: 100%;
         padding: 50px;
-    
+
         .seperator {
             padding: 20px;
             color: $primary;
         }
-    }    
+    }
 }
-
-
