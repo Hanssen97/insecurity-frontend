@@ -13,23 +13,22 @@ class CategoryView extends Component {
       name: "",
     }
   }
-
-  componentWillMount() {
-    this.setState({name: this.props.location.pathname.replace("/", "")});
+  
+  componentDidMount() {
     this.getCategoryName();
-    this.props.getCategory(this.state.name);
   }
 
-  componentWillReceiveProps(newProps) {
-    if(newProps.location.pathname != this.state.fullPath) {
+  componentDidUpdate() {
+    if(this.props.location.pathname != this.state.fullPath) {
       this.getCategoryName();
     }
   }
-
+  
   getCategoryName() {
     const fullPath = this.props.location.pathname;
     const name = fullPath.replace(/[/]/g, ' ');
-    this.props.getSearchResult(name);
+
+    this.props.getCategory(name);
     this.setState({
       name,
       fullPath,

@@ -18,14 +18,15 @@ class SearchView extends Component {
       query: "",
       fullPath: "",
     }
-  }
 
-  componentWillMount() {
+  }
+  
+  componentDidMount() {
     this.getSearchQuery();
   }
 
-  componentWillReceiveProps(newProps) {
-    if(newProps.location.pathname != this.state.fullPath) {
+  componentDidUpdate() {
+    if(this.props.location.pathname != this.state.fullPath) {
       this.getSearchQuery();
     }
   }
