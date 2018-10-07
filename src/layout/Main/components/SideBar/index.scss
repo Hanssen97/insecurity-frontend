@@ -24,6 +24,10 @@
     }
   }
 
+  .Subheader {
+    margin-left: -4px;
+  }
+
   @media (max-width: $RESPONSIVE_MEDIUM) {
     width: 250px;
     min-width: 250px;

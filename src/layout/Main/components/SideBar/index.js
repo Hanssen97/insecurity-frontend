@@ -1,6 +1,5 @@
 import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 import List from '@material-ui/core/List';
 import Divider from '@material-ui/core/Divider';
@@ -10,11 +9,6 @@ import ListItem from './components/ListItem';
 
 import './index.min.css';
 
-const styles = {
-  subheader: {
-    marginLeft: '-8px'
-  }
-};
 
 class SideBar extends PureComponent {
   render() {
@@ -42,7 +36,7 @@ class SideBar extends PureComponent {
         <Divider />
         <List
           subheader={
-            <ListSubheader component="div" className={classes.subheader}>
+            <ListSubheader component="div" className='Subheader'>
               Favorites
             </ListSubheader>
           }
@@ -90,8 +84,5 @@ class SideBar extends PureComponent {
 SideBar.contextTypes = {
    router: PropTypes.object,
 }
-SideBar.propTypes = {
-  classes: PropTypes.object.isRequired
-};
 
-export default withStyles(styles)(SideBar);
+export default SideBar;
