@@ -4,11 +4,11 @@ import { sagas, actions } from './actions';
 import reducer from './reducer';
 
 // Components
-import HomeView from './home/View/index';
-import TopicCreate from './topic/Create/index';
-import TopicView from './topic/View/index';
-import CategoryView from './category/View/index';
-import SearchView from './search/View/index';
+import HomeView from './home/View';
+import TopicCreate from './topic/Create';
+import TopicView from './topic/View';
+import CategoryView from './category/View';
+import SearchView from './search/View';
 
 
 const mapDispatchToProps = {

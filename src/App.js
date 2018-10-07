@@ -12,11 +12,11 @@ import * as reducers from './store/reducers.js';
 import rootSaga from './store/sagas'
 
 // Import components
-import { AuthLayout, MainLayout } from './layouts/index';
+import { AuthLayout, MainLayout } from './layouts';
 
-import Session from './features/session/index';
-import Content from './features/content/index';
-import User from './features/user/index';
+import Session from './features/session';
+import Content from './features/content';
+import User from './features/user';
 
 // Create history objects
 import createHistory from 'history/createBrowserHistory';

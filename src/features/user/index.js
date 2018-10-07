@@ -4,7 +4,7 @@ import { sagas, actions } from './actions';
 import reducer from './reducer';
 
 // Components
-import SettingsView from './settings/View/index';
+import SettingsView from './settings/View';
 
 
 const mapDispatchToProps = {

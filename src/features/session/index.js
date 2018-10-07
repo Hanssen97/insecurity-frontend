@@ -4,9 +4,9 @@ import { sagas, actions } from './actions';
 import reducer from './reducer';
 
 // Components
-import Login from './Login/index';
-import Register from './Register/index';
-import NotFound from './404/index';
+import Login from './Login';
+import Register from './Register';
+import NotFound from './404';
 
 
 

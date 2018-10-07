@@ -3,8 +3,8 @@ import React, {Component} from 'react';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 
-import OwnerHeader from '../components/OwnerHeader/index';
-import Reply from '../components/Reply/index';
+import OwnerHeader from '../components/OwnerHeader';
+import Reply from '../components/Reply';
 
 import './index.min.css';
 
