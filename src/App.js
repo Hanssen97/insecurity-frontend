@@ -12,7 +12,7 @@ import * as reducers from './store/reducers.js';
 import rootSaga from './store/sagas'
 
 // Import components
-import { AuthLayout, MainLayout } from './layouts';
+import { AuthLayout, MainLayout } from './layout';
 
 import Session from './features/session';
 import Content from './features/content';
