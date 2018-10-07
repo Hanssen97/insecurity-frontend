@@ -1,41 +1,98 @@
-import { put, call, takeEvery, takeLatest } from 'redux-saga/effects'
+import { put, call, takeEvery } from 'redux-saga/effects'
 import {
     getCurrentSettingsFromServer,
+    changeUsername,
+    changeEmail,
   } from '../../common/http/api/API';
 
 
 export const actiontypes = {
-  GET_CURRENT_SETTINGS_REQUEST: 'GET_CURRENT_SETTINGS_REQUEST',
-  GET_CURRENT_SETTINGS_SUCCESS: 'GET_CURRENT_SETTINGS_SUCCESS',
-  GET_CURRENT_SETTINGS_FAILURE: 'GET_CURRENT_SETTINGS_FAILURE',
+  GET_SETTINGS_REQUEST: 'GET_SETTINGS_REQUEST',
+  GET_SETTINGS_SUCCESS: 'GET_SETTINGS_SUCCESS',
+  GET_SETTINGS_FAILURE: 'GET_SETTINGS_FAILURE',
 
-  POST_NEW_SETTINGS_REQUEST: 'POST_NEW_SETTINGS_REQUEST',
-  POST_NEW_SETTINGS_SUCCESS: 'POST_NEW_SETTINGS_SUCCESS',
-  POST_NEW_SETTINGS_FAILURE: 'POST_NEW_SETTINGS_FAILURE',
+  CHANGE_USERNAME_REQUEST: 'CHANGE_USERNAME_REQUEST',
+  CHANGE_USERNAME_SUCCESS: 'CHANGE_USERNAME_SUCCESS',
+  CHANGE_USERNAME_FAILURE: 'CHANGE_USERNAME_FAILURE',
+
+  CHANGE_EMAIL_REQUEST: 'CHANGE_EMAIL_REQUEST',
+  CHANGE_EMAIL_SUCCESS: 'CHANGE_EMAIL_SUCCESS',
+  CHANGE_EMAIL_FAILURE: 'CHANGE_EMAIL_FAILURE',
+
+  CHANGE_PASSWORD_REQUEST: 'CHANGE_PASSWORD_REQUEST',
+  CHANGE_PASSWORD_SUCCESS: 'CHANGE_PASSWORD_SUCCESS',
+  CHANGE_PASSWORD_FAILURE: 'CHANGE_PASSWORD_FAILURE',
 }
 
 
 export const actions = {
-  getCurrentSettings: (userId) => ({
-    type: actiontypes.GET_CURRENT_SETTINGS_REQUEST,
+  getSettings: (userId) => ({
+    type: actiontypes.GET_SETTINGS_REQUEST,
     info: "fetching current settings",
     userId,
+  }),
+  changeUsername: (username) => ({
+    type: actiontypes.CHANGE_USERNAME_REQUEST,
+    info: "changing username",
+    username,
+  }),
+  changeEmail: (email) => ({
+    type: actiontypes.CHANGE_EMAIL_REQUEST,
+    info: "changing email",
+    email,
+  }),
+  changePassword: (password) => ({
+    type: actiontypes.CHANGE_PASSWORD_REQUEST,
+    info: "changing password",
+    password,
   }),
 }
 
 export const sagas = {
-    getCurrentSettings: function*(action) {
-      const currentSettings = yield call(getCurrentSettingsFromServer, action.userId);
+    getSettings: function*(action) {
+      const settings = yield call(getCurrentSettingsFromServer, action.userId);
       yield put({
-        type: actiontypes.GET_CURRENT_SETTINGS_SUCCESS,
+        type: actiontypes.GET_SETTINGS_SUCCESS,
         info: 'settings fetched',
         userId: action.userId,
-        currentSettings,
+        settings,
       })
   },
 
+  changeUsername: function*(action) {
+    const settings = yield call(changeUsername, action.username);
+    yield put({
+      type: actiontypes.CHANGE_USERNAME_SUCCESS,
+      info: 'username changed',
+      username: action.username,
+      settings,
+    })
+  },
+
+  changeEmail: function*(action) {
+    const settings = yield call(changeEmail, action.email);
+    yield put({
+      type: actiontypes.CHANGE_EMAIL_SUCCESS,
+      info: 'email changed',
+      email: action.email,
+      settings,
+    })
+  },
+
+  changePassword: function*(action) {
+    const settings = yield call(getCurrentSettingsFromServer, action.userId);
+    yield put({
+      type: actiontypes.CHANGE_PASSWORD_SUCCESS,
+      info: 'password changed',
+      settings,
+    })
+  },
+
   actionWatcher: function*() {
-    yield takeEvery(actiontypes.GET_CURRENT_SETTINGS_REQUEST, sagas.getCurrentSettings);
+    yield takeEvery(actiontypes.GET_SETTINGS_REQUEST, sagas.getSettings);
+    yield takeEvery(actiontypes.CHANGE_USERNAME_REQUEST, sagas.changeUsername);
+    yield takeEvery(actiontypes.CHANGE_EMAIL_REQUEST, sagas.changeEmail);
+    yield takeEvery(actiontypes.CHANGE_PASSWORD_REQUEST, sagas.changePassword);
   }
 
 }

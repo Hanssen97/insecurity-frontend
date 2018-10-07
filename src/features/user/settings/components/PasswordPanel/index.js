@@ -23,11 +23,11 @@ class PasswordPanel extends Component {
   }
 
   submit = () => {
+    this.props.onSubmit(this.state.password, this.state.confirmation);
     this.setState({
       password: '',
       confirmation: ''
     })
-    this.props.onSubmit();
   }
 
   render() {

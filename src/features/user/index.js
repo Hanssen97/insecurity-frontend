@@ -8,7 +8,10 @@ import SettingsView from './settings/View';
 
 
 const mapDispatchToProps = {
-  getCurrentSettings: actions.getCurrentSettings,
+  getSettings: actions.getSettings,
+  changeUsername: actions.changeUsername,
+  changeEmail: actions.changeEmail,
+  changePassword: actions.changePassword,
 }
 
 function mapStateToProps(state) {

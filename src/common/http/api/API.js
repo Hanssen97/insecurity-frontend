@@ -86,7 +86,6 @@ export const getTopicFromServer = (id) => {
 
 
 export const getSearchResultFromServer = (query) => {
-  console.log("Fetch search result from server with query =", query);
     return {
       categories: [
         {
@@ -121,10 +120,25 @@ export const getSearchResultFromServer = (query) => {
 
 
 export const getCurrentSettingsFromServer = (uId) => {
-  console.log("Fetch current settings from server with user id =", uId);
   return {
     username: "morten",
     email: "morten@morten.no",
+    profilePicture: "https://cdn0.tnwcdn.com/wp-content/blogs.dir/1/files/2018/05/Wyvern-programming-languages-in-one.jpg",
+  }
+}
+
+export const changeUsername = (username) => {
+  return {
+    username,
+    email: "morten@morten.no",
+    profilePicture: "https://cdn0.tnwcdn.com/wp-content/blogs.dir/1/files/2018/05/Wyvern-programming-languages-in-one.jpg",
+  }
+}
+
+export const changeEmail = (email) => {
+  return {
+    username: "morten",
+    email,
     profilePicture: "https://cdn0.tnwcdn.com/wp-content/blogs.dir/1/files/2018/05/Wyvern-programming-languages-in-one.jpg",
   }
 }

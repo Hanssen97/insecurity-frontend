@@ -15,14 +15,32 @@ class SettingsView extends Component {
     this.state = {
       username: "",
       email: "",
-      password: ""
+      profilePicture: "",
     }
 
-    this.props.getCurrentSettings("morten");
+    this.props.getSettings("morten");
+  }
+
+
+  changeUsername = (name) => {
+    this.props.changeUsername(name);
+  }
+
+  changeEmail = (email) => {
+    this.props.changeEmail(email);
+  }
+
+  changePassword = (pwd1, pwd2) => {
+    if (pwd1 === pwd2) {
+      this.props.changePassword(pwd1);
+    } else {
+      alert("Passwords doesnt match");
+    }
   }
 
   render() {
-    let {username, email, profilePicture} = this.props.user.currentSettings;
+    const {username, email, profilePicture} = this.props.user.settings;
+    console.log(this.props.user.settings)
     return (
       <Paper className="SettingsView">
 
@@ -33,18 +51,18 @@ class SettingsView extends Component {
             title="Username"
             description="Change the account username"
             placeholder={username}
-            onSubmit={value => this.setState({username: value})}
+            onSubmit={value => this.changeUsername(value)}
             />
           <TextPanel
             title="Email"
             description="Change the account email"
             placeholder={email}
-            onSubmit={value => this.setState({email: value})}
+            onSubmit={value => this.changeEmail(value)}
             />
           <PasswordPanel
             title="Password"
             description="Change the account password"
-            onSubmit={value => this.setState({password: value})}
+            onSubmit={(pwd1, pwd2) => this.changePassword(pwd1, pwd2)}
             />
         </div>
 

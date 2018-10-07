@@ -22,10 +22,10 @@ class TextPanel extends Component {
   }
 
   submit = () => {
+    this.props.onSubmit(this.state.text);
     this.setState({
       text: ''
     })
-    this.props.onSubmit();
   }
 
   render() {
