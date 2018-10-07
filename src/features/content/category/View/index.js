@@ -40,10 +40,9 @@ class CategoryView extends Component {
 
 
   render() {
-    let { classes } = this.props;
     let content = null;
 
-    if (this.props.feedback.fetching && this.props.content.topics == 0) {
+    if (this.props.feedback.fetching && this.props.content.topics === 0) {
       content = (
         <div className="Progress">
           <CircularProgress color="inherit"/>
