@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 import OwnerHeader from '../components/OwnerHeader';
 import Reply from '../components/Reply';
@@ -15,11 +16,19 @@ class Topic extends Component {
     document.title = 'Topic Page';
     this.state = {
     }
-    
+
     this.props.getTopic("22");
   }
 
   render() {
+    if (this.props.feedback.fetching) {
+      return (
+        <div className="Progress">
+          <CircularProgress color="inherit"/>
+        </div>
+      )
+    }
+
     let topic = this.props.content.topic;
     let comments = topic.replies.map((reply, key) => {
       return (

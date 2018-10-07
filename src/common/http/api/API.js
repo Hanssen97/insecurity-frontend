@@ -84,7 +84,7 @@ export const fetchTopic = (topic) => {
                   likes: "23",
               },
           ],
-      }), 400);
+      }), 600);
     }).then(data => data)
 }
 
