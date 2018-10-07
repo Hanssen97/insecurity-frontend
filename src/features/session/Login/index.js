@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import PropTypes from 'prop-types';
 
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
@@ -73,7 +74,7 @@ class Login extends Component {
 
             <p> Not a member?
               <a onClick={() => {
-                this.props.history.push('/member/register');
+                this.context.router.history.push('/member/register');
               }}> Register </a>
             </p>
 
@@ -82,6 +83,10 @@ class Login extends Component {
       </div>
     )
   }
+}
+
+Login.contextTypes = {
+   router: PropTypes.object,
 }
 
 export default Login;
