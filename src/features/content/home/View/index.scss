@@ -34,7 +34,7 @@
     align-items: center;
 
     .Progress {
-      color: $blue;
+      color: $primary;
     }
 
     .CategoryList {
@@ -52,7 +52,7 @@
 
       }
       & :hover {
-        color: $blue;
+        color: $primary;
         cursor: pointer;
       }
     }
