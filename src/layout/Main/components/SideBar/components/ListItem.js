@@ -15,10 +15,15 @@ function ListItem(props) {
       id={props.link}
       onClick={props.onClick}
     >
+
+
       <ListItemIcon>
         <Icon> {props.icon} </Icon>
       </ListItemIcon>
-      <ListItemText inset > {props.title} </ListItemText>
+
+      <ListItemText> {props.title} </ListItemText>
+
+
     </MenuItem>
   );
 }

@@ -1,6 +1,5 @@
 import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 import List from '@material-ui/core/List';
 import Divider from '@material-ui/core/Divider';
@@ -8,26 +7,22 @@ import ListSubheader from '@material-ui/core/ListSubheader';
 
 import ListItem from './components/ListItem';
 
-const styles = {
-  list: {
-    width: 300,
-  },
-  fullList: {
-    width: 'auto',
-  },
-  subheader: {
-    marginLeft: '-8px'
-  }
-};
+import './index.min.css';
+
 
 class SideBar extends PureComponent {
   render() {
     const { classes } = this.props;
 
     const sideList = (
-      <div className={classes.list}>
-        <List>
+      <div className="Sidebar">
 
+        <div className="Title">
+          <img alt='' src="logo.png"/>
+        </div>
+
+
+        <List>
 
           <ListItem
             icon='home'
@@ -41,7 +36,7 @@ class SideBar extends PureComponent {
         <Divider />
         <List
           subheader={
-            <ListSubheader component="div" className={classes.subheader}>
+            <ListSubheader component="div" className='Subheader'>
               Favorites
             </ListSubheader>
           }
@@ -51,6 +46,12 @@ class SideBar extends PureComponent {
           <ListItem
             title="Music"
             link='/Music'
+            onClick={e => this.context.router.history.push(e.currentTarget.id)}
+          />
+
+          <ListItem
+            title="Programming Humor"
+            link='/Programming Humor'
             onClick={e => this.context.router.history.push(e.currentTarget.id)}
           />
 
@@ -83,8 +84,5 @@ class SideBar extends PureComponent {
 SideBar.contextTypes = {
    router: PropTypes.object,
 }
-SideBar.propTypes = {
-  classes: PropTypes.object.isRequired
-};
 
-export default withStyles(styles)(SideBar);
+export default SideBar;

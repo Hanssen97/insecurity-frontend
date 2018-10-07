@@ -1,3 +1,35 @@
-.Sidebar {
+@import '../../../../common/styles.scss';
 
+.Sidebar {
+  min-width: 350px;
+
+  .Title {
+    width: 100%;
+    flex: 1;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background: $blue;
+    box-shadow: $authShadow;
+
+    img {
+      padding: 20px;
+      display: block;
+      width: 30%;
+      max-width: 100px;
+      min-width: 60px;
+      height: auto;
+    }
+  }
+
+  .Subheader {
+    margin-left: -4px;
+  }
+
+  @media (max-width: $RESPONSIVE_MEDIUM) {
+    width: 250px;
+    min-width: 250px;
+  }
 }
