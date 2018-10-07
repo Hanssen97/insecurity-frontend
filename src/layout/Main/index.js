@@ -14,6 +14,7 @@ import Icon from '@material-ui/core/Icon';
 import Img from 'react-image'
 
 import SearchBar from './components/SearchBar';
+import SideBar from './components/SideBar';
 
 
 import './index.min.css';
@@ -23,6 +24,9 @@ import './index.min.css';
 class MainLayout extends Component {
   constructor(props, context) {
     super(props);
+    this.state = {
+      showSidebar: false
+    }
   }
 
 
@@ -32,7 +36,12 @@ class MainLayout extends Component {
           <AppBar position="fixed" className="AppBar">
             <Toolbar className="Toolbar">
               <div>
-                <IconButton className="MenuButton" color="inherit" aria-label="Menu">
+                <IconButton
+                  className="MenuButton"
+                  color="inherit"
+                  aria-label="Menu"
+                  onClick={() => this.setState({showSidebar: true})}
+                >
                   <Icon> menu </Icon>
                 </IconButton>
               </div>
@@ -47,6 +56,11 @@ class MainLayout extends Component {
 
             </Toolbar>
           </AppBar>
+
+          <SideBar
+            open={this.state.showSidebar}
+            onClose={() => this.setState({showSidebar: false})}
+          />
 
         <div className="MainLayout-Content">
           {this.props.children}
