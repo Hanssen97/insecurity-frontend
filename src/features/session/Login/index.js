@@ -21,10 +21,6 @@ class Login extends Component {
   render() {
     return (
       <div className="Login">
-        <div className="Title">
-          <img alt='' src="logo.png"/>
-        </div>
-
         <div className="Form">
           <div className="Fields">
             <div>

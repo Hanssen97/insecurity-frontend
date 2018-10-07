@@ -1,33 +1,13 @@
 @import "../../../common/styles.scss";
 
 .Login {
-  height: 100%;
+  flex: 3;
   width: 100%;
 
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-
-  .Title {
-    width: 100%;
-    flex: 1;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    background: $blue;
-    box-shadow: $authShadow;
-
-    img {
-      display: block;
-      width: 25%;
-      max-width: 140px;
-      min-width: 100px;
-      height: auto;
-    }
-  }
 
   .Form {
     flex: 3;

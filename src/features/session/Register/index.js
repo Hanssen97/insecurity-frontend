@@ -23,10 +23,6 @@ class Register extends Component {
   render() {
     return (
       <div className="Register">
-        <div className="Title">
-          <img src="logo.png"/>
-        </div>
-
         <div className="Form">
           <div className="Fields">
             <div>

@@ -16,6 +16,10 @@ class AuthLayout extends Component {
     return (
       <div className="AuthLayout">
         <div className="DialogLayout">
+          <div className="Title">
+            <img alt='' src="logo.png"/>
+          </div>
+          
           {this.props.children}
         </div>
 
