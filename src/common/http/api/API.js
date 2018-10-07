@@ -118,3 +118,13 @@ export const getSearchResultFromServer = (query) => {
       ]
     }
 }
+
+
+export const getCurrentSettingsFromServer = (uId) => {
+  console.log("Fetch current settings from server with user id =", uId);
+  return {
+    username: "morten",
+    email: "morten@morten.no",
+    profilePicture: "https://cdn0.tnwcdn.com/wp-content/blogs.dir/1/files/2018/05/Wyvern-programming-languages-in-one.jpg",
+  }
+}

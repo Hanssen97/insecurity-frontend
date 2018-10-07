@@ -1,0 +1,25 @@
+@import "../../../../../common/styles.scss";
+
+
+.TextPanel {
+  width: 60%;
+
+  .Heading {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+
+    .Title {
+      flex: 1;
+    }
+
+    .Description {
+      flex: 3;
+      color: $lightText;
+    }
+  }
+
+  .SaveAction {
+    color: $blue;
+  }
+}

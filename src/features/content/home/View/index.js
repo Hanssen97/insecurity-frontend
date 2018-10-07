@@ -16,7 +16,6 @@ class Home extends Component {
     this.props.getCategories();
   }
 
-
   render() {
     let content;
 
