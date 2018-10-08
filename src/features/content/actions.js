@@ -66,7 +66,6 @@ export const sagas = {
 
   getTopic: function*(action) {
     const data = yield call(API.getTopic, action.topic);
-    console.log(data.topic);
     if (data.error || data.topic.error) {
       yield put({
         type: actiontypes.GET_TOPIC_FAILURE,
@@ -84,7 +83,8 @@ export const sagas = {
   getCategory: function*(action) {
     const category = yield call(API.getCategory, action.id);
     const topics = yield call(API.getTopics, action.id);
-
+    console.log(category)
+    console.log(topics)
     if (topics.error || topics.topics.error || category.error || category.category.error) {
       yield put({
         type: actiontypes.GET_CATEGORY_FAILURE,

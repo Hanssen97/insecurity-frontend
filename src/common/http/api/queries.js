@@ -58,17 +58,32 @@ const likes = {
     }
 }
 
-const comments = {
-    comments: {
+const commentNode = {
+    node: {
         fields: [
-            owner,
             "body",
             "timestamp",
             likes,
+            owner,
         ]
     }
 }
 
+const commentEdge = {
+    edges: {
+        fields: [
+            commentNode,
+        ]
+    }
+}
+
+const comments = {
+    comments: {
+        fields: [
+            commentEdge,
+        ]
+    }
+}
 
 const topicNode = {
     node: {
@@ -81,10 +96,7 @@ const topicNode = {
         ]
     }
 }
-
-
   
-
 const categoryTopics = {
     edges: {
         fields: [
@@ -92,7 +104,6 @@ const categoryTopics = {
         ],
     }
 }
-
 
 export const login = (username, password) => {
     return {
@@ -192,7 +203,7 @@ export const getTopics = (category) => {
 
 
 export const createTopic = () => {
-    
+
 }
 
 export const getTopic = (id) => {
@@ -209,6 +220,8 @@ export const getTopic = (id) => {
                 "title",
                 owner,
                 category,
+                comments,
+                error,
             ]
         }
     }

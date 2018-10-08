@@ -39,18 +39,18 @@ class Topic extends Component {
     }
 
     let topic = this.props.content.topic;
-    let comments;
-    // let comments = topic.comments.map((reply, key) => {
-    //   return (
-    //     <Reply
-    //       key={key}
-    //       owner={reply.owner}
-    //       likes={reply.likes}
-    //       text={reply.text}
-    //       date={reply.date}
-    //     />
-    //   );
-    // });
+    let comments = topic.comments.edges.map((reply, key) => {
+      console.log(reply.node)
+      return (
+        <Reply
+          key={key}
+          owner={reply.node.owner.username}
+          likes={(!reply.node.likes) ? "0" : reply.node.likes}
+          text={reply.node.body}
+          date={reply.node.timestamp}
+        />
+      );
+    });
 
     return (
       <Paper className="Topic">
@@ -65,9 +65,9 @@ class Topic extends Component {
 
             <OwnerHeader
               type='post'
-              owner='Morten'
+              owner={topic.owner.username}
               image='https://www.stickytiger.co.uk/user/products/U0026_Large_1_Inch_Circle_Punch.jpg'
-              date='20.03.2018'
+              date={topic.timestamp}
             />
           </div>
 

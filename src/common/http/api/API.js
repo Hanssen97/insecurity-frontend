@@ -56,33 +56,6 @@ export const getTopic = (id) => {
 }
 
 
-export const fetchTopic = (topic) => {
-    console.log("Fetch topic from server with topic =", topic);
-    return new Promise((resolve, reject) => {
-      setTimeout(() => resolve({
-          title: "Long title for forum. lorem lorem lorem etc",
-          description: "Long question for forum. Lorem Ipsum dolor sit amet etc..... ",
-          owner: "morten",
-          date: "12.12.2018",
-          replies: [
-              {
-                  owner: "jørgen",
-                  date: "12.02.2018",
-                  text: "Reply because lorem ipsum blah blah blah",
-                  likes: "23",
-              },
-              {
-                  owner: "bjarte",
-                  date: "12.02.2018",
-                  text: "Reply because lorem ipsum blah blah blah",
-                  likes: "23",
-              },
-          ],
-      }), 600);
-    }).then(data => data)
-}
-
-
 export const search = (query) => {
   return new Promise((resolve, reject) => {
     setTimeout(() => resolve({

@@ -9,7 +9,9 @@ const initialState = {
     },
     timestamp: "",
     category: "",
-    messages:[]
+    comments: {
+      edges: [],
+    }
   },
   category: {
     name: "",
