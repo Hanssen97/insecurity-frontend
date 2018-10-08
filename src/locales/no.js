@@ -7,4 +7,6 @@ export default {
 
   'feature.session.login': modules.feature.session.login,
   'feature.session.register': modules.feature.session.register,
+
+  'feature.content.home': modules.feature.content.home,
 }
