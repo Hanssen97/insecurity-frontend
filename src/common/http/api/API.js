@@ -10,6 +10,7 @@ const options = () => ({
     "Access-Control-Allow-Origin": "*",
     "Authorization": `Bearer ${localStorage.getItem("token")}`
   },
+  debug: false,
 });
 
 

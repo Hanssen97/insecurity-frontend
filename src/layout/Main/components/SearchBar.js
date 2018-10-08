@@ -64,7 +64,7 @@ class SearchBar extends PureComponent {
   handleRedirect = (e) => {
     let query = e.target.value.replace(/[/]/g, ' ');
     if (e.key === 'Enter') {
-      if (query.trim() == "") return;
+      if (query.trim() === "") return;
 
       this.setState({
         path: `/search/${query}`,
