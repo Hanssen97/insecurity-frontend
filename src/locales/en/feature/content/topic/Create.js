@@ -1,14 +1,14 @@
 export default {
-  title: "NYTT INNLEGG",
+  title: "New topic",
   form: {
-    title: "Tittel...",
-    description: "Beskrivelse..."
+    title: "Titel...",
+    description: "Description..."
   },
   buttons: {
-    post: "Legg ut"
+    post: "Post"
   },
   return: {
-    orGo: "Eller gå ",
-    back: "tilbake"
+    orGo: "or go ",
+    back: "back"
   }
 }

@@ -1,9 +1,9 @@
 export default {
   navbar: {
-    search: "Søk",
-    login: "Logg in"
+    search: "Search",
+    login: "Login"
   },
   sidebar: {
-    home: "Hjem"
+    home: "Home"
   }
 }

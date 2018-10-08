@@ -1,11 +1,11 @@
 export default {
   fields: {
-    username: "Brukernavn",
-    email: "Epost",
-    password: "Passord",
-    repeatPassword: "Gjenta passord"
+    username: "Username",
+    email: "Email",
+    password: "Password",
+    repeatPassword: "Repeat Password"
   },
-  registerButton: "Registrer bruker",
-  alreadyMember: "Allerede medlem?",
-  login: "Logg inn"
+  registerButton: "Register User",
+  alreadyMember: "Existing User?",
+  login: "Login"
 }

@@ -1,8 +1,8 @@
 export default {
   actions: {
-    reply: "svar"
+    reply: "Reply"
   },
   meta: {
-    likes: "liker"
+    likes: "Likes"
   }
 }

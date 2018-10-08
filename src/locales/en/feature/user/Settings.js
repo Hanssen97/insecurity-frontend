@@ -1,15 +1,15 @@
 export default {
-  save: "Lagre",
+  save: "Save",
   username: {
-    title: 'Brukernavn',
-    description: 'Bytt brukernavnet for denne kontoen'
+    title: 'Username',
+    description: 'Change username for this account'
   },
   email: {
-    title: 'Epost',
-    description: 'Bytt epost for denne kontoen'
+    title: 'Email',
+    description: 'Change email for this account'
   },
   password: {
-    title: 'Passord',
-    description: 'Bytt passord for denne kontoen'
+    title: 'Password',
+    description: 'Change password for this account'
   },
 }

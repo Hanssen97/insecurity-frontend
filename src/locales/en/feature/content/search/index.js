@@ -1,3 +1,3 @@
 export default {
-  title: "Søkeresultat for "
+  title: "Search results for "
 }

@@ -1,6 +1,6 @@
 export default {
   meta: {
-    likes: " liker",
-    replies: " svar"
+    likes: " Likes",
+    replies: " Replies"
   }
 }

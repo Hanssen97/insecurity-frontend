@@ -1,9 +1,9 @@
 export default {
   fields: {
-    username: "Brukernavn",
-    password: "Passord"
+    username: "Username",
+    password: "Password"
   },
-  loginButton: "Logg inn",
-  notAMember: "Ikke medlem?",
-  register: "Registrer"
+  loginButton: "Login",
+  notAMember: "Not a member?",
+  register: "Register"
 }
