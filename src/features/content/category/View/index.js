@@ -54,13 +54,13 @@ class CategoryView extends Component {
       view = content.category.topics.map((topic, key) => {
         return (
           <TopicPreview key={key}
-            owner={topic.owner.username}
-            date={topic.timestamp}
-            title={topic.title}
-            description={topic.description}
-            likes={topic.likes}
+            owner={topic.node.owner.username}
+            date={topic.node.timestamp}
+            title={topic.node.title}
+            description={topic.node.description}
+            likes={topic.node.likes}
             category={this.state.name}
-            onClick={() => this.props.history.push(`/${this.state.id}/${topic.title}`)}
+            onClick={() => this.props.history.push(`/${this.state.id}/${topic.node.id}`)}
           />
         )
       })

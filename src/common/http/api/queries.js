@@ -6,11 +6,19 @@ const settings = {
     }
 }
 
-const category = {
-    category: {
+const categoryNode = {
+    node: {
         fields: [
             "id",
             "name",
+        ]
+    }
+}
+
+const categoryEdge = {
+    edges: {
+        fields: [
+            categoryNode
         ]
     }
 }
@@ -52,13 +60,24 @@ const comments = {
     }
 }
 
-const categoryTopics = {
-    topic: {
+
+const topicNode = {
+    node: {
         fields: [
+            "id",
             "timestamp",
             owner,
             "body",
             "title",
+        ]
+    }
+}
+  
+
+const categoryTopics = {
+    edges: {
+        fields: [
+            topicNode,
         ],
     }
 }
@@ -118,13 +137,12 @@ export const getUser = () => {
     }
 }
 
-
 export const getCategories = () => {
     return {
         operation: {
             name: "categories",
             fields: [
-                category,
+                categoryEdge,
                 error,
             ]
         }

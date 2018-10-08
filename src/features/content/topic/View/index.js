@@ -15,9 +15,18 @@ class Topic extends Component {
     super(props);
     document.title = 'Topic Page';
     this.state = {
+      id: "",
     }
+  }
 
-    this.props.getTopic("22");
+  componentDidMount() {
+    const fullPath = this.props.location.pathname;
+    const id = fullPath.replace(/ *\/[^)]*\/ */g, '');
+    this.props.getTopic(id);
+
+    this.setState({
+      id,
+    });
   }
 
   render() {

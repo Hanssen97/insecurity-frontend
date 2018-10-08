@@ -49,64 +49,12 @@ export const getTopics = (category) => {
   .catch(error => ({error}))
 }
 
-
-
-
-export async function fetchAllCategories() {
-  console.log("Fetching categories");
-  return new Promise((resolve, reject) => {
-    setTimeout(() => resolve([
-      {
-       title: "Akward Situations",
-      },
-      {
-       title: "Bored",
-      },
-      {
-       title: "Cars",
-      },
-      {
-       title: "Dogs",
-      },
-      {
-       title: "Everyday Problems",
-      },
-      {
-       title: "Funny",
-      },
-      {
-       title: "Happy",
-      },
-      {
-       title: "Programming Humor",
-      },
-    ]), 1000);
-  }).then(data => data)
+export const getTopic = (id) => {
+  return gotQL.query(address, queries.getTopic(id), options())
+  .then(response => ({topic: response.data.topic}))
+  .catch(error => ({error}))
 }
 
-export const fetchTopics = (category) => {
-    console.log("Fetch topics by category =", category);
-    return new Promise((resolve, reject) => {
-      setTimeout(() => resolve([
-        {
-          title: "Topic title 1",
-          description: "Long question for forum. Lorem Ipsum dolor sit amet etc..... ",
-          owner: "bjarte",
-          date: "12.12.2018",
-          likes: "1",
-          category: "progamming",
-        },
-        {
-          title: "Topic 2",
-          description: "Long question for forum. Lorem Ipsum dolor sit amet etc..... ",
-          owner: "jørgen",
-          date: "1.12.2018",
-          likes: "12",
-          category: "progamming",
-        },
-      ]), 800);
-    }).then(data => data)
-  }
 
 export const fetchTopic = (topic) => {
     console.log("Fetch topic from server with topic =", topic);

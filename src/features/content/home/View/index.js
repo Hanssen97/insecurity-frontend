@@ -31,10 +31,10 @@ class Home extends Component {
                   className="Item"
                   variant='title'
                   onClick={() => {
-                    this.props.history.push('/'+category.id);
+                    this.props.history.push('/'+category.node.id);
                   }}
                 >
-                  {category.name}
+                  {category.node.name}
                 </Typography>
               </Grid>
             ))

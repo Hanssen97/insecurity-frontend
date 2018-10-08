@@ -65,7 +65,9 @@ export const sagas = {
   },
 
   getTopic: function*(action) {
-    const topic = yield call(API.fetchTopic, action.topic);
+    const topic = yield call(API.getTopic, action.topic);
+    console.log(topic);
+    console.log(action.topic);
     yield put({
       type: actiontypes.POST_TOPIC_SUCCESS,
       info: 'topic received',
@@ -75,9 +77,8 @@ export const sagas = {
 
   getCategory: function*(action) {
     const category = yield call(API.getCategory, action.id);
-    
     const topics = yield call(API.getTopics, action.id);
-    
+
     if (topics.error || topics.topics.error || category.error || category.category.error) {
       yield put({
         type: actiontypes.GET_CATEGORY_FAILURE,
@@ -87,7 +88,7 @@ export const sagas = {
       yield put({
         type: actiontypes.GET_CATEGORY_SUCCESS,
         info: 'Registered user',
-        topics: topics.topics.topic,
+        topics: topics.topics.edges,
         name: category.name,
       });
     }
@@ -95,8 +96,6 @@ export const sagas = {
 
   getCategories: function*() {
     const data = yield call(API.getCategories);
-    
-    console.log(data.categories.category)
 
     if (data.error || data.categories.error) {
       yield put({
@@ -107,7 +106,7 @@ export const sagas = {
       yield put({
         type: actiontypes.GET_CATEGORIES_SUCCESS,
         info: 'Registered user',
-        categories: data.categories.category,
+        categories: data.categories.edges,
       });
     }
   },
