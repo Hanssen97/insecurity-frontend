@@ -7,6 +7,9 @@ import { Router, Route, Redirect, Switch } from 'react-router-dom';
 
 import './App.min.css';
 
+// Import authentication
+import {authenticateUser} from './common/actions/authentication';
+
 // Import store
 import * as reducers from './store/reducers.js';
 import rootSaga from './store/sagas'
@@ -14,6 +17,7 @@ import rootSaga from './store/sagas'
 // Import components
 import { AuthLayout, MainLayout } from './layout';
 
+// Import features
 import Session from './features/session';
 import Content from './features/content';
 import User from './features/user';
@@ -34,6 +38,24 @@ const store = createStore(
 
 sagaMiddleware.run(rootSaga);
 
+
+
+function View({component: Component, ...rest}) {
+  return (
+    <Route {...rest} render={renderProps => (
+      authenticateUser(rest.level, store, history) ? (
+        <Component { ...renderProps } />
+      ) : (
+        <Redirect to={{
+          pathname: rest.redirect || '/',
+          state: {from: renderProps.location}
+        }} />
+      )
+    )}/>
+  )
+}
+
+
 class App extends Component {
   render() {
     return (
@@ -41,20 +63,19 @@ class App extends Component {
         <Provider store={store}>
           <Switch>
 
-            <Route path="/nope" component={Session.NotFound}/>
+            <View path="/nope" component={Session.NotFound}/>
 
-            <Route path="/portal" component={AuthLayout} />
-
+            <View path="/portal" component={AuthLayout} />
 
             <Route path="/">
               <MainLayout>
                 <Switch>
-                  <Route exact path="/" component={Content.Home.View}/>
-                  <Route exact path="/settings" component={User.Settings.View}/>
-                  <Route exact path="/search/:query" component={Content.Search.SearchView}/>
-                  <Route exact path="/:category/new" component={Content.Topic.Create}/>
-                  <Route exact path="/:category/:topic" component={Content.Topic.View}/>
-                  <Route exact path="/:category" component={Content.Category.View}/>
+                  <View exact path="/" component={Content.Home.View}/>
+                  <View exact path="/settings" component={User.Settings.View}/>
+                  <View exact path="/search/:query" component={Content.Search.SearchView}/>
+                  <View exact path="/:category/new" component={Content.Topic.Create}/>
+                  <View exact path="/:category/:topic" component={Content.Topic.View}/>
+                  <View exact path="/:category" component={Content.Category.View}/>
                   <Redirect to="/nope" />
                 </Switch>
               </MainLayout>
