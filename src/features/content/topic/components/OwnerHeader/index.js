@@ -45,7 +45,7 @@ class OwnerHeader extends PureComponent {
           className="Date"
           variant="subheading"
         >
-          {date}
+          {new Date(date).toLocaleString()}
         </Typography>
 
 
