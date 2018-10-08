@@ -64,6 +64,8 @@ class SearchBar extends PureComponent {
   handleRedirect = (e) => {
     let query = e.target.value.replace(/[/]/g, ' ');
     if (e.key === 'Enter') {
+      if (query.trim() == "") return;
+
       this.setState({
         path: `/search/${query}`,
         redirect: true
@@ -89,7 +91,7 @@ class SearchBar extends PureComponent {
           </div>
           {this.renderRedirect()}
           <Input
-            placeholder="Search…"
+            placeholder={this.props.placeholder}
             disableUnderline
             classes={{
               root: classes.inputRoot,

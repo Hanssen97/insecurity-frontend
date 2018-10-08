@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
+import { translate } from 'react-i18next';
+
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
@@ -23,6 +25,13 @@ class MainLayout extends Component {
       showSidebar: false,
       showLogin: false,
     }
+
+    this.getLocales();
+  }
+
+  getLocales = () => {
+    const { t } = this.props;
+    this.texts = t('layout.main', {returnObjects: true});
   }
 
 
@@ -43,7 +52,7 @@ class MainLayout extends Component {
               </div>
 
               <div className="SearchBar">
-                <SearchBar/>
+                <SearchBar placeholder={this.texts.navbar.search}/>
               </div>
 
               <div className="User">
@@ -51,7 +60,7 @@ class MainLayout extends Component {
                   color="inherit"
                   onClick={() => this.setState({showLogin: true})}
                 >
-                  Login
+                  {this.texts.navbar.login}
                 </Button>
               </div>
 
@@ -82,4 +91,4 @@ MainLayout.contextTypes = {
 }
 
 
-export default MainLayout;
+export default translate('translations')(MainLayout);

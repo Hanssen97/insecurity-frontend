@@ -1,5 +1,8 @@
 import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
+
+import { translate } from 'react-i18next';
+
 import Drawer from '@material-ui/core/Drawer';
 import List from '@material-ui/core/List';
 import Divider from '@material-ui/core/Divider';
@@ -11,6 +14,17 @@ import './index.min.css';
 
 
 class SideBar extends PureComponent {
+  constructor(props) {
+    super(props);
+
+    this.getLocales();
+  }
+
+  getLocales = () => {
+    const { t } = this.props;
+    this.texts = t('layout.main', {returnObjects: true});
+  }
+
   render() {
     const sideList = (
       <div className="Sidebar">
@@ -24,7 +38,7 @@ class SideBar extends PureComponent {
 
           <ListItem
             icon='home'
-            title='Home'
+            title={this.texts.sidebar.home}
             link='/'
             onClick={e => this.context.router.history.push(e.currentTarget.id)}
           />
@@ -83,4 +97,4 @@ SideBar.contextTypes = {
    router: PropTypes.object,
 }
 
-export default SideBar;
+export default translate('translations')(SideBar);
