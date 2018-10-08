@@ -26,10 +26,16 @@ class Login extends Component {
     this.texts = t('feature.session.login', {returnObjects: true});
   }
 
+  checkLoggedIn = () => {
+    if (this.props.session.user)  this.props.onLoggedIn();
+  }
+
+
+  componentDidMount() {
+    this.checkLoggedIn();
+  }
   componentDidUpdate() {
-    if (this.props.session.user) {
-      this.props.onLoggedIn();
-    }
+    this.checkLoggedIn();
   }
 
 
