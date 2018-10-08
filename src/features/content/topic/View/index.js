@@ -39,17 +39,18 @@ class Topic extends Component {
     }
 
     let topic = this.props.content.topic;
-    let comments = topic.replies.map((reply, key) => {
-      return (
-        <Reply
-          key={key}
-          owner={reply.owner}
-          likes={reply.likes}
-          text={reply.text}
-          date={reply.date}
-        />
-      );
-    });
+    let comments;
+    // let comments = topic.comments.map((reply, key) => {
+    //   return (
+    //     <Reply
+    //       key={key}
+    //       owner={reply.owner}
+    //       likes={reply.likes}
+    //       text={reply.text}
+    //       date={reply.date}
+    //     />
+    //   );
+    // });
 
     return (
       <Paper className="Topic">
@@ -74,7 +75,7 @@ class Topic extends Component {
             className="Description"
             variant="body1"
           >
-            {topic.description}
+            {topic.body}
           </Typography>
         </div>
 

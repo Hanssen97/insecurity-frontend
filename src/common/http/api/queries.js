@@ -15,6 +15,15 @@ const categoryNode = {
     }
 }
 
+const category = {
+    category: {
+        fields: [
+            "id",
+            "name",
+        ]
+    }
+}
+
 const categoryEdge = {
     edges: {
         fields: [
@@ -72,6 +81,8 @@ const topicNode = {
         ]
     }
 }
+
+
   
 
 const categoryTopics = {
@@ -81,7 +92,6 @@ const categoryTopics = {
         ],
     }
 }
-
 
 
 export const login = (username, password) => {
@@ -182,7 +192,7 @@ export const getTopics = (category) => {
 
 
 export const createTopic = () => {
-
+    
 }
 
 export const getTopic = (id) => {
@@ -193,11 +203,13 @@ export const getTopic = (id) => {
                 id,
             },
             fields: [
-                "name",
+                "title",
+                "timestamp",
+                "body",
+                "title",
+                owner,
+                category,
             ]
         }
     }
 }
-
-
-

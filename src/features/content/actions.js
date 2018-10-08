@@ -65,14 +65,20 @@ export const sagas = {
   },
 
   getTopic: function*(action) {
-    const topic = yield call(API.getTopic, action.topic);
-    console.log(topic);
-    console.log(action.topic);
-    yield put({
-      type: actiontypes.POST_TOPIC_SUCCESS,
-      info: 'topic received',
-      topic,
-    })
+    const data = yield call(API.getTopic, action.topic);
+    console.log(data.topic);
+    if (data.error || data.topic.error) {
+      yield put({
+        type: actiontypes.GET_TOPIC_FAILURE,
+        error: data.error.message || data.topic.error,
+      });
+    } else {
+      yield put({
+        type: actiontypes.GET_TOPIC_SUCCESS,
+        info: 'Fetched topic',
+        topic: data.topic,
+      });
+    }
   },
 
   getCategory: function*(action) {

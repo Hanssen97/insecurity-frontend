@@ -9,7 +9,7 @@ const initialState = {
     },
     timestamp: "",
     category: "",
-    replies:[]
+    messages:[]
   },
   category: {
     name: "",
