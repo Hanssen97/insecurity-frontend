@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import PropTypes from 'prop-types';
 
 import { translate } from 'react-i18next';
 
@@ -96,10 +95,6 @@ class Login extends Component {
       </div>
     )
   }
-}
-
-Login.contextTypes = {
-   router: PropTypes.object,
 }
 
 export default translate('translations')(Login);

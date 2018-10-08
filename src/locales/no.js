@@ -6,4 +6,5 @@ export default {
   'feature.user.settings': modules.feature.user.settings,
 
   'feature.session.login': modules.feature.session.login,
+  'feature.session.register': modules.feature.session.register,
 }
