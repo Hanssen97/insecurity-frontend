@@ -91,7 +91,7 @@ class SearchBar extends PureComponent {
           </div>
           {this.renderRedirect()}
           <Input
-            placeholder="Search…"
+            placeholder={this.props.placeholder}
             disableUnderline
             classes={{
               root: classes.inputRoot,
