@@ -1,4 +1,4 @@
-import modules from './no/index';
+import modules from './en/index';
 
 export default {
   'layout.main':

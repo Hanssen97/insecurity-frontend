@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 
+import { translate } from 'react-i18next';
+
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import Paper from '@material-ui/core/Paper';
@@ -14,7 +16,14 @@ class Home extends Component {
     document.title = 'Home Page';
 
     this.props.getCategories();
+    this.getLocales();
   }
+
+  getLocales = () => {
+    const { t } = this.props;
+    this.texts = t('feature.content.home', {returnObjects: true});
+  }
+
 
   render() {
     let content;
@@ -47,7 +56,7 @@ class Home extends Component {
       <div className="Home">
         <div className="Header">
           <img src="media/teacup.gif" alt="" />
-          <Typography variant='display1'> What's your cup of tea? </Typography>
+          <Typography variant='display1'> {this.texts.title} </Typography>
         </div>
 
         <Paper className="Categories">
@@ -58,4 +67,4 @@ class Home extends Component {
   }
 }
 
-export default Home;
+export default translate('translations')(Home);

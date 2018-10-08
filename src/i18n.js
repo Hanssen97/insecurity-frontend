@@ -2,6 +2,7 @@ import i18n from 'i18next';
 
 // Languages
 import no from './locales/no';
+import en from './locales/en';
 
 i18n
   .init({
@@ -9,8 +10,11 @@ i18n
       'nb-NO': {
         translations: no
       },
+      'en': {
+        translations: en
+      },
     },
-    fallbackLng: 'nb-NO',
+    fallbackLng: 'en',
     debug: true,
 
     // have a common namespace used around the full app

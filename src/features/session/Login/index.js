@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
-import PropTypes from 'prop-types';
+
+import { translate } from 'react-i18next';
 
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
@@ -17,8 +18,14 @@ class Login extends Component {
     }
     document.title = 'Login';
 
+    this.getLocales();
   }
-  
+
+  getLocales = () => {
+    const { t } = this.props;
+    this.texts = t('feature.session.login', {returnObjects: true});
+  }
+
   componentDidUpdate() {
     if (this.props.session.user) {
       this.props.onLoggedIn();
@@ -33,7 +40,7 @@ class Login extends Component {
           <div className="Fields">
             <div>
               <TextField
-                label="username"
+                label={this.texts.fields.username}
                 type="email"
                 margin="normal"
                 variant="outlined"
@@ -44,7 +51,7 @@ class Login extends Component {
                 }}
                 />
               <TextField
-                label="Password"
+                label={this.texts.fields.password}
                 type="password"
                 autoComplete="password"
                 margin="normal"
@@ -63,7 +70,7 @@ class Login extends Component {
               onClick={() => this.props.login(this.state.username, this.state.password)}
               size="large"
             >
-              Login
+              {this.texts.loginButton}
             </Button>
 
             <div>
@@ -78,9 +85,9 @@ class Login extends Component {
             </div>
 
 
-            <div className="footer"> 
-              <p>Not a member?</p>
-              <p className="register" onClick={this.props.goToRegister}> Register </p>
+            <div className="footer">
+              <p>{this.texts.notAMember}</p>
+              <p className="register" onClick={this.props.goToRegister}> {this.texts.register} </p>
             </div>
 
           </div>
@@ -90,8 +97,4 @@ class Login extends Component {
   }
 }
 
-Login.contextTypes = {
-   router: PropTypes.object,
-}
-
-export default Login;
+export default translate('translations')(Login);
