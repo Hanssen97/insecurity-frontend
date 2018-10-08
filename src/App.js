@@ -43,16 +43,7 @@ class App extends Component {
 
             <Route path="/nope" component={Session.NotFound}/>
 
-
-            <Route path="/member">
-              <AuthLayout>
-                <Switch>
-                  <Route exact path="/member/login" component={Session.Login}/>
-                  <Route exact path="/member/register" component={Session.Register}/>
-                  <Redirect to="/nope" />
-                </Switch>
-              </AuthLayout>
-            </Route>
+            <Route path="/portal" component={AuthLayout} />
 
 
             <Route path="/">

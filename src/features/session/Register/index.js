@@ -20,6 +20,14 @@ class Register extends Component {
   }
 
 
+
+  componentDidUpdate() {
+    if (this.props.session.user) {
+      this.props.onLoggedIn();
+    }
+  }
+
+
   render() {
     return (
       <div className="Register">
@@ -96,9 +104,7 @@ class Register extends Component {
 
             <div className="footer"> 
               <p>Already a member?</p>
-              <p className="login" onClick={() => { 
-                this.props.history.push('/member/login');
-              }}> Log in </p>
+              <p className="login" onClick={this.props.goToLogin}> Log in </p>
             </div>
 
           </div>

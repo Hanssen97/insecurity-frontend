@@ -23,7 +23,7 @@ const initialState = {
 
 export default function content(state = initialState, action) {
   switch(action.type) {
-    case actiontypes.POST_TOPIC_REQUEST: {
+    case actiontypes.POST_TOPIC_SUCCESS: {
       return {...state,
         info: action.info
       };

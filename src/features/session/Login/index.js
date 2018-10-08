@@ -16,6 +16,13 @@ class Login extends Component {
       password: ""
     }
     document.title = 'Login';
+
+  }
+  
+  componentDidUpdate() {
+    if (this.props.session.user) {
+      this.props.onLoggedIn();
+    }
   }
 
 
@@ -73,7 +80,7 @@ class Login extends Component {
 
             <div className="footer"> 
               <p>Not a member?</p>
-              <p className="register" onClick={() => {this.context.router.history.push('/member/register')}}> Register </p>
+              <p className="register" onClick={this.props.goToRegister}> Register </p>
             </div>
 
           </div>

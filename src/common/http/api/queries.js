@@ -55,3 +55,17 @@ export const register = (username, email, password) => {
         }
     }
 }
+
+export const getUser = () => {
+    return {
+        operation: {
+            name: "me",
+            fields: [
+                "username",
+                "email",
+                settings,
+                error,
+            ]
+        }
+    }
+}

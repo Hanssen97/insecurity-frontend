@@ -10,6 +10,8 @@ const options = () => ({
   },
 });
 
+
+
 const address = config.SERVER_ADDRESS;
 
 export const login = (username, password) => {
@@ -21,6 +23,12 @@ export const login = (username, password) => {
 export const register = (username, email, password) => {
   return gotQL.mutation(address, queries.register(username, email, password), options())
   .then(response => ({user: response.data.register}))
+  .catch(error => ({error}))
+}
+
+export const getUser = () => {
+  return gotQL.query(address, queries.getUser(), options())
+  .then(response => ({user: response.data.me}))
   .catch(error => ({error}))
 }
 

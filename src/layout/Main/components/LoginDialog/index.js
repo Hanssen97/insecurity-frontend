@@ -14,6 +14,7 @@ let {Login} = Session;
 
 class LoginDialog extends Component {
   render() {
+    if (!this.props.open) return null;
     return (
       <Dialog
         className="LoginDialog"
@@ -23,13 +24,21 @@ class LoginDialog extends Component {
        aria-labelledby="responsive-dialog-title"
       >
        <DialogContent className="Content">
-         <Login />
+         <Login 
+            onLoggedIn={this.props.onClose}
+            goToRegister={() => {
+              this.context.router.history.replace("/portal/register");
+            }}
+          />
        </DialogContent>
       </Dialog>
     );
   }
 }
 
+LoginDialog.contextTypes = {
+  router: PropTypes.object,
+}
 LoginDialog.propTypes = {
    fullScreen: PropTypes.bool.isRequired,
 }
