@@ -6,14 +6,22 @@ const initialState = {
 }
 
 export default function session(state = initialState, action) {
+  console.log("ACTION: ",action)
   switch(action.type) {
-    case actiontypes.FETCH_USER_REQUEST: {
+    case actiontypes.LOGIN_REQUEST: {
       return {...state,
         info: action.info
       };
     }
 
-    case actiontypes.FETCH_USER_SUCCESS: {
+    case actiontypes.LOGIN_SUCCESS: {
+      return {...state,
+        user: action.user,
+        info: action.info
+      };
+    }
+
+    case actiontypes.REGISTER_SUCCESS: {
       return {...state,
         user: action.user,
         info: action.info

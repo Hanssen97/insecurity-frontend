@@ -1,10 +1,28 @@
-export async function fetchUser() {
-    return new Promise((resolve, reject) => {
-       setTimeout(() => {
-         resolve({name: "Morten"});
-       }, 400);
-     }).then(data => data)
-  }
+import * as queries from './queries';
+import gotQL from 'gotql';
+import config from '../../../config.json';
+
+
+const options = () => ({
+  headers: {
+    "Access-Control-Allow-Origin": "*",
+    "Authorization": `Bearer ${localStorage.getItem("token")}`
+  },
+});
+
+const address = config.SERVER_ADDRESS;
+
+export const login = (username, password) => {
+  return gotQL.mutation(address, queries.login(username, password), options())
+  .then(response => ({user: response.data.login}))
+  .catch(error => ({error}))
+}
+
+export const register = (username, email, password) => {
+  return gotQL.mutation(address, queries.register(username, email, password), options())
+  .then(response => ({user: response.data.register}))
+  .catch(error => ({error}))
+}
 
 export async function fetchAllCategories() {
   console.log("Fetching categories");

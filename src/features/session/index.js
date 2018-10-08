@@ -11,7 +11,8 @@ import NotFound from './404';
 
 
 const mapDispatchToProps = {
-  fetchUser: actions.fetchUser
+  login: actions.login,
+  register: actions.register
 }
 
 function mapStateToProps(state) {

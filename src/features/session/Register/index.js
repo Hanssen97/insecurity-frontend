@@ -77,7 +77,7 @@ class Register extends Component {
 
           <div className="Submit">
             <Button
-              onClick={this.props.fetchUser}
+              onClick={() => this.props.register(this.state.username, this.state.email, this.state.password)}
               size="large"
             >
               Register

@@ -1,22 +1,33 @@
 // Reducer containing feedback data such as fetching and error messages
 
 const initialState = {
-  fetching: false
+  fetching: false,
+  errors: [],
 }
 
 export default function feedback(state = initialState, action) {
 
   if (action.type.includes("_REQUEST")) {
-    state = {
+  return {
       ...state,
       fetching: true
     }
-  } else {
-    state = {
-      ...state,
-      fetching: false
-    }
   }
 
-  return state;
+  if (action.type.includes("_FAILURE")) {
+    return {
+      ...state,
+      fetching: false,
+      errors: [
+        ...state.errors,
+        action.error
+      ]
+    }
+  }
+  
+  return {
+      ...state,
+      fetching: false
+  }
+
 }

@@ -12,7 +12,7 @@ class Login extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      email: "",
+      username: "",
       password: ""
     }
     document.title = 'Login';
@@ -26,15 +26,14 @@ class Login extends Component {
           <div className="Fields">
             <div>
               <TextField
-                label="Email"
+                label="username"
                 type="email"
-                autoComplete="email"
                 margin="normal"
                 variant="outlined"
                 fullWidth
-                value={this.state.email}
+                value={this.state.username}
                 onChange={e => {
-                  this.setState({email: e.target.value})
+                  this.setState({username: e.target.value})
                 }}
                 />
               <TextField
@@ -54,7 +53,7 @@ class Login extends Component {
 
           <div className="Submit">
             <Button
-              onClick={this.props.fetchUser}
+              onClick={() => this.props.login(this.state.username, this.state.password)}
               size="large"
             >
               Login
