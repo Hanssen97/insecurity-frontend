@@ -1,4 +1,4 @@
-import * as queries from './queries';
+import * as queries from '../graphql/queries';
 import gotQL from 'gotql';
 import config from '../../../config.json';
 

@@ -1,109 +1,6 @@
-const settings = {
-    settings: {
-        fields: [
-            "language"
-        ]
-    }
-}
 
-const categoryNode = {
-    node: {
-        fields: [
-            "id",
-            "name",
-        ]
-    }
-}
+import * as nodes from './nodes';
 
-const category = {
-    category: {
-        fields: [
-            "id",
-            "name",
-        ]
-    }
-}
-
-const categoryEdge = {
-    edges: {
-        fields: [
-            categoryNode
-        ]
-    }
-}
-
-const error = {
-    error: {
-        fields: [
-            "error",
-            "message",
-            "statusCode",
-        ]
-    }
-}
-
-const owner = {
-    owner: {
-        fields: [
-            "username"
-        ]
-    }
-}
-
-const likes = {
-    likes: {
-        fields: [
-            "username",
-        ]
-    }
-}
-
-const commentNode = {
-    node: {
-        fields: [
-            "body",
-            "timestamp",
-            likes,
-            owner,
-        ]
-    }
-}
-
-const commentEdge = {
-    edges: {
-        fields: [
-            commentNode,
-        ]
-    }
-}
-
-const comments = {
-    comments: {
-        fields: [
-            commentEdge,
-        ]
-    }
-}
-
-const topicNode = {
-    node: {
-        fields: [
-            "id",
-            "timestamp",
-            owner,
-            "body",
-            "title",
-        ]
-    }
-}
-  
-const categoryTopics = {
-    edges: {
-        fields: [
-            topicNode,
-        ],
-    }
-}
 
 export const login = (username, password) => {
     return {
@@ -117,8 +14,8 @@ export const login = (username, password) => {
                 "username",
                 "email",
                 "token",
-                settings,
-                error,
+                nodes.settings,
+                nodes.error,
             ]
         }
     }
@@ -137,8 +34,8 @@ export const register = (username, email, password) => {
                 "username",
                 "email",
                 "token",
-                settings,
-                error,
+                nodes.settings,
+                nodes.error,
             ]
         }
     }
@@ -151,8 +48,8 @@ export const getUser = () => {
             fields: [
                 "username",
                 "email",
-                settings,
-                error,
+                nodes.settings,
+                nodes.error,
             ]
         }
     }
@@ -163,8 +60,8 @@ export const getCategories = () => {
         operation: {
             name: "categories",
             fields: [
-                categoryEdge,
-                error,
+                nodes.categoryEdge,
+                nodes.error,
             ]
         }
     }
@@ -180,7 +77,7 @@ export const getCategory = (id) => {
             fields: [
                 "id",
                 "name",
-                error,
+                nodes.error,
             ]
         }
     }
@@ -194,8 +91,8 @@ export const getTopics = (category) => {
                 category,
             },
             fields: [
-                categoryTopics,
-                error,
+                nodes.categoryTopics,
+                nodes.error,
             ]
         }
     }
@@ -218,10 +115,10 @@ export const getTopic = (id) => {
                 "timestamp",
                 "body",
                 "title",
-                owner,
-                category,
-                comments,
-                error,
+                nodes.owner,
+                nodes.category,
+                nodes.comments,
+                nodes.error,
             ]
         }
     }
