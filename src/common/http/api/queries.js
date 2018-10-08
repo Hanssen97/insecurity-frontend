@@ -6,6 +6,15 @@ const settings = {
     }
 }
 
+const category = {
+    category: {
+        fields: [
+            "id",
+            "name",
+        ]
+    }
+}
+
 const error = {
     error: {
         fields: [
@@ -15,6 +24,45 @@ const error = {
         ]
     }
 }
+
+const owner = {
+    owner: {
+        fields: [
+            "username"
+        ]
+    }
+}
+
+const likes = {
+    likes: {
+        fields: [
+            "username",
+        ]
+    }
+}
+
+const comments = {
+    comments: {
+        fields: [
+            owner,
+            "body",
+            "timestamp",
+            likes,
+        ]
+    }
+}
+
+const categoryTopics = {
+    topic: {
+        fields: [
+            "timestamp",
+            owner,
+            "body",
+            "title",
+        ],
+    }
+}
+
 
 
 export const login = (username, password) => {
@@ -69,3 +117,69 @@ export const getUser = () => {
         }
     }
 }
+
+
+export const getCategories = () => {
+    return {
+        operation: {
+            name: "categories",
+            fields: [
+                category,
+                error,
+            ]
+        }
+    }
+}
+
+export const getCategory = (id) => {
+    return {
+        operation: {
+            name: "category",
+            args: {
+                id,
+            },
+            fields: [
+                "id",
+                "name",
+                error,
+            ]
+        }
+    }
+}
+
+export const getTopics = (category) => {
+    return {
+        operation: {
+            name: "topics",
+            args: {
+                category,
+            },
+            fields: [
+                categoryTopics,
+                error,
+            ]
+        }
+    }
+}
+
+
+export const createTopic = () => {
+
+}
+
+export const getTopic = (id) => {
+    return {
+        operation: {
+            name: "topic",
+            args: {
+                id,
+            },
+            fields: [
+                "name",
+            ]
+        }
+    }
+}
+
+
+

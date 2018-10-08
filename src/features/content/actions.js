@@ -1,11 +1,6 @@
 import { put, call, takeEvery, takeLatest } from 'redux-saga/effects'
 
-import {
-  fetchTopics,
-  fetchTopic,
-  fetchAllCategories,
-  search,
-} from '../../common/http/api/API';
+import * as API from '../../common/http/api/API';
 
 
 export const actiontypes = {
@@ -42,10 +37,10 @@ export const actions = {
     info: "fetching topic...",
     topic,
   }),
-  getCategory: (category) => ({
+  getCategory: (id) => ({
     type: actiontypes.GET_CATEGORY_REQUEST,
     info: "fetching topic...",
-    category,
+    id,
   }),
   getCategories: () => ({
     type: actiontypes.GET_CATEGORIES_REQUEST,
@@ -70,7 +65,7 @@ export const sagas = {
   },
 
   getTopic: function*(action) {
-    const topic = yield call(fetchTopic, action.topic);
+    const topic = yield call(API.fetchTopic, action.topic);
     yield put({
       type: actiontypes.POST_TOPIC_SUCCESS,
       info: 'topic received',
@@ -79,26 +74,46 @@ export const sagas = {
   },
 
   getCategory: function*(action) {
-    const topics = yield call(fetchTopics, action.category);
-    yield put({
-      type: actiontypes.GET_CATEGORY_SUCCESS,
-      info: 'category received',
-      category: action.category,
-      topics,
-    })
+    const category = yield call(API.getCategory, action.id);
+    
+    const topics = yield call(API.getTopics, action.id);
+    
+    if (topics.error || topics.topics.error || category.error || category.category.error) {
+      yield put({
+        type: actiontypes.GET_CATEGORY_FAILURE,
+        error: topics.error.message || topics.topics.error || category.error || category.category.error,
+      });
+    } else {
+      yield put({
+        type: actiontypes.GET_CATEGORY_SUCCESS,
+        info: 'Registered user',
+        topics: topics.topics.topic,
+        name: category.name,
+      });
+    }
   },
 
-  getCategories: function*(action) {
-    const categories = yield call(fetchAllCategories);
-    yield put({
-      type: actiontypes.GET_CATEGORIES_SUCCESS,
-      info: 'categories received',
-      categories,
-    })
+  getCategories: function*() {
+    const data = yield call(API.getCategories);
+    
+    console.log(data.categories.category)
+
+    if (data.error || data.categories.error) {
+      yield put({
+        type: actiontypes.GET_CATEGORIES_FAILURE,
+        error: data.error.message || data.categories.error,
+      });
+    } else {
+      yield put({
+        type: actiontypes.GET_CATEGORIES_SUCCESS,
+        info: 'Registered user',
+        categories: data.categories.category,
+      });
+    }
   },
 
   getSearchResult: function*(action) {
-    const searchResult = yield call(search, action.query);
+    const searchResult = yield call(API.search, action.query);
     yield put({
       type: actiontypes.GET_SEARCH_RESULT_SUCCESS,
       info: 'Search completed',

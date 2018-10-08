@@ -2,6 +2,8 @@ import * as queries from './queries';
 import gotQL from 'gotql';
 import config from '../../../config.json';
 
+const address = config.SERVER_ADDRESS;
+
 
 const options = () => ({
   headers: {
@@ -10,9 +12,6 @@ const options = () => ({
   },
 });
 
-
-
-const address = config.SERVER_ADDRESS;
 
 export const login = (username, password) => {
   return gotQL.mutation(address, queries.login(username, password), options())
@@ -31,6 +30,27 @@ export const getUser = () => {
   .then(response => ({user: response.data.me}))
   .catch(error => ({error}))
 }
+
+export const getCategories = () => {
+  return gotQL.query(address, queries.getCategories(), options())
+  .then(response => ({categories: response.data.categories}))
+  .catch(error => ({error}))
+}
+
+export const getCategory = (id) => {
+  return gotQL.query(address, queries.getCategory(id), options())
+  .then(response => ({category: response.data.category}))
+  .catch(error => ({error}))
+}
+
+export const getTopics = (category) => {
+  return gotQL.query(address, queries.getTopics(category), options())
+  .then(response => ({topics: response.data.topics}))
+  .catch(error => ({error}))
+}
+
+
+
 
 export async function fetchAllCategories() {
   console.log("Fetching categories");

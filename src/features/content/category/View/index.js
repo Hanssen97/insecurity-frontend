@@ -13,27 +13,27 @@ class CategoryView extends Component {
     document.title = 'Category Page';
     this.state = {
       name: "",
+      id: "",
     }
   }
 
   componentDidMount() {
-    this.getCategoryName();
+    this.getCategoryId();
   }
 
   componentDidUpdate() {
     if(this.props.location.pathname !== this.state.fullPath) {
-      this.getCategoryName();
+      this.getCategoryId();
     }
   }
 
-  getCategoryName() {
+  getCategoryId() {
     const fullPath = this.props.location.pathname;
-    const name = fullPath.replace(/[/]/g, ' ');
-
-    this.props.getCategory(name);
+    const id = fullPath.replace(/[/]/g, '');
+    this.props.getCategory(id);
 
     this.setState({
-      name,
+      id,
       fullPath,
     });
   }
@@ -51,24 +51,23 @@ class CategoryView extends Component {
         </div>
       )
     } else {
-      console.log(content);
       view = content.category.topics.map((topic, key) => {
         return (
           <TopicPreview key={key}
-            owner={topic.owner}
-            date={topic.date}
+            owner={topic.owner.username}
+            date={topic.timestamp}
             title={topic.title}
             description={topic.description}
             likes={topic.likes}
             category={this.state.name}
-            onClick={() => this.props.history.push(`/${topic.category}/${topic.title}`)}
+            onClick={() => this.props.history.push(`/${this.state.id}/${topic.title}`)}
           />
         )
       })
     }
     return (
       <Paper className="CategoryView">
-          <h1 className="catTitle">{this.state.name}</h1>
+          <h1 className="catTitle">{content.category.name}</h1>
           <div className="topics">
             {view}
           </div>

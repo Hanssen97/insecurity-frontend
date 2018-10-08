@@ -4,7 +4,9 @@ const initialState = {
   topic: {
     title: "",
     description: "",
-    author: "",
+    owner: {
+      username: "",
+    },
     timestamp: "",
     category: "",
     replies:[]
@@ -45,7 +47,11 @@ export default function content(state = initialState, action) {
     }
 
     case actiontypes.GET_CATEGORY_SUCCESS: {
-      let topics = [...state.category.topics, ...action.topics];
+      
+      
+      let newTopics = action.topics.filter(topic => !(!!state.category.topics.find(t => t.id === topic.id)));
+      let topics = [...state.category.topics, ...newTopics];
+      
       return {...state,
         info: action.info,
         category: {...state.category, topics},
