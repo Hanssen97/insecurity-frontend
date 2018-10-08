@@ -11,12 +11,18 @@ import CategoryView from './category/View';
 import SearchView from './search/View';
 
 
-const mapDispatchToProps = {
+const searchActions = {
+  getSearchResult: actions.getSearchResult,
+}
+
+const topicActions = {
   postTopic: actions.postTopic,
   getTopic: actions.getTopic,
+}
+
+const categoryActions = {
   getCategory: actions.getCategory,
   getCategories: actions.getCategories,
-  getSearchResult: actions.getSearchResult,
 }
 
 function mapStateToProps(state) {
@@ -28,20 +34,20 @@ function mapStateToProps(state) {
 }
 
 let Topic = {
-  Create: connect(mapStateToProps, mapDispatchToProps)(TopicCreate),
-  View: connect(mapStateToProps, mapDispatchToProps)(TopicView),
+  Create: connect(mapStateToProps, topicActions)(TopicCreate),
+  View: connect(mapStateToProps, topicActions)(TopicView),
 }
 
 let Category = {
-  View: connect(mapStateToProps, mapDispatchToProps)(CategoryView),
+  View: connect(mapStateToProps, categoryActions)(CategoryView),
 }
 
 let Home = {
-  View: connect(mapStateToProps, mapDispatchToProps)(HomeView),
+  View: connect(mapStateToProps, {...topicActions, ...categoryActions})(HomeView),
 }
 
 let Search = {
-  SearchView: connect(mapStateToProps, mapDispatchToProps)(SearchView),
+  SearchView: connect(mapStateToProps, searchActions)(SearchView),
 }
 
 

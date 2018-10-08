@@ -83,6 +83,7 @@ export const sagas = {
     yield put({
       type: actiontypes.GET_CATEGORY_SUCCESS,
       info: 'category received',
+      category: action.category,
       topics,
     })
   },

@@ -31,6 +31,7 @@ class CategoryView extends Component {
     const name = fullPath.replace(/[/]/g, ' ');
 
     this.props.getCategory(name);
+
     this.setState({
       name,
       fullPath,
@@ -40,16 +41,18 @@ class CategoryView extends Component {
 
 
   render() {
-    let content = null;
+    let view = null;
+    let {content, feedback} = this.props;
 
-    if (this.props.feedback.fetching && this.props.content.topics.length === 0) {
-      content = (
+    if (feedback.fetching && content.category.topics.length === 0) {
+      view = (
         <div className="Progress">
           <CircularProgress color="inherit"/>
         </div>
       )
     } else {
-      content = this.props.content.topics.map((topic, key) => {
+      console.log(content);
+      view = content.category.topics.map((topic, key) => {
         return (
           <TopicPreview key={key}
             owner={topic.owner}
@@ -67,7 +70,7 @@ class CategoryView extends Component {
       <Paper className="CategoryView">
           <h1 className="catTitle">{this.state.name}</h1>
           <div className="topics">
-            {content}
+            {view}
           </div>
       </Paper>
     )
