@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 
+import { translate } from 'react-i18next';
+
 import Paper from '@material-ui/core/Paper';
 
 import TextPanel from '../components/TextPanel';
@@ -19,6 +21,12 @@ class SettingsView extends Component {
     }
 
     this.props.getSettings("morten");
+    this.getLocales();
+  }
+
+  getLocales = () => {
+    const { t } = this.props;
+    this.texts = t('feature.user.settings', {returnObjects: true});
   }
 
 
@@ -40,7 +48,7 @@ class SettingsView extends Component {
 
   render() {
     const {username, email, profilePicture} = this.props.user.settings;
-    console.log(this.props.user.settings)
+
     return (
       <Paper className="SettingsView">
 
@@ -48,20 +56,23 @@ class SettingsView extends Component {
 
         <div className="Panels">
           <TextPanel
-            title="Username"
-            description="Change the account username"
+            title={this.texts.username.title}
+            description={this.texts.username.description}
             placeholder={username}
+            saveText={this.texts.save}
             onSubmit={value => this.changeUsername(value)}
             />
           <TextPanel
-            title="Email"
-            description="Change the account email"
+            title={this.texts.email.title}
+            description={this.texts.email.description}
             placeholder={email}
+            saveText={this.texts.save}
             onSubmit={value => this.changeEmail(value)}
             />
           <PasswordPanel
-            title="Password"
-            description="Change the account password"
+            title={this.texts.password.title}
+            description={this.texts.password.description}
+            saveText={this.texts.save}
             onSubmit={(pwd1, pwd2) => this.changePassword(pwd1, pwd2)}
             />
         </div>
@@ -72,4 +83,6 @@ class SettingsView extends Component {
   }
 }
 
-export default SettingsView;
+
+
+export default translate('translations')(SettingsView);

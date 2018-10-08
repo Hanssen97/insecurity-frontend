@@ -59,7 +59,7 @@ class TextPanel extends Component {
               color="inherit"
               onClick={this.submit}
             >
-              Save
+              {this.props.saveText}
             </Button>
           </ExpansionPanelActions>
         </ExpansionPanel>

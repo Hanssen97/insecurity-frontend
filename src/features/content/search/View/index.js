@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 
+import { translate } from 'react-i18next';
+
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import CircularProgress from '@material-ui/core/CircularProgress';
@@ -21,6 +23,12 @@ class SearchView extends Component {
       fullPath: "",
     }
 
+    this.getLocales();
+  }
+
+  getLocales = () => {
+    const { t } = this.props;
+    this.texts = t('feature.content.search', {returnObjects: true});
   }
 
   componentDidMount() {
@@ -108,7 +116,7 @@ class SearchView extends Component {
 
     return (
       <div className="container">
-        <h1 className="header">Search results for "{query}"</h1>
+        <h1 className="header">{this.texts.title} "{query}"</h1>
         <Paper className="SearchView">
           {topicTitle}
           {topics}
@@ -120,4 +128,4 @@ class SearchView extends Component {
   }
 }
 
-export default SearchView;
+export default translate('translations')(SearchView);

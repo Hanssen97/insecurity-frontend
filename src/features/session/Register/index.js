@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 
+import { translate } from 'react-i18next';
+
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import CircularProgress from '@material-ui/core/CircularProgress';
@@ -17,9 +19,14 @@ class Register extends Component {
       passwordRepeat: ""
     }
     document.title = 'Register';
+
+    this.getLocales();
   }
 
-
+  getLocales = () => {
+    const { t } = this.props;
+    this.texts = t('feature.session.register', {returnObjects: true});
+  }
 
   componentDidUpdate() {
     if (this.props.session.user) {
@@ -35,7 +42,7 @@ class Register extends Component {
           <div className="Fields">
             <div>
               <TextField
-                label="Username"
+                label={this.texts.fields.username}
                 margin="normal"
                 variant="outlined"
                 fullWidth
@@ -45,7 +52,7 @@ class Register extends Component {
                 }}
               />
               <TextField
-                label="Email"
+                label={this.texts.fields.email}
                 type="email"
                 autoComplete="email"
                 margin="normal"
@@ -57,7 +64,7 @@ class Register extends Component {
                 }}
               />
               <TextField
-                label="Password"
+                label={this.texts.fields.password}
                 type="password"
                 autoComplete="password"
                 margin="normal"
@@ -69,7 +76,7 @@ class Register extends Component {
                 }}
               />
               <TextField
-                label="Repeat Password"
+                label={this.texts.fields.repeatPassword}
                 type="password"
                 autoComplete="password"
                 margin="none"
@@ -88,7 +95,7 @@ class Register extends Component {
               onClick={() => this.props.register(this.state.username, this.state.email, this.state.password)}
               size="large"
             >
-              Register
+              {this.texts.registerButton}
             </Button>
 
             <div>
@@ -102,9 +109,9 @@ class Register extends Component {
               }
             </div>
 
-            <div className="footer"> 
-              <p>Already a member?</p>
-              <p className="login" onClick={this.props.goToLogin}> Log in </p>
+            <div className="footer">
+              <p>{this.texts.alreadyMember}</p>
+              <p className="login" onClick={this.props.goToLogin}> {this.texts.login} </p>
             </div>
 
           </div>
@@ -114,4 +121,4 @@ class Register extends Component {
   }
 }
 
-export default Register;
+export default translate('translations')(Register);
