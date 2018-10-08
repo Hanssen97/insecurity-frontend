@@ -19,6 +19,13 @@ class AuthLayout extends Component {
   }
 
   componentDidMount() {
+    let token   = localStorage.getItem("token");
+    let {user}  = this.props.session;
+
+    if (token && !user) {
+      this.props.getUser();
+    }
+
     this.getLocation();
   }
 
@@ -31,7 +38,7 @@ class AuthLayout extends Component {
   getLocation() {
     const fullPath = this.props.location.pathname;
     const location = fullPath.replace("/portal/", "");
-    
+
     this.setState({
       location,
     });
@@ -43,18 +50,18 @@ class AuthLayout extends Component {
     let view;
     if (this.state.location === "login") {
       view = (
-        <Login 
+        <Login
           goToRegister={() => {
             this.context.router.history.replace("register");
           }}
           onLoggedIn={() => {
             this.context.router.history.replace("/");
-          }} 
+          }}
         />
       )
     } else if (this.state.location === "register") {
       view = (
-        <Register 
+        <Register
           goToLogin={() => {
             this.context.router.history.replace("login");
           }}
@@ -73,7 +80,7 @@ class AuthLayout extends Component {
           <div className="Title">
             <img alt="" src="logo.png"/>
           </div>
-          
+
           {view}
 
         </div>

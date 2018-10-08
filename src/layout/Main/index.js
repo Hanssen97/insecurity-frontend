@@ -29,22 +29,15 @@ class MainLayout extends Component {
     this.getLocales();
   }
 
-  // componentDidMount() {
-  //   this.props.getUser("saødlkadøla");
-  //   setTimeout(() => {
-  //     console.log(this.props.session);
-  //   }, 0)
-  // }
-
    componentDidMount() {
     let token       = localStorage.getItem("token");
     let {user}      = this.props.session;
-  
+
     if (token && !user) {
       this.props.getUser();
     }
   }
-  
+
 
   getLocales = () => {
     const { t } = this.props;
