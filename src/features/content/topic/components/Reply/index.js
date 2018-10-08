@@ -24,7 +24,6 @@ class Reply extends PureComponent {
 
   render() {
     let {owner, likes, text, date} = this.props;
-    console.log("HELLOOOOOO", this.props)
     return (
       <div className="Reply">
 

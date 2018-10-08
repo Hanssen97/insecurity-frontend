@@ -40,7 +40,6 @@ class Topic extends Component {
 
     let topic = this.props.content.topic;
     let comments = topic.comments.edges.map((reply, key) => {
-      console.log(reply.node)
       return (
         <Reply
           key={key}
