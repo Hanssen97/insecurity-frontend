@@ -51,7 +51,6 @@ class CategoryView extends Component {
         </div>
       )
     } else {
-      console.log(content);
       view = content.category.topics.map((topic, key) => {
         return (
           <TopicPreview key={key}

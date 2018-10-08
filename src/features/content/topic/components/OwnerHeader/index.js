@@ -1,43 +1,57 @@
 import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 
+import { translate } from 'react-i18next';
+
 import Typography from '@material-ui/core/Typography';
 import './index.min.css';
 
 
 class OwnerHeader extends PureComponent {
-    render() {
-      let {type, repliedTo, owner, image, date} = this.props;
+  constructor(props) {
+    super(props);
 
-      let text = (type === 'reply') ? (
-        <p><b>{owner}</b> replied to <b>{repliedTo}</b></p>
-      ) : (
-        <p> Posted by <b>{owner}</b></p>
-      );
+    this.getLocales();
+  }
 
-      return (
-        <div className="OwnerHeader">
-          <img alt='' src={image} />
-
-          <Typography
-            className="Text"
-            variant="subheading"
-            >
-            {text}
-          </Typography>
+  getLocales = () => {
+    const { t } = this.props;
+    this.texts = t('feature.content.topic.components.ownerheader', {returnObjects: true});
+  }
 
 
-          <Typography
-            className="Date"
-            variant="subheading"
+  render() {
+    let {type, repliedTo, owner, image, date} = this.props;
+
+    let text = (type === 'reply') ? (
+      <p><b>{owner}</b> {this.texts.reply} <b>{repliedTo}</b></p>
+    ) : (
+      <p> {this.texts.post} <b>{owner}</b></p>
+    );
+
+    return (
+      <div className="OwnerHeader">
+        <img alt='' src={image} />
+
+        <Typography
+          className="Text"
+          variant="subheading"
           >
-            {date}
-          </Typography>
+          {text}
+        </Typography>
 
 
-        </div>
-      )
-    }
+        <Typography
+          className="Date"
+          variant="subheading"
+        >
+          {date}
+        </Typography>
+
+
+      </div>
+    )
+  }
 }
 
 
@@ -50,4 +64,4 @@ OwnerHeader.propTypes = {
   date: PropTypes.string.isRequired,
 };
 
-export default OwnerHeader;
+export default translate('translations')(OwnerHeader);
