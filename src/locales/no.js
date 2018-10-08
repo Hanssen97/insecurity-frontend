@@ -9,4 +9,6 @@ export default {
   'feature.session.register': modules.feature.session.register,
 
   'feature.content.home': modules.feature.content.home,
+  'feature.content.search': modules.feature.content.search,
+  'feature.content.topic.create': modules.feature.content.topic.create,
 }

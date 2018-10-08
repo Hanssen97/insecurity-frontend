@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 
+import { translate } from 'react-i18next';
+
 import Typography from '@material-ui/core/Typography';
 import Icon from '@material-ui/core/Icon';
 import Paper from '@material-ui/core/Paper';
@@ -17,6 +19,13 @@ class CreateTopic extends Component {
       title: "",
       description: ""
     }
+
+    this.getLocales();
+  }
+
+  getLocales = () => {
+    const { t } = this.props;
+    this.texts = t('feature.content.topic.create', {returnObjects: true});
   }
 
   discardTopic = () => {
@@ -40,7 +49,7 @@ class CreateTopic extends Component {
           variant='headline'
           color='inherit'
           >
-          NEW TOPIC
+          {this.texts.title}
         </Typography>
 
 
@@ -48,7 +57,8 @@ class CreateTopic extends Component {
 
         <Paper className="TitleInput">
           <input
-            placeholder="Title..." onChange={e => this.setState({
+            placeholder={this.texts.form.title}
+            onChange={e => this.setState({
               title: e.target.value
             })}
           />
@@ -56,7 +66,7 @@ class CreateTopic extends Component {
 
         <textarea
           className="DescriptionInput"
-          placeholder="Description..."
+          placeholder={this.texts.form.description}
           onChange={e => this.setState({
             description: e.target.value
           })}
@@ -72,13 +82,15 @@ class CreateTopic extends Component {
               variant='subheading'
               color='inherit'
             >
-              POST
+              {this.texts.buttons.post}
             </Typography>
             <Icon fontSize='small' > send </Icon>
           </Button>
 
-          <p>
-            or go <b onClick={this.discardTopic}>back</b>
+          <p> {this.texts.return.orGo}
+            <b onClick={this.discardTopic}>
+              {this.texts.return.back}
+            </b>
           </p>
         </div>
 
@@ -87,4 +99,4 @@ class CreateTopic extends Component {
   }
 }
 
-export default CreateTopic;
+export default translate('translations')(CreateTopic);
