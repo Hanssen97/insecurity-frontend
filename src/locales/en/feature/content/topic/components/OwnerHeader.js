@@ -1,4 +1,4 @@
 export default {
-  post: "Lagt inn av ",
-  reply: "svarte "
+  post: "Posted by ",
+  reply: "Reply "
 }
