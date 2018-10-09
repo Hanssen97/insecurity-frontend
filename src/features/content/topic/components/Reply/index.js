@@ -37,7 +37,7 @@ class Reply extends PureComponent {
         <OwnerHeader
           type='post'
           owner={owner}
-          image='https://www.stickytiger.co.uk/user/products/U0026_Large_1_Inch_Circle_Punch.jpg'
+          image='media/User.jpg'
           date={date}
         />
 

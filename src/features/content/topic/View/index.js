@@ -61,7 +61,7 @@ class Topic extends Component {
     }
 
     let topic = this.props.content.topic;
-    
+
     let comments = topic.comments.edges.map((reply, key) => {
       return (
         <Reply
@@ -95,7 +95,7 @@ class Topic extends Component {
             <OwnerHeader
               type='post'
               owner={topic.owner.username}
-              image='https://www.stickytiger.co.uk/user/products/U0026_Large_1_Inch_Circle_Punch.jpg'
+              image='media/User.jpg'
               date={topic.timestamp}
             />
           </div>

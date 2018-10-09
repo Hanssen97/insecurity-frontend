@@ -44,7 +44,7 @@ class User extends Component {
           <img
             className="Avatar"
             alt=''
-            src="media/authBackground_low.jpg"
+            src="media/User.jpg"
           />
         </IconButton>
         <Menu

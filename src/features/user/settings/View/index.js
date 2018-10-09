@@ -31,7 +31,7 @@ class SettingsView extends Component {
     if (!this.props.session.user) {
       this.context.router.history.replace("/portal/login");
     }
-    
+
     this.getLocales();
   }
 
@@ -42,7 +42,7 @@ class SettingsView extends Component {
 
   changeEmail = (email, password) => {
     this.props.changeEmail(email, password);
-    
+
   }
 
   changePassword = (password, newPassword) => {
@@ -61,7 +61,7 @@ class SettingsView extends Component {
     });
   }
 
-  
+
 
 
   render() {
@@ -71,7 +71,7 @@ class SettingsView extends Component {
     return (
       <Paper className="SettingsView">
 
-        <img src="media/authBackground_low.jpg" alt={profilePicture}/>
+        <img src="media/User.jpg" alt={profilePicture}/>
 
         <div className="username">{username}</div>
 
