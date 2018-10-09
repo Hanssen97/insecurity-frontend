@@ -49,31 +49,37 @@ class SideBar extends PureComponent {
 
 
         </List>
-        <Divider />
-        <List
-          subheader={
-            <ListSubheader component="div" className='Subheader'>
-              Favorites
-            </ListSubheader>
-          }
-        >
+
+        {
+          this.props.isAuthenticated && (
+            <div>
+            <Divider />
+            <List
+              subheader={
+                <ListSubheader component="div" className='Subheader'>
+                  Favorites
+                </ListSubheader>
+              }
+            >
 
 
-          <ListItem
-            title="Music"
-            link='/Music'
-            onClick={e => this.context.router.history.push(e.currentTarget.id)}
-          />
+              <ListItem
+                title="Music"
+                link='/Music'
+                onClick={e => this.context.router.history.push(e.currentTarget.id)}
+              />
 
-          <ListItem
-            title="Programming Humor"
-            link='/Programming Humor'
-            onClick={e => this.context.router.history.push(e.currentTarget.id)}
-          />
+              <ListItem
+                title="Programming Humor"
+                link='/Programming Humor'
+                onClick={e => this.context.router.history.push(e.currentTarget.id)}
+              />
 
 
-        </List>
-
+            </List>
+            </div>
+          )
+        }
       </div>
     );
 

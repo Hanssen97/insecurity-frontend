@@ -43,7 +43,10 @@ class Reply extends PureComponent {
 
         <div className="Body">
             <Typography component="pre" multiline color='inherit'>{unWrapText(text)}</Typography>
-            <Typography component="p" onClick={this.props.onReply}><b>{this.texts.actions.reply}</b></Typography>
+            {
+              this.props.canReply &&
+              <Typography component="p" onClick={this.props.onReply}><b>{this.texts.actions.reply}</b></Typography>
+            }
         </div>
 
         <div className="Meta">

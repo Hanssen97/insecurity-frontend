@@ -42,7 +42,7 @@ class Home extends Component {
               <Grid key={i} item>
                 <Typography
                   className="Item"
-                  variant='title'
+                  variant='h5'
                   onClick={() => {
                     this.props.history.push('/'+category.node.id);
                   }}
@@ -60,7 +60,7 @@ class Home extends Component {
       <div className="Home">
         <div className="Header">
           <img src="media/teacup.gif" alt="" />
-          <Typography variant='display1'> {this.texts.title} </Typography>
+          <Typography variant='h4'> {this.texts.title} </Typography>
         </div>
 
         <Paper className="Categories">

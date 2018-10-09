@@ -27,9 +27,10 @@ const categoryActions = {
 }
 
 function mapStateToProps(state) {
-  const { content, feedback } = state;
+  const { content, session ,feedback } = state;
   return {
     content,
+    session,
     feedback
   }
 }

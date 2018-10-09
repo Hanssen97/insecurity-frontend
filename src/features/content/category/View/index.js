@@ -51,7 +51,7 @@ class CategoryView extends Component {
 
 
     let view = null;
-    let {content, feedback} = this.props;
+    let {content, session, feedback} = this.props;
 
     if (feedback.fetching && content.category.topics.length === 0) {
       view = (
@@ -61,7 +61,7 @@ class CategoryView extends Component {
       )
     } else {
       view = content.category.topics.map((topic, key) => {
-        return (
+        return (!topic) ? null : (
           <TopicPreview key={key}
             owner={topic.node.owner.username}
             date={topic.node.timestamp}
@@ -74,6 +74,7 @@ class CategoryView extends Component {
         )
       })
     }
+
     return (
 
       <Paper className="CategoryView">
@@ -83,11 +84,14 @@ class CategoryView extends Component {
           <h1 className="Title">{content.category.name}</h1>
 
           <div className="Actions">
-            <Tooltip className="Tooltip" title="Create new topic">
-              <IconButton onClick={() => this.props.history.push("/"+content.category.id+"/new")}>
-                <Icon color="inherit"> create </Icon>
-              </IconButton>
-            </Tooltip>
+            {
+              session.user &&
+                <Tooltip className="Tooltip" title="Create new topic">
+                  <IconButton onClick={() => this.props.history.push("/"+content.category.id+"/new")}>
+                    <Icon color="inherit"> create </Icon>
+                  </IconButton>
+                </Tooltip>
+            }
           </div>
         </div>
 
