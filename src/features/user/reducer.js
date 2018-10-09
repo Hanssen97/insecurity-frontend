@@ -24,21 +24,28 @@ export default function user(state = initialState, action) {
 
     case actiontypes.CHANGE_USERNAME_SUCCESS: {
       return {...state,
-        settings: action.settings,
+        user: action.user,
         info: action.info
       };
     }
 
     case actiontypes.CHANGE_EMAIL_SUCCESS: {
       return {...state,
-        settings: action.settings,
+        user: action.user,
         info: action.info
       };
     }
 
     case actiontypes.CHANGE_PASSWORD_SUCCESS: {
       return {...state,
-        settings: action.settings,
+        user: action.user,
+        info: action.info
+      };
+    }
+
+    case actiontypes.CHANGE_LANGUAGE_SUCCESS: {
+      return {...state,
+        user: action.user,
         info: action.info
       };
     }

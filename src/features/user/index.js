@@ -12,6 +12,7 @@ const mapDispatchToProps = {
   changeUsername: actions.changeUsername,
   changeEmail: actions.changeEmail,
   changePassword: actions.changePassword,
+  changeLanguage: actions.changeLanguage,
 }
 
 function mapStateToProps(state) {

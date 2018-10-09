@@ -48,7 +48,7 @@ class SettingsView extends Component {
   }
 
   changeLanguage = (language) => {
-    console.log(language)
+    this.props.changeLanguage(language);
   }
 
   render() {
@@ -60,13 +60,6 @@ class SettingsView extends Component {
         <img src="media/authBackground_low.jpg" alt=''/>
 
         <div className="Panels">
-          <TextPanel
-            title={this.texts.username.title}
-            description={this.texts.username.description}
-            placeholder={username}
-            saveText={this.texts.save}
-            onSubmit={value => this.changeUsername(value)}
-            />
 
           <TextPanel
             title={this.texts.email.title}

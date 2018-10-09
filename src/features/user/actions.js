@@ -18,6 +18,10 @@ export const actiontypes = {
   CHANGE_PASSWORD_REQUEST: 'CHANGE_PASSWORD_REQUEST',
   CHANGE_PASSWORD_SUCCESS: 'CHANGE_PASSWORD_SUCCESS',
   CHANGE_PASSWORD_FAILURE: 'CHANGE_PASSWORD_FAILURE',
+
+  CHANGE_LANGUAGE_REQUEST: 'CHANGE_LANGUAGE_REQUEST',
+  CHANGE_LANGUAGE_SUCCESS: 'CHANGE_LANGUAGE_SUCCESS',
+  CHANGE_LANGUAGE_FAILURE: 'CHANGE_LANGUAGE_FAILURE',
 }
 
 
@@ -40,6 +44,11 @@ export const actions = {
     type: actiontypes.CHANGE_PASSWORD_REQUEST,
     info: "changing password",
     password,
+  }),
+  changeLanguage: (language) => ({
+    type: actiontypes.CHANGE_LANGUAGE_REQUEST,
+    info: "changing language",
+    language,
   }),
 }
 
@@ -90,11 +99,21 @@ export const sagas = {
     })
   },
 
+  changeLanguage: function*(action) {
+    const data = yield call(API.changeLanguage, action.language);
+    // yield put({
+    //   type: actiontypes.CHANGE_LANGUAGE_SUCCESS,
+    //   info: 'language changed',
+    //   data,
+    // })
+  },
+
   actionWatcher: function*() {
     yield takeEvery(actiontypes.GET_SETTINGS_REQUEST, sagas.getSettings);
     yield takeEvery(actiontypes.CHANGE_USERNAME_REQUEST, sagas.changeUsername);
     yield takeEvery(actiontypes.CHANGE_EMAIL_REQUEST, sagas.changeEmail);
     yield takeEvery(actiontypes.CHANGE_PASSWORD_REQUEST, sagas.changePassword);
+    yield takeEvery(actiontypes.CHANGE_LANGUAGE_REQUEST, sagas.changeLanguage);
   }
 
 }

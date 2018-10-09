@@ -68,6 +68,12 @@ export const getSettings = () => {
   .catch(error => ({error}))
 }
 
+// export const changeLanguage = () => {
+//   return gotQL.query(address, queries.getUser(), options())
+//   .then(response => ({user: response.data.me}))
+//   .catch(error => ({error}))
+// }
+
 
 export const search = (query) => {
   return new Promise((resolve, reject) => {
@@ -130,6 +136,16 @@ export const changeEmail = (email) => {
     setTimeout(() => resolve({
       username: "morten",
       email,
+      profilePicture: "https://cdn0.tnwcdn.com/wp-content/blogs.dir/1/files/2018/05/Wyvern-programming-languages-in-one.jpg",
+    }), 100);
+  }).then(data => data)
+}
+
+export const changeLanguage = (language) => {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => resolve({
+      username: "morten",
+      language,
       profilePicture: "https://cdn0.tnwcdn.com/wp-content/blogs.dir/1/files/2018/05/Wyvern-programming-languages-in-one.jpg",
     }), 100);
   }).then(data => data)

@@ -26,7 +26,6 @@ class LanguagePanel extends Component {
   submit = () => {
     this.props.onSubmit(this.state.language);
     this.setState({
-      language: 'en',
       open: false,
     })
   }
