@@ -69,6 +69,7 @@ class CommentBox extends PureComponent {
 
           <textarea
             className="CommentInput"
+            autoFocus
             placeholder="write a comment..."
             onChange={e => this.setState({
               comment: e.target.value
