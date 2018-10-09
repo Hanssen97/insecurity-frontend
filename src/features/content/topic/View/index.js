@@ -11,6 +11,8 @@ import OwnerHeader from '../components/OwnerHeader';
 import Reply from '../components/Reply';
 import CommentBox from '../components/CommentBox';
 
+import {unWrapText} from '../../../../common/utils/text';
+
 
 import './index.min.css';
 
@@ -59,11 +61,8 @@ class Topic extends Component {
     }
 
     let topic = this.props.content.topic;
-    
-    console.log(topic.comments.edges)
 
     let comments = topic.comments.edges.map((reply, key) => {
-      console.log("LOLOLOLLL", reply);
       return (
         <Reply
           key={key}
@@ -103,8 +102,9 @@ class Topic extends Component {
           <Typography
             className="Description"
             variant="body1"
+            component="pre"
           >
-            {topic.body}
+            {unWrapText(topic.body)}
           </Typography>
 
           <div className="PostActions">

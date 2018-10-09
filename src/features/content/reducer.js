@@ -53,7 +53,7 @@ export default function content(state = initialState, action) {
 
       return {...state,
         info: action.info,
-        category: {...state.category, topics},
+        category: {...action.category, topics},
       };
     }
 

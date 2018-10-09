@@ -7,6 +7,8 @@ import Divider from '@material-ui/core/Divider';
 import ExpansionPanelActions from '@material-ui/core/ExpansionPanelActions';
 import Icon from '@material-ui/core/Icon';
 
+import {unWrapText} from '../../../../../common/utils/text';
+
 import './index.min.css';
 
 
@@ -45,7 +47,7 @@ class CommentBox extends PureComponent {
             variant='subheading'
             noWrap
           >
-            {"\" " + this.props.reply.body + " \""}
+            {"\" " + unWrapText(this.props.reply.body) + " \""}
           </Typography>
         </div>
 
@@ -67,6 +69,7 @@ class CommentBox extends PureComponent {
 
           <textarea
             className="CommentInput"
+            autoFocus
             placeholder="write a comment..."
             onChange={e => this.setState({
               comment: e.target.value

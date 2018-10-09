@@ -14,6 +14,7 @@ class CategoryView extends Component {
     this.state = {
       name: "",
       id: "",
+      fullPath: "",
     }
   }
 
