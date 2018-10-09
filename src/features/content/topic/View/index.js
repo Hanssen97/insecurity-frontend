@@ -30,9 +30,9 @@ class Topic extends Component {
   }
 
   postCommment = () => {
-    console.log(this.props);
-    console.log("posting comment");
-    this.props.postComment(this.state.id, "Test comment");
+
+    // Takes the topic id and the body of the comment
+    // this.props.postComment(this.state.id, "Test comment");
 
   }
 
@@ -61,7 +61,6 @@ class Topic extends Component {
     return (
       <Paper className="Topic">
         <div className="Post">
-          <button onClick={this.postCommment}>COMMENT</button>
           <div className="Header">
             <Typography
               className="Title"

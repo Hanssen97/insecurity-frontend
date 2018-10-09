@@ -138,6 +138,7 @@ export const sagas = {
   postComment: function*(action) {
     const data = yield call(API.createComment, action.topic, action.comment);
     console.log(data);
+    
     if (data.error || data.comment.error) {
       yield put({
         type: actiontypes.POST_COMMENT_FAILURE,
