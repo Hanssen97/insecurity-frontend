@@ -1,0 +1,13 @@
+@import "../../../../../common/styles.scss";
+
+
+.ConfirmDialog {
+  padding: 10px;
+
+  .CancelAction {
+    color: $red;
+  }
+  .SaveAction {
+    color: $primary;
+  }
+}

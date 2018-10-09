@@ -10,6 +10,8 @@ import ExpansionPanelActions from '@material-ui/core/ExpansionPanelActions';
 import Icon from '@material-ui/core/Icon';
 import Divider from '@material-ui/core/Divider';
 
+import ConfirmDialog from '../ConfirmDialog';
+
 import './index.min.css';
 
 
@@ -17,15 +19,17 @@ class TextPanel extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      text: ''
+      text: '',
+      confirm: false
     }
   }
 
-  submit = () => {
-    this.props.onSubmit(this.state.text);
+  submit = password => {
     this.setState({
-      text: ''
+      text: '',
+      confirm: false,
     })
+    this.props.onSubmit(this.state.text, password);
   }
 
   render() {
@@ -57,11 +61,22 @@ class TextPanel extends Component {
               size="small"
               className="SaveAction"
               color="inherit"
-              onClick={this.submit}
+              onClick={() => this.setState({
+                confirm: true
+              })}
             >
               {this.props.saveText}
             </Button>
           </ExpansionPanelActions>
+
+          <ConfirmDialog
+            open={this.state.confirm}
+            onConfirm={this.submit}
+            onCancel={() => this.setState({
+              confirm: false
+            })}
+          />
+
         </ExpansionPanel>
     )
   }
