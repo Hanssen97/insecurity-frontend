@@ -14,18 +14,18 @@ class CategoryPreview extends PureComponent {
       <div className="CategoryPreview" onClick={this.props.onClick}>
         <Typography
           className="name"
-          variant="headline"
+          variant="h5"
           >
           {name}
         </Typography>
 
         <Typography
           className="name"
-          variant="subheading"
+          variant="h4"
           >
           {description}
         </Typography>
-        
+
       </div>
     )
   }

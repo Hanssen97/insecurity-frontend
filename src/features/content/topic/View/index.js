@@ -87,7 +87,7 @@ class Topic extends Component {
           <div className="Header">
             <Typography
               className="Title"
-              variant="headline"
+              variant="h5"
             >
               {topic.title}
             </Typography>
@@ -102,7 +102,7 @@ class Topic extends Component {
 
           <Typography
             className="Description"
-            variant="body1"
+            variant="body2"
             component="pre"
           >
             {unWrapText(topic.body)}

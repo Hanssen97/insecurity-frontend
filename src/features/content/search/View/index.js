@@ -94,7 +94,7 @@ class SearchView extends Component {
       categoryTitle = (
         <Typography
           className="seperator"
-          variant="headline"
+          variant="h5"
           >
           Categories
         </Typography>
@@ -106,7 +106,7 @@ class SearchView extends Component {
       topicTitle = (
         <Typography
           className="seperator"
-          variant="headline"
+          variant="h5"
           >
           Topics
         </Typography>

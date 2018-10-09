@@ -37,14 +37,14 @@ class CommentBox extends PureComponent {
         <div className="ReplyHeader">
           <Typography
             className="Title"
-            variant='subheading'
+            variant='h4'
           >
             Reply to <b>{this.props.reply.owner.username}</b>
           </Typography>
 
           <Typography
             className="Quote"
-            variant='subheading'
+            variant='h4'
             noWrap
           >
             {"\" " + unWrapText(this.props.reply.body) + " \""}
@@ -81,7 +81,7 @@ class CommentBox extends PureComponent {
             <ExpansionPanelActions>
               <div className="CancelAction">
                 <Button className="Button" color="inherit" onClick={this.cancel}>
-                  <Typography variant='subheading' color='inherit'>
+                  <Typography variant='h4' color='inherit'>
                     Cancel
                   </Typography>
                   <Icon fontSize='small' color="inherit"> delete </Icon>
@@ -89,7 +89,7 @@ class CommentBox extends PureComponent {
               </div>
               <div className="SubmitAction">
                 <Button className="Button" color="inherit" onClick={this.submit}>
-                  <Typography variant='subheading' color='inherit'>
+                  <Typography variant='h4' color='inherit'>
                     Submit
                   </Typography>
                   <Icon fontSize='small' color="inherit"> send </Icon>

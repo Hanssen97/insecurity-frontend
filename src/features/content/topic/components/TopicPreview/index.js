@@ -38,7 +38,7 @@ class TopicPreview extends PureComponent {
             <div className="topic">
                 <Typography
                 className="title"
-                variant="headline"
+                variant="h5"
                 >
                     {title}
                 </Typography>

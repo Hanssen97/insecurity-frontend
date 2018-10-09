@@ -75,7 +75,7 @@ class CreateTopic extends Component {
       <Paper className="CreateTopic">
         <Typography
           className="Title"
-          variant='headline'
+          variant='h5'
           color='inherit'
           >
           {this.texts.title}
@@ -106,7 +106,7 @@ class CreateTopic extends Component {
             onClick={this.postTopic}
           >
             <Typography
-              variant='subheading'
+              variant='h4'
               color='inherit'
             >
               {this.texts.buttons.post}
