@@ -20,6 +20,13 @@ export default function session(state = initialState, action) {
       };
     }
 
+    case actiontypes.LOGOUT_SUCCESS: {
+      return {...state,
+        user: null,
+        info: action.info
+      };
+    }
+
     case actiontypes.REGISTER_SUCCESS: {
       return {...state,
         user: action.user,

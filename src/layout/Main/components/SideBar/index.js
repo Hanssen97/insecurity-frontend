@@ -8,7 +8,7 @@ import List from '@material-ui/core/List';
 import Divider from '@material-ui/core/Divider';
 import ListSubheader from '@material-ui/core/ListSubheader';
 
-import ListItem from './components/ListItem';
+import ListItem from '../components/ListItem';
 
 import './index.min.css';
 

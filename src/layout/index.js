@@ -7,6 +7,7 @@ import MainLayout from './Main/index';
 
 const mapDispatchToProps = {
   getUser: actions.getUser,
+  logout: actions.logout,
 }
 
 function mapStateToProps(state) {
@@ -21,4 +22,3 @@ export default {
   AuthLayout: withRouter(connect(mapStateToProps, mapDispatchToProps)(AuthLayout)),
   MainLayout: withRouter(connect(mapStateToProps, mapDispatchToProps)(MainLayout)),
 }
-

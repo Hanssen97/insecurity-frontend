@@ -12,7 +12,7 @@ import Icon from '@material-ui/core/Icon';
 import SearchBar from './components/SearchBar';
 import SideBar from './components/SideBar';
 import LoginDialog from './components/LoginDialog';
-
+import User from './components/User';
 
 import './index.min.css';
 
@@ -57,7 +57,7 @@ class MainLayout extends Component {
         {this.texts.navbar.login}
       </Button>
     ) : (
-      <h3>{user.username}</h3>
+      <User user={user} onLogout={this.props.logout}/>
     )
 
     return (

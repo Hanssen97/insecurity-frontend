@@ -1,0 +1,16 @@
+@import "../../../../common/styles.scss";
+
+.User {
+  display: flex;
+  justify-content: flex-end;
+
+  margin-left: 12px;
+
+
+  .Avatar {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background: hotpink;
+  }
+}

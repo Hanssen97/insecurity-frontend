@@ -32,12 +32,19 @@ class Register extends Component {
     if (this.props.session.user)  this.props.onLoggedIn();
   }
 
-
   componentDidMount() {
     this.checkLoggedIn();
   }
   componentDidUpdate() {
     this.checkLoggedIn();
+  }
+
+  registerUser() {
+    if (this.state.password === this.state.passwordRepeat) {
+      this.props.register(this.state.username, this.state.email, this.state.password);
+    } else {
+      console.log("Passwords are not matching");
+    }
   }
 
 

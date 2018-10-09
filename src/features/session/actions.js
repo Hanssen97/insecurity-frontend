@@ -6,6 +6,10 @@ export const actiontypes = {
   LOGIN_SUCCESS: 'LOGIN_SUCCESS',
   LOGIN_FAILURE: 'LOGIN_FAILURE',
 
+  LOGOUT_REQUEST: 'LOGOUT_REQUEST',
+  LOGOUT_SUCCESS: 'LOGOUT_SUCCESS',
+  LOGOUT_FAILURE: 'LOGOUT_FAILURE',
+
   REGISTER_REQUEST: 'REGISTER_REQUEST',
   REGISTER_SUCCESS: 'REGISTER_SUCCESS',
   REGISTER_FAILURE: 'REGISTER_FAILURE',
@@ -23,6 +27,10 @@ export const actions = {
     info: "Logging in...",
     username,
     password,
+  }),
+  logout: (username, password) => ({
+    type: actiontypes.LOGOUT_REQUEST,
+    info: "Logging out...",
   }),
   register: (username, email, password) => ({
     type: actiontypes.REGISTER_REQUEST,
@@ -54,6 +62,13 @@ export const sagas = {
         user: data.user,
       });
     }
+  },
+
+  logout: function*(action) {
+    localStorage.removeItem("token");
+    yield put({
+      type: actiontypes.LOGOUT_SUCCESS,
+    });
   },
 
   register: function*(action) {
@@ -93,6 +108,7 @@ export const sagas = {
 
   actionWatcher: function*() {
     yield takeLatest(actiontypes.LOGIN_REQUEST, sagas.login)
+    yield takeLatest(actiontypes.LOGOUT_REQUEST, sagas.logout)
     yield takeLatest(actiontypes.REGISTER_REQUEST, sagas.register)
     yield takeLatest(actiontypes.GET_USER_REQUEST, sagas.getUser)
   }
