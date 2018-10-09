@@ -3,9 +3,14 @@ import React, {Component} from 'react';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import CircularProgress from '@material-ui/core/CircularProgress';
+import Icon from '@material-ui/core/Icon';
+import IconButton from '@material-ui/core/IconButton';
+import Tooltip from '@material-ui/core/Tooltip';
 
 import OwnerHeader from '../components/OwnerHeader';
 import Reply from '../components/Reply';
+import CommentBox from '../components/CommentBox';
+
 
 import './index.min.css';
 
@@ -16,24 +21,32 @@ class Topic extends Component {
     document.title = 'Topic Page';
     this.state = {
       id: "",
+      commentBox: {
+        open: false,
+        reply: null
+      }
+
     }
   }
 
   componentDidMount() {
     const fullPath = this.props.location.pathname;
     const id = fullPath.replace(/ *\/[^)]*\/ */g, '');
-    this.props.getTopic(id);    
+    this.props.getTopic(id);
 
     this.setState({
       id,
     });
   }
 
-  postCommment = () => {
-
-    // Takes the topic id and the body of the comment
-    // this.props.postComment(this.state.id, "Test comment");
-
+  postCommment = comment => {
+    this.props.postComment(this.state.id, comment);
+    this.setState({
+      commentBox: {
+        open: false,
+        reply: null
+      }
+    })
   }
 
   render() {
@@ -50,6 +63,7 @@ class Topic extends Component {
     console.log(topic.comments.edges)
 
     let comments = topic.comments.edges.map((reply, key) => {
+      console.log("LOLOLOLLL", reply);
       return (
         <Reply
           key={key}
@@ -57,6 +71,12 @@ class Topic extends Component {
           likes={(!reply.node.likes) ? "0" : reply.node.likes}
           text={reply.node.body}
           date={reply.node.timestamp}
+          onReply={() => this.setState({
+            commentBox: {
+              open: true,
+              reply: reply.node
+            }
+          })}
         />
       );
     });
@@ -86,12 +106,41 @@ class Topic extends Component {
           >
             {topic.body}
           </Typography>
-        </div>
 
+          <div className="PostActions">
+            <Tooltip title="Comment on post">
+              <IconButton onClick={() => this.setState({
+                commentBox: {
+                  open: true,
+                  reply: null
+                }
+              })}>
+                <Icon color="inherit"> comment </Icon>
+              </IconButton>
+            </Tooltip>
+          </div>
+        </div>
 
         <div className="Replies">
           {comments}
         </div>
+
+
+
+        <CommentBox
+          open={this.state.commentBox.open}
+          reply={this.state.commentBox.reply}
+          onCancel={() => this.setState({
+            commentBox: {
+              open: false,
+              reply: null
+            }
+          })}
+          onSubmit={this.postCommment}
+        />
+
+
+
       </Paper>
     )
   }

@@ -32,7 +32,6 @@ const initialState = {
 export default function content(state = initialState, action) {
   switch(action.type) {
     case actiontypes.POST_TOPIC_SUCCESS: {
-      console.log("dalkdjalkdj alkd_", action.topic);
       return {...state,
         info: action.info,
         createTopic: action.topic,
@@ -51,7 +50,7 @@ export default function content(state = initialState, action) {
 
       let newTopics = action.topics.filter(topic => !(!!state.category.topics.find(t => t.id === topic.id)));
       let topics = [...state.category.topics, ...newTopics];
-      
+
       return {...state,
         info: action.info,
         category: {...state.category, topics},
@@ -66,9 +65,18 @@ export default function content(state = initialState, action) {
     }
 
     case actiontypes.POST_COMMENT_SUCCESS: {
+      // WTF ._.
       return {...state,
         info: action.info,
-                  
+        topic: {
+          ...state.topic,
+          comments: {
+            edges: [
+              ...state.topic.comments.edges,
+              { node: action.comment }
+            ]
+          }
+        }
       };
     }
 

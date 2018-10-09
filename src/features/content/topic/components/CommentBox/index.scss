@@ -1,0 +1,53 @@
+@import "../../../../../common/styles.scss";
+
+.CommentBox {
+  height: 500px;
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+
+  .ReplyHeader {
+    display: flex;
+    padding: 20px;
+
+    .Title {
+      font-size: 18px;
+      padding-right: 40px;
+    }
+
+    .Quote {
+      font-size: 18px;
+      color: $lightText;
+    }
+  }
+
+  .CommentInput {
+    flex: 1;
+    height: 100%;
+    padding: 20px;
+    font-size: 18px;
+    outline: none;
+    border: none;
+  }
+
+  .Actions {
+    padding-right: 10px;
+
+    .SubmitAction {
+      color: $primary;
+
+      * {
+        padding: 0 3px;
+      }
+    }
+
+    .CancelAction {
+      color: $red;
+
+      * {
+        padding: 0 3px;
+      }
+    }
+  }
+}
