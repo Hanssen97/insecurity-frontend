@@ -59,16 +59,18 @@ class SettingsView extends Component {
 
 
   render() {
-    const {email, profilePicture, settings} = this.props.user.user;
+    const { username, email, profilePicture, settings} = this.props.user.user;
     
 
     return (
       <Paper className="SettingsView">
 
-        <img src="media/authBackground_low.jpg" alt=''/>
+        <img src="media/authBackground_low.jpg" alt={profilePicture}/>
+
+        <div className="username">{username}</div>
 
         <div className="Panels">
-
+          
           <TextPanel
             title={this.texts.email.title}
             description={this.texts.email.description}

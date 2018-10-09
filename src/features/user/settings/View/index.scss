@@ -20,6 +20,12 @@
     box-shadow: 0 4px 12px rgba(0,0,0,0.6);
   }
 
+  .username {
+    font-size: 28px;
+    color: $primary;
+    padding: 10px;
+  }
+
   .Panels {
     display: flex;
     flex-direction: column;
