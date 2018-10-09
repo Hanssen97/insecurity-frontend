@@ -7,9 +7,6 @@ import { Router, Route, Redirect, Switch } from 'react-router-dom';
 
 import './App.min.css';
 
-// Import authentication
-import {authenticateUser} from './common/actions/authentication';
-
 // Import store
 import * as reducers from './store/reducers.js';
 import rootSaga from './store/sagas'
