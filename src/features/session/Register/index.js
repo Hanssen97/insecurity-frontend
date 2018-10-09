@@ -16,7 +16,7 @@ class Register extends Component {
       username: "",
       email: "",
       password: "",
-      passwordRepeat: ""
+      passwordRepeat: "",
     }
     document.title = 'Register';
 
@@ -35,18 +35,57 @@ class Register extends Component {
   componentDidMount() {
     this.checkLoggedIn();
   }
+
   componentDidUpdate() {
     this.getLocales();
     this.checkLoggedIn();
   }
 
-  registerUser() {
-    if (this.state.password === this.state.passwordRepeat) {
-      this.props.register(this.state.username, this.state.email, this.state.password);
-    } else {
-      console.log("Passwords are not matching");
+  registerUser(email, username, password, passwordRepeat) {
+    if (this.validator(email, username, password, passwordRepeat)) {
+      this.props.register(username, email, password);
     }
   }
+
+  validator = (email, username, password, passwordRepeat) => {
+    if (!this.validateEmail(email)) {
+      alert("Invalid email");
+      return false;
+    }
+    if (!this.validateUsername(username)) {
+      alert("invalid username");
+      return false;
+    }
+    if (!this.validatePassword(password, passwordRepeat)) {
+      alert("Passwords must match and be longer than 4 characters")
+      return false;
+    }
+    return true;
+  }
+  
+  validateEmail = (email) => {
+    var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    if (!re.test(String(email).toLowerCase())) {
+      return false;
+    } 
+    return true;
+  }
+
+  validateUsername = (username) => {
+    var re = /^[a-zA-Z0-9.\-_$@*!]{3,30}$/;
+    if (!re.test(String(username).toLowerCase())) {
+      return false;
+    }
+    return true;
+  }
+
+  validatePassword = (pass1, pass2) => {
+    if (pass1 !== pass2 || pass1.length < 4) {
+      return false;
+    } 
+    return true;
+  }
+
 
 
   render() {
@@ -57,6 +96,7 @@ class Register extends Component {
             <div>
               <TextField
                 label={this.texts.fields.username}
+                inputProps={{ max: 16 }}
                 margin="normal"
                 variant="outlined"
                 fullWidth
@@ -106,7 +146,7 @@ class Register extends Component {
 
           <div className="Submit">
             <Button
-              onClick={() => this.props.register(this.state.username, this.state.email, this.state.password)}
+              onClick={() => this.registerUser(this.state.email, this.state.username, this.state.password, this.state.passwordRepeat)}
               size="large"
             >
               {this.texts.registerButton}
