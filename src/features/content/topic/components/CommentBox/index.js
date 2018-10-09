@@ -22,7 +22,11 @@ class CommentBox extends PureComponent {
   }
 
   submit = () => {
-    this.props.onSubmit(this.state.comment);
+    if (this.props.reply) {
+      this.props.onSubmit(`@${this.props.reply.owner.username} ${this.state.comment}`)
+    } else {
+      this.props.onSubmit(this.state.comment);
+    }
     this.setState({comment: ""});
   }
 
