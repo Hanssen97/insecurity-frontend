@@ -149,6 +149,9 @@ export const createMessage = (topic, body) => {
             },
             fields: [
                 "body",
+                "timestamp",
+                nodes.owner,
+                nodes.likes,
                 nodes.error
             ],
         }
