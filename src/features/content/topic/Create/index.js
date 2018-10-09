@@ -106,7 +106,7 @@ class CreateTopic extends Component {
             onClick={this.postTopic}
           >
             <Typography
-              variant='h4'
+              variant='subtitle1'
               color='inherit'
             >
               {this.texts.buttons.post}

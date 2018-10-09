@@ -32,14 +32,14 @@ class OwnerHeader extends PureComponent {
     ) : (
       <p> {(owner) ? this.texts.post : ""} <b>{owner}</b></p>
     );
-      
+
     return (
       <div className="OwnerHeader">
         <img alt='' src={image} />
 
         <Typography
           className="Text"
-          variant="h4"
+          variant="subtitle1"
           >
           {text}
         </Typography>
@@ -47,7 +47,7 @@ class OwnerHeader extends PureComponent {
 
         <Typography
           className="Date"
-          variant="h4"
+          variant="subtitle1"
         >
           {(date) ? new Date(date).toLocaleString() : ""}
         </Typography>
