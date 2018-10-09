@@ -31,29 +31,24 @@ class SettingsView extends Component {
   }
 
 
-  changeUsername = (name) => {
-    this.props.changeUsername(name);
-  }
 
-  changeEmail = (email) => {
+
+  changeEmail = (email, password) => {
     this.props.changeEmail(email);
   }
 
-  changePassword = (pwd1, pwd2) => {
-    if (pwd1 === pwd2) {
-      this.props.changePassword(pwd1);
-    } else {
-      alert("Passwords doesnt match");
-    }
+  changePassword = (newPassword, password) => {
+    // do action
   }
 
-  changeLanguage = (language) => {
+  changeLanguage = language => {
     this.props.changeLanguage(language);
   }
 
+
   render() {
     const {username, email, profilePicture, settings} = this.props.user.user;
-    
+
     return (
       <Paper className="SettingsView">
 
@@ -66,22 +61,22 @@ class SettingsView extends Component {
             description={this.texts.email.description}
             placeholder={email}
             saveText={this.texts.save}
-            onSubmit={value => this.changeEmail(value)}
+            onSubmit={(value, password) => this.changeEmail(value, password)}
             />
 
           <PasswordPanel
             title={this.texts.password.title}
             description={this.texts.password.description}
             saveText={this.texts.save}
-            onSubmit={(pwd1, pwd2) => this.changePassword(pwd1, pwd2)}
+            onSubmit={(newPassword, password) => this.changePassword(newPassword, password)}
             />
 
-            <LanguagePanel
-              title="Language"
-              description="Change the language for this account"
-              saveText={this.texts.save}
-              onSubmit={(language) => this.changeLanguage(language)}
-            />
+          <LanguagePanel
+            title="Language"
+            description="Change the language for this account"
+            saveText={this.texts.save}
+            onSubmit={(language) => this.changeLanguage(language)}
+          />
 
         </div>
 

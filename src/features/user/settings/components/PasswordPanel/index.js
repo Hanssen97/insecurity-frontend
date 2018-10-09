@@ -10,6 +10,8 @@ import ExpansionPanelActions from '@material-ui/core/ExpansionPanelActions';
 import Icon from '@material-ui/core/Icon';
 import Divider from '@material-ui/core/Divider';
 
+import ConfirmDialog from '../ConfirmDialog';
+
 import './index.min.css';
 
 
@@ -18,16 +20,22 @@ class PasswordPanel extends Component {
     super(props);
     this.state = {
       password: '',
-      confirmation: ''
+      repeatPassword: '',
+      confirm: false,
     }
   }
 
-  submit = () => {
-    this.props.onSubmit(this.state.password, this.state.confirmation);
-    this.setState({
-      password: '',
-      confirmation: ''
-    })
+  submit = password => {
+    if (this.state.password === this.state.repeatPassword) {
+      this.props.onSubmit(this.state.text, password);
+      this.setState({
+        password: '',
+        repeatPassword: '',
+        confirm: false,
+      })
+    } else {
+      this.setState({ confirm: false })
+    }
   }
 
   render() {
@@ -57,8 +65,8 @@ class PasswordPanel extends Component {
               type="password"
               placeholder="Repeat password"
               disableUnderline
-              value={this.state.confirmation}
-              onChange={e => this.setState({confirmation: e.target.value})}
+              value={this.state.repeatPassword}
+              onChange={e => this.setState({repeatPassword: e.target.value})}
             />
 
           </ExpansionPanelDetails>
@@ -68,11 +76,20 @@ class PasswordPanel extends Component {
               size="small"
               className="SaveAction"
               color="inherit"
-              onClick={this.submit}
+              onClick={() => this.setState({
+                confirm: true
+              })}
             >
               {this.props.saveText}
             </Button>
           </ExpansionPanelActions>
+
+          <ConfirmDialog
+            open={this.state.confirm}
+            onConfirm={this.submit}
+            onCancel={() => this.setState({ confirm: false })}
+          />
+
         </ExpansionPanel>
     )
   }
