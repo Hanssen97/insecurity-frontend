@@ -22,15 +22,22 @@
 ---
 # Install guide
 
+
 ## Setting up the backend
+
+
 Pull the latest version of the [Server repo](https://github.com/klyve/forum-server)
 and follow the instructions provided in the readme of the repository
----
-## Setting up the frontend
- - Clone this repository
- - Clone the backend repository found at 
 
-### - Run `npm install` in the root folder to install dependencies
+
+## Setting up the frontend
+
+- Clone this repository
+
+- Clone the backend repository found at 
+
+- Run `npm install` in the root folder to install dependencies
+
 In the root folder create a file: `src/config.js` and put in the address in the form where the address is the ip adress for the the server that runs the backend repository. If ran locally it would be localhost. Port by default is `8080` in the [backend repository](https://github.com/klyve/forum-server).
 
 ```json
@@ -39,5 +46,6 @@ In the root folder create a file: `src/config.js` and put in the address in the 
 }
 ```
 
-#### - Run `npm start` in the root folder
-Navigate to http://localhost:3000 to view the application in the browser
+- Run `npm start` in the root folder
+
+- Navigate to http://localhost:3000 to view the application in the browser
