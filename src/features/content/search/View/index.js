@@ -64,29 +64,27 @@ class SearchView extends Component {
       )
     }
 
-
-
     let {searchResult, query} = this.props.content;
-
-    let categories = searchResult.categories.map((category, key) => {
+    
+    let categories = searchResult.category.edges.map((category, key) => {
       return (
         <CategoryPreview key={key}
-            name={category.name}
-            description={category.description}
-            onClick={() => this.props.history.push(`/${category.name}`)}
+            name={category.node.name}
+            description={category.node.description}
+            onClick={() => this.props.history.push(`/${category.node.id}`)}
           />
       );
     });
 
-    let topics = searchResult.topics.map((topic, key) => {
+    let topics = searchResult.topic.edges.map((topic, key) => {
       return (
         <TopicPreview key={key}
-            owner={topic.owner}
-            title={topic.title}
-            description={topic.description}
-            date={topic.date}
-            likes={topic.likes}
-            onClick={() => this.props.history.push(`/${topic.category}/${topic.title}`)}
+            owner={topic.node.owner.username}
+            title={topic.node.title}
+            description={topic.node.description}
+            date={topic.node.date}
+            likes={topic.node.likes}
+            onClick={() => this.props.history.push(`/${topic.node.category}/${topic.node.title}`)}
           />
       );
     });
@@ -117,7 +115,7 @@ class SearchView extends Component {
 
     return (
       <div className="container">
-        <h1 className="header">{this.texts.title} "{query}"</h1>
+        <h1 className="header">{this.texts.title} "{this.state.query}"</h1>
         <Paper className="SearchView">
           {topicTitle}
           {topics}

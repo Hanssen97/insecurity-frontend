@@ -111,7 +111,7 @@ export const sagas = {
         error: topics.error.message || topics.topics.error || category.error || category.category.error,
       });
     } else {
-      yield put({
+      yield put({ 
         type: actiontypes.GET_CATEGORY_SUCCESS,
         info: 'Registered user',
         topics: topics.topics.edges,
@@ -155,20 +155,21 @@ export const sagas = {
   },
 
   getSearchResult: function*(action) {
-    // const data = yield call(API.search, action.query);
-    // console.log(data);
-    // if (data.error || data.result.error) {
-    //   yield put({
-    //     type: actiontypes.GET_SEARCH_RESULT_FAILURE,
-    //     error: data.error.message || data.result.error,
-    //   });
-    // } else {
-    //   yield put({
-    //     type: actiontypes.GET_SEARCH_RESULT_SUCCESS,
-    //     info: 'Search completed',
-    //     searchResult: data.result,
-    //   });
-    // }
+    const res = yield call(API.search, action.query);
+    const data = res.result;
+    console.log(data)
+    if (data.error || data.search.error) {
+      yield put({
+        type: actiontypes.GET_SEARCH_RESULT_FAILURE,
+        error: data.error.message || data.search.error,
+      });
+    } else {
+      yield put({
+        type: actiontypes.GET_SEARCH_RESULT_SUCCESS,
+        info: 'Search completed',
+        searchResult: data.search,
+      });
+    }
   },
 
   actionWatcher: function*() {

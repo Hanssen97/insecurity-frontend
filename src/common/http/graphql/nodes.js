@@ -1,46 +1,4 @@
-export const settings = {
-    settings: {
-        fields: [
-            "language"
-        ]
-    }
-}
-
-export const categoryNode = {
-    node: {
-        fields: [
-            "id",
-            "name",
-        ]
-    }
-}
-
-export const category = {
-    category: {
-        fields: [
-            "id",
-            "name",
-        ]
-    }
-}
-
-export const categoryEdge = {
-    edges: {
-        fields: [
-            categoryNode
-        ]
-    }
-}
-
-export const error = {
-    error: {
-        fields: [
-            "error",
-            "message",
-            "statusCode",
-        ]
-    }
-}
+// -----------  User -----------
 
 export const owner = {
     owner: {
@@ -50,6 +8,24 @@ export const owner = {
     }
 }
 
+export const access = {
+    access: {
+        fields: [
+            "name",
+        ]
+    }
+}
+
+export const groups = {
+    groups: {
+        fields: [
+            "name",
+            access,
+        ]
+    }
+}
+
+// -----------  Topic -----------
 export const likes = {
     likes: {
         fields: [
@@ -57,6 +33,36 @@ export const likes = {
         ]
     }
 }
+
+export const topicNode = {
+    node: {
+        fields: [
+            "id",
+            "timestamp",
+            owner,
+            "body",
+            "title",
+        ]
+    }
+}
+
+export const topicEdges = {
+    edges: {
+        fields: [
+            topicNode,
+        ]
+    }
+}
+
+export const topicSearch = {
+    topic: {
+        fields: [
+            topicEdges,
+        ]
+    }
+}
+
+// -----------  Comment -----------
 
 export const commentNode = {
     node: {
@@ -85,47 +91,71 @@ export const comments = {
     }
 }
 
-export const topicNode = {
-    node: {
+// -----------  Settings -----------
+
+export const settings = {
+    settings: {
         fields: [
-            "id",
-            "timestamp",
-            owner,
-            "body",
-            "title",
+            "language"
         ]
     }
 }
 
-export const topicEdge = {
-    edge: {
+
+// -----------  Error -----------
+export const error = {
+    error: {
         fields: [
-            topicNode,
+            "error",
+            "message",
+            "statusCode",
         ]
     }
 }
-  
+
+
+
+// -----------  Category -----------
+
+export const categoryNode = {
+    node: {
+        fields: [
+            "id",
+            "name",
+        ]
+    }
+}
+
+export const category = {
+    category: {
+        fields: [
+            "id",
+            "name",
+        ]
+    }
+}
+
+
+export const categoryEdges = {
+    edges: {
+        fields: [
+            categoryNode,
+        ]
+    }
+}
+
+export const categorySearch = {
+    category: {
+        fields: [
+            categoryEdges,
+        ]
+    }
+}
+
 export const categoryTopics = {
     edges: {
         fields: [
             topicNode,
         ],
-    }
-}
-
-export const access = {
-    access: {
-        fields: [
-            "name",
-        ]
-    }
-}
-
-export const groups = {
-    groups: {
-        fields: [
-            "name",
-            access,
-        ]
     }
 }

@@ -23,8 +23,12 @@ const initialState = {
   },
   categories: [],
   searchResult: {
-    categories: [],
-    topics: [],
+    category: {
+      edges: [],
+    },
+    topic: {
+      edges: [],
+    },
   },
   info: "Post Topic",
 }
@@ -61,7 +65,6 @@ export default function content(state = initialState, action) {
     }
 
     case actiontypes.POST_COMMENT_SUCCESS: {
-      // WTF ._.
       return {...state,
         info: action.info,
         topic: {
@@ -77,10 +80,14 @@ export default function content(state = initialState, action) {
     }
 
     case actiontypes.GET_SEARCH_RESULT_SUCCESS: {
+      console.log("ACITION", action.searchResult)
       return {...state,
         info: action.info,
         query: action.query,
-        searchResult: action.searchResult,
+        searchResult: {
+          category: action.searchResult.category,
+          topic: action.searchResult.topic
+        },
       };
     }
 

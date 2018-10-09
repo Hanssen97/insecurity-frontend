@@ -62,7 +62,7 @@ export const getCategories = () => {
         operation: {
             name: "categories",
             fields: [
-                nodes.categoryEdge,
+                nodes.categoryEdges,
                 nodes.error,
             ]
         }
@@ -213,17 +213,17 @@ export const changeSettings = (settings) => {
     }
 }
 
-export const search = (query) => {
+export const search = (value) => {
     return {
         operation: {
             name: "search",
             args: {
-                query,
+                value,
             },
             fields: [
-                nodes.categoryEdge,
-                nodes.topicEdge,
-                nodes.error
+                nodes.categorySearch,
+                nodes.topicSearch,
+                nodes.error,
             ]
         }
     }
