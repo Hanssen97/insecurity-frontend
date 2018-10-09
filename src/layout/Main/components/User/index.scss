@@ -13,4 +13,15 @@
     border-radius: 50%;
     background: hotpink;
   }
+
+}
+
+.nameField {
+  outline: none;
+  user-select: none;
+
+  div {
+    padding: 5px 12px;
+    color: $primary;
+  }
 }

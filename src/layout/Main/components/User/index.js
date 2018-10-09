@@ -4,6 +4,9 @@ import PropTypes from 'prop-types';
 import IconButton from '@material-ui/core/IconButton';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
+import Divider from '@material-ui/core/Divider';
+import MuiListItem from '@material-ui/core/ListItem';
+import Icon from '@material-ui/core/Icon';
 
 import ListItem from '../components/ListItem';
 
@@ -50,6 +53,16 @@ class User extends Component {
           open={Boolean(anchorEl)}
           onClose={this.closeMenu}
         >
+          <MuiListItem
+            className="nameField"
+          >
+            <div>
+              {user.username}
+            </div>
+          </MuiListItem>
+
+          <Divider />
+
           <ListItem
             icon='settings'
             title="Settings"
