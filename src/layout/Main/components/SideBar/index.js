@@ -51,7 +51,7 @@ class SideBar extends PureComponent {
         </List>
 
         {
-          this.props.isAuthenticated && (
+          this.props.user && false && (
             <div>
             <Divider />
             <List

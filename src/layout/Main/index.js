@@ -110,7 +110,7 @@ class MainLayout extends Component {
 
           <SideBar
             open={this.state.showSidebar}
-            isAuthenticated={Boolean(user)}
+            user={user}
             onClose={() => this.setState({showSidebar: false})}
           />
 
