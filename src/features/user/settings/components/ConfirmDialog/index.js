@@ -34,6 +34,7 @@ class LanguagePanel extends PureComponent {
       <Dialog
           className="ConfirmDialog"
           open={this.props.open}
+          onClose={this.props.onCancel}
           aria-labelledby="alert-dialog-title"
           aria-describedby="alert-dialog-description"
         >
