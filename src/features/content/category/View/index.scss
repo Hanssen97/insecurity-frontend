@@ -12,12 +12,34 @@ $containerWidth: 90%;
   margin: 80px;
   padding-bottom: 40px;
 
-  .catTitle {
-    font-size: 30px;
-    font-weight: 500;
-    color: $primary;
-    padding: 20px;
-    padding-bottom: 40px;
+  .Header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+
+    .dummyDiv {
+      flex: 1;
+    }
+
+    .Title {
+      text-align: center;
+      flex: 1;
+      font-size: 30px;
+      font-weight: 500;
+      color: $primary;
+      padding: 20px;
+      padding-bottom: 40px;
+    }
+
+    .Actions {
+      flex: 1;
+      text-align: right;
+
+      .Tooltip {
+        margin: 0 20px;
+      }
+    }
   }
 
   .topics {

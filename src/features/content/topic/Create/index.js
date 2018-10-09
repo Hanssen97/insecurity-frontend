@@ -37,13 +37,14 @@ class CreateTopic extends Component {
   discardTopic = () => {
     if (window.confirm("Are you sure?")) {
       this.setState({title: "", description: ""});
+      this.context.router.history.goBack();
     }
   }
 
   componentDidMount() {
     const fullPath = this.props.location.pathname;
     const id = fullPath.replace("/", '').replace("/new", "");
-    this.setState({category: id});    
+    this.setState({category: id});
   }
 
   postTopic = () => {

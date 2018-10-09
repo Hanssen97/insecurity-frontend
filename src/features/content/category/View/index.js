@@ -3,6 +3,9 @@ import React, {Component} from 'react';
 import TopicPreview from '../../topic/components/TopicPreview';
 import Paper from '@material-ui/core/Paper';
 import CircularProgress from '@material-ui/core/CircularProgress';
+import Tooltip from '@material-ui/core/Tooltip';
+import IconButton from '@material-ui/core/IconButton';
+import Icon from '@material-ui/core/Icon';
 
 import './index.min.css';
 
@@ -69,7 +72,20 @@ class CategoryView extends Component {
     return (
 
       <Paper className="CategoryView">
-          <h1 className="catTitle">{content.category.name}</h1>
+        <div className="Header">
+          <div className="dummyDiv"></div>
+
+          <h1 className="Title">{content.category.name}</h1>
+
+          <div className="Actions">
+            <Tooltip className="Tooltip" title="Create new topic">
+              <IconButton onClick={() => this.props.history.push("/"+content.category.id+"/new")}>
+                <Icon color="inherit"> create </Icon>
+              </IconButton>
+            </Tooltip>
+          </div>
+        </div>
+
           <div className="topics">
             {view}
           </div>
