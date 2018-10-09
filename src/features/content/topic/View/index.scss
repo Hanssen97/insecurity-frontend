@@ -22,7 +22,6 @@ $containerWidth: 90%;
 
   .Post {
     width: $containerWidth;
-    padding: 50px;
 
     box-shadow: 0 2px 0 #eee;
 
@@ -30,6 +29,7 @@ $containerWidth: 90%;
       display: flex;
       justify-content: space-between;
       align-items: center;
+      padding-top: 50px;
       padding-bottom: 25px;
 
       .Title {
@@ -39,7 +39,14 @@ $containerWidth: 90%;
 
     .Description {
       font-size: 18px;
+      padding-bottom: 15px;
     }
+  }
+
+  .PostActions {
+    display: flex;
+    justify-content: flex-end;
+    color: $lightText
   }
 
 
