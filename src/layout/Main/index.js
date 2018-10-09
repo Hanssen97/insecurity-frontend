@@ -46,6 +46,20 @@ class MainLayout extends Component {
 
 
   render() {
+
+    let { user } = this.props.session;
+
+    let avatar = (!user) ? (
+      <Button
+        color="inherit"
+        onClick={() => this.setState({showLogin: true})}
+      >
+        {this.texts.navbar.login}
+      </Button>
+    ) : (
+      <h3>{user.username}</h3>
+    )
+
     return (
       <div className="MainLayout">
           <AppBar position="fixed" className="AppBar">
@@ -66,15 +80,13 @@ class MainLayout extends Component {
               </div>
 
               <div className="User">
-                <Button
-                  color="inherit"
-                  onClick={() => this.setState({showLogin: true})}
-                >
-                  {this.texts.navbar.login}
-                </Button>
+
+                {avatar}
+
               </div>
 
             </Toolbar>
+
 
             <LoginDialog
                 open={this.state.showLogin}
