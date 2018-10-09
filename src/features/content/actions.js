@@ -104,6 +104,7 @@ export const sagas = {
   getCategory: function*(action) {
     const category = yield call(API.getCategory, action.id);
     const topics = yield call(API.getTopics, action.id);
+
     if (topics.error || topics.topics.error || category.error || category.category.error) {
       yield put({
         type: actiontypes.GET_CATEGORY_FAILURE,
@@ -114,7 +115,7 @@ export const sagas = {
         type: actiontypes.GET_CATEGORY_SUCCESS,
         info: 'Registered user',
         topics: topics.topics.edges,
-        name: category.name,
+        category: category.category,
       });
     }
   },
