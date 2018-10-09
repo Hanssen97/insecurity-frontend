@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import PropTypes from 'prop-types';
 
 import { translate } from 'react-i18next';
 
@@ -6,7 +7,6 @@ import Typography from '@material-ui/core/Typography';
 import Icon from '@material-ui/core/Icon';
 import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
-import PropTypes from 'prop-types';
 
 
 import './index.min.css';
@@ -26,7 +26,17 @@ class CreateTopic extends Component {
   }
 
   componentDidUpdate() {
+    if (!this.props.session.user) {
+      this.context.router.history.replace("/portal/login");
+    }
+
     this.getLocales();
+  }
+
+  componentDidMount() {
+    const fullPath = this.props.location.pathname;
+    const id = fullPath.replace("/", '').replace("/new", "");
+    this.setState({category: id});
   }
 
   getLocales = () => {
@@ -39,12 +49,6 @@ class CreateTopic extends Component {
       this.setState({title: "", description: ""});
       this.context.router.history.goBack();
     }
-  }
-
-  componentDidMount() {
-    const fullPath = this.props.location.pathname;
-    const id = fullPath.replace("/", '').replace("/new", "");
-    this.setState({category: id});
   }
 
   postTopic = () => {

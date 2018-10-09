@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import PropTypes from 'prop-types';
 
 import { translate } from 'react-i18next';
 
@@ -27,6 +28,10 @@ class SettingsView extends Component {
 
 
   componentDidUpdate() {
+    if (!this.props.session.user) {
+      this.context.router.history.replace("/portal/login");
+    }
+    
     this.getLocales();
   }
 
@@ -50,7 +55,7 @@ class SettingsView extends Component {
     if (language === "no") {
       language = "nb-NO";
     }
-    
+
     this.props.i18n.changeLanguage(language, (err, t) => {
       if (err) return console.log('something went wrong loading', err);
       t(language);
@@ -60,7 +65,7 @@ class SettingsView extends Component {
 
   render() {
     const { username, email, profilePicture, settings} = this.props.user.user;
-    
+
 
     return (
       <Paper className="SettingsView">
@@ -70,7 +75,7 @@ class SettingsView extends Component {
         <div className="username">{username}</div>
 
         <div className="Panels">
-          
+
           <TextPanel
             title={this.texts.email.title}
             description={this.texts.email.description}
@@ -102,6 +107,10 @@ class SettingsView extends Component {
   }
 }
 
+
+SettingsView.contextTypes = {
+  router: PropTypes.object,
+}
 
 
 export default translate('translations')(SettingsView);

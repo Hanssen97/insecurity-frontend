@@ -70,6 +70,7 @@ class Topic extends Component {
           likes={(!reply.node.likes) ? "0" : reply.node.likes}
           text={reply.node.body}
           date={reply.node.timestamp}
+          canReply={Boolean(this.props.session.user)}
           onReply={() => this.setState({
             commentBox: {
               open: true,
@@ -108,16 +109,19 @@ class Topic extends Component {
           </Typography>
 
           <div className="PostActions">
-            <Tooltip title="Comment on post">
-              <IconButton onClick={() => this.setState({
-                commentBox: {
-                  open: true,
-                  reply: null
-                }
-              })}>
-                <Icon color="inherit"> comment </Icon>
-              </IconButton>
-            </Tooltip>
+            {
+              this.props.session.user &&
+                <Tooltip title="Comment on post">
+                  <IconButton onClick={() => this.setState({
+                      commentBox: {
+                        open: true,
+                        reply: null
+                      }
+                    })}>
+                    <Icon color="inherit"> comment </Icon>
+                  </IconButton>
+                </Tooltip>
+            }
           </div>
         </div>
 
