@@ -1,7 +1,11 @@
 import { actiontypes } from './actions';
 
 const initialState = {
+  createTopic: {
+    id: "",
+  },
   topic: {
+    id: "",
     title: "",
     description: "",
     owner: {
@@ -28,10 +32,10 @@ const initialState = {
 export default function content(state = initialState, action) {
   switch(action.type) {
     case actiontypes.POST_TOPIC_SUCCESS: {
+      console.log("dalkdjalkdj alkd_", action.topic);
       return {...state,
         info: action.info,
-        redirect: action.redirect,
-        topic: action.topic,
+        createTopic: action.topic,
       };
     }
 
@@ -39,6 +43,7 @@ export default function content(state = initialState, action) {
       return {...state,
         info: action.info,
         topic: action.topic,
+        createTopic: {id: ""},
       };
     }
 

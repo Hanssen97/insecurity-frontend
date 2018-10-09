@@ -40,22 +40,6 @@ const store = createStore(
 sagaMiddleware.run(rootSaga);
 
 
-// function View({component: Component, ...rest}) {
-//   return (
-//     <Route {...rest} render={renderProps => (
-//       authenticateUser(rest.level, store, history) ? (
-//         <Component { ...renderProps } />
-//       ) : (
-//         <Redirect to={{
-//           pathname: rest.redirect || '/',
-//           state: {from: renderProps.location}
-//         }} />
-//       )
-//     )}/>
-//   )
-// }
-
-
 class App extends Component {
   render() {
     return (

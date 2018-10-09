@@ -99,8 +99,21 @@ export const getTopics = (category) => {
 }
 
 
-export const createTopic = () => {
-
+export const createTopic = (category, title, body) => {
+    return {
+        operation: {
+            name: "createTopic",
+            args: {
+                category,
+                title,
+                body,
+            },
+            fields: [
+                "id",
+                nodes.error,
+            ]
+        }
+    }
 }
 
 export const getTopic = (id) => {

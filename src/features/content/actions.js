@@ -27,10 +27,12 @@ export const actiontypes = {
 
 
 export const actions = {
-  postTopic: (topic) => ({
+  postTopic: (category, title, body) => ({
     type: actiontypes.POST_TOPIC_REQUEST,
     info: "posting topic...",
-    topic,
+    category,
+    title,
+    body,
   }),
   getTopic: (topic) => ({
     type: actiontypes.GET_TOPIC_REQUEST,
@@ -55,13 +57,20 @@ export const actions = {
 
 export const sagas = {
   postTopic: function*(action) {
-    const redirect = "topic/topicIdFromBackend";
-    yield put({
-      type: actiontypes.POST_TOPIC_SUCCESS,
-      info: 'topic posted',
-      topic: action.topic,
-      redirect,
-    })
+    const data = yield call(API.createTopic, action.category, action.title, action.body);
+    console.log(data);
+    if (data.error || data.topic.id.error) {
+      yield put({
+        type: actiontypes.POST_TOPIC_FAILURE,
+        error: data.error.message || data.topic.id.error,
+      });
+    } else {
+      yield put({
+        type: actiontypes.POST_TOPIC_SUCCESS,
+        info: 'Fetched topic',
+        topic: data.topic,
+      });
+    }
   },
 
   getTopic: function*(action) {

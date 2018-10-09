@@ -6,6 +6,7 @@ import Typography from '@material-ui/core/Typography';
 import Icon from '@material-ui/core/Icon';
 import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
+import PropTypes from 'prop-types';
 
 
 import './index.min.css';
@@ -17,7 +18,8 @@ class CreateTopic extends Component {
     document.title = 'Create Topic';
     this.state = {
       title: "",
-      description: ""
+      description: "",
+      category: "",
     }
 
     this.getLocales();
@@ -34,14 +36,32 @@ class CreateTopic extends Component {
     }
   }
 
+  componentDidMount() {
+    const fullPath = this.props.location.pathname;
+    const id = fullPath.replace("/", '').replace("/new", "");
+    this.setState({category: id});    
+  }
+
   postTopic = () => {
-    this.props.postTopic({
-      title: this.state.title,
-      description: this.state.description
-    });
+    this.props.postTopic(
+      this.state.category,
+      this.state.title,
+      this.state.description,
+    );
+  }
+
+  handleRedirect = () => {
+    if (this.props.content.createTopic.id !== "") {
+      let path = this.props.content.createTopic.id;
+      this.context.router.history.replace(path);
+    }
   }
 
   render() {
+
+    this.handleRedirect();
+
+
     return (
       <Paper className="CreateTopic">
         <Typography
@@ -51,8 +71,6 @@ class CreateTopic extends Component {
           >
           {this.texts.title}
         </Typography>
-
-
 
 
         <Paper className="TitleInput">
@@ -97,6 +115,10 @@ class CreateTopic extends Component {
       </Paper>
     )
   }
+}
+
+CreateTopic.contextTypes = {
+  router: PropTypes.object,
 }
 
 export default translate('translations')(CreateTopic);

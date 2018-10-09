@@ -56,6 +56,12 @@ export const getTopic = (id) => {
   .catch(error => ({error}))
 }
 
+export const createTopic = (category, title, body) => {
+  return gotQL.mutation(address, queries.createTopic(category, title, body), options())
+  .then(response => ({topic: response.data.createTopic}))
+  .catch(error => ({error}))
+}
+
 
 export const search = (query) => {
   return new Promise((resolve, reject) => {

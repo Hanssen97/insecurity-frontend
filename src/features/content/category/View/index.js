@@ -66,6 +66,7 @@ class CategoryView extends Component {
       })
     }
     return (
+
       <Paper className="CategoryView">
           <h1 className="catTitle">{content.category.name}</h1>
           <div className="topics">

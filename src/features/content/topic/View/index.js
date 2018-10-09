@@ -24,6 +24,8 @@ class Topic extends Component {
     const id = fullPath.replace(/ *\/[^)]*\/ */g, '');
     this.props.getTopic(id);
 
+    
+
     this.setState({
       id,
     });
