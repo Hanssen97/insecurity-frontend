@@ -157,7 +157,7 @@ export const sagas = {
   getSearchResult: function*(action) {
     const res = yield call(API.search, action.query);
     const data = res.result;
-    console.log(data)
+
     if (data.error || data.search.error) {
       yield put({
         type: actiontypes.GET_SEARCH_RESULT_FAILURE,

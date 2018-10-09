@@ -37,8 +37,6 @@ class CategoryView extends Component {
     const id = fullPath.replace(/[/]/g, '');
     this.props.getCategory(id);
     
-    console.log("ID:",id)
-    
     this.setState({
       id,
       fullPath,

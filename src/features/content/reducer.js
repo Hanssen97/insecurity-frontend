@@ -80,7 +80,6 @@ export default function content(state = initialState, action) {
     }
 
     case actiontypes.GET_SEARCH_RESULT_SUCCESS: {
-      console.log("ACITION", action.searchResult)
       return {...state,
         info: action.info,
         query: action.query,

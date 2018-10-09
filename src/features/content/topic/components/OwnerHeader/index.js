@@ -30,9 +30,9 @@ class OwnerHeader extends PureComponent {
     let text = (type === 'reply') ? (
       <p><b>{owner}</b> {this.texts.reply} <b>{repliedTo}</b></p>
     ) : (
-      <p> {this.texts.post} <b>{owner}</b></p>
+      <p> {(owner) ? this.texts.post : ""} <b>{owner}</b></p>
     );
-
+      
     return (
       <div className="OwnerHeader">
         <img alt='' src={image} />
@@ -49,7 +49,7 @@ class OwnerHeader extends PureComponent {
           className="Date"
           variant="h4"
         >
-          {new Date(date).toLocaleString()}
+          {(date) ? new Date(date).toLocaleString() : ""}
         </Typography>
 
 

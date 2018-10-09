@@ -76,15 +76,21 @@ class SearchView extends Component {
       );
     });
 
+    const valid = (item) => {
+      if (item !== null || item !== 'undefined') return item;
+      return "";
+    }
+
     let topics = searchResult.topic.edges.map((topic, key) => {
+      const {owner, body, date, likes, category, title} = topic.node;
       return (
         <TopicPreview key={key}
-            owner={topic.node.owner.username}
-            title={topic.node.title}
-            description={topic.node.description}
-            date={topic.node.date}
-            likes={topic.node.likes}
-            onClick={() => this.props.history.push(`/${topic.node.category}/${topic.node.title}`)}
+            owner={(owner) ? owner.username: ""}
+            title={title}
+            description={body}
+            date={date}
+            likes={likes}
+            onClick={() => this.props.history.push(`/${category}/${title}`)}
           />
       );
     });

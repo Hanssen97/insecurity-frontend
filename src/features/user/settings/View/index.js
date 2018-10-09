@@ -41,12 +41,11 @@ class SettingsView extends Component {
   }
 
   changeEmail = (email, password) => {
-    console.log(password);
     this.props.changeEmail(email, password);
+    
   }
 
   changePassword = (password, newPassword) => {
-    console.log("PASSSSWOORROROOD");
     this.props.changePassword(password, newPassword);
   }
 
@@ -57,10 +56,12 @@ class SettingsView extends Component {
     }
 
     this.props.i18n.changeLanguage(language, (err, t) => {
-      if (err) return console.log('something went wrong loading', err);
+      if (err) return console.error('Error when changing language:', err);
       t(language);
     });
   }
+
+  
 
 
   render() {

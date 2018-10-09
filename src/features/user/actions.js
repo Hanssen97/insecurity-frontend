@@ -90,7 +90,6 @@ export const sagas = {
   },
 
   changePassword: function*(action) {
-    console.log(action);
     const res = yield call(API.changePassword, action.password, action.newPassword);
     const data = res.settings;
     
@@ -116,7 +115,7 @@ export const sagas = {
   changeLanguage: function*(action) {
     const res = yield call(API.changeLanguage, action.language);
     const data = res.settings;
-    console.log(data.changeSettings);
+
     if (data.error || data.changeSettings.error) {
       yield put({
         type: actiontypes.GET_SETTINGS_FAILURE,

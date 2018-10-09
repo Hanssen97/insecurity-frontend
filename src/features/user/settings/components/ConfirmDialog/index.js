@@ -41,7 +41,7 @@ class LanguagePanel extends PureComponent {
           <DialogTitle id="alert-dialog-title"> Confirm with password </DialogTitle>
           <DialogContent>
             <Input
-              type="email"
+              type="password"
               fullWidth
               placeholder="password"
               disableUnderline

@@ -29,7 +29,18 @@ class TextPanel extends Component {
       text: '',
       confirm: false,
     })
+
     this.props.onSubmit(this.state.text, password);
+  }
+
+
+
+  validateEmail = (email) => {
+    var re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    if (!re.test(String(email).toLowerCase())) {
+      return false;
+    } 
+    return true;
   }
 
   render() {
@@ -61,9 +72,15 @@ class TextPanel extends Component {
               size="small"
               className="SaveAction"
               color="inherit"
-              onClick={() => this.setState({
-                confirm: true
-              })}
+              onClick={() => {
+                if (this.validateEmail(this.state.text)) {
+                  this.setState({
+                    confirm: true
+                  })
+                } else {
+                  alert("Invalid email")
+                }
+              }}
             >
               {this.props.saveText}
             </Button>

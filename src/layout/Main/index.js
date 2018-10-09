@@ -39,7 +39,7 @@ class MainLayout extends Component {
     if (this.props.i18n.language === language) return;
 
     this.props.i18n.changeLanguage(language, (err, t) => {
-      if (err) return console.log('something went wrong loading', err);
+      if (err) return console.err('Error when changing language', err);
     });
   }
 
