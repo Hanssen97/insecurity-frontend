@@ -88,44 +88,14 @@ export const changePassword = (password, newPassword) => {
 
 export const changeLanguage = (value) => {
   const language = `{\\"language\\": \\"${value}\\"}`;
-  
+   
   return gotQL.mutation(address, queries.changeSettings(language), options())
   .then(response => ({settings: response.data}))
   .catch(error => ({error}))
 }
 
-
 export const search = (query) => {
-  return new Promise((resolve, reject) => {
-    setTimeout(() => resolve({
-      categories: [
-        {
-          name: "JavaScript",
-          description: "JavaScript nerds, assemble!!",
-        },
-        {
-          name: "Assembly",
-          description: "FML",
-        },
-      ],
-      topics: [
-        {
-          title: "Long title for forum. lorem lorem lorem etc",
-          description: "Long question for forum. Lorem Ipsum dolor sit amet etc..... ",
-          owner: "morten",
-          date: "12.12.2018",
-          likes: "2",
-          category: "progamming",
-        },
-        {
-          title: "Long title for forum. lorem lorem lorem etc",
-          description: "Long question for forum. Lorem Ipsum dolor sit amet etc..... ",
-          owner: "morten",
-          date: "12.12.2018",
-          likes: "12",
-          category: "progamming",
-        }
-      ]
-    }), 1000);
-  }).then(data => data)
+  return gotQL.query(address, queries.search(query), options())
+  .then(response => ({result: response.data}))
+  .catch(error => ({error}))
 }

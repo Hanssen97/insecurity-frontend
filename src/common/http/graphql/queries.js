@@ -158,6 +158,8 @@ export const createMessage = (topic, body) => {
     }
 }
 
+
+
 export const changeEmail = (email, password) => {
     return {
         operation: {
@@ -207,6 +209,22 @@ export const changeSettings = (settings) => {
                 nodes.settings,
                 nodes.error
             ],
+        }
+    }
+}
+
+export const search = (query) => {
+    return {
+        operation: {
+            name: "search",
+            args: {
+                query,
+            },
+            fields: [
+                nodes.categoryEdge,
+                nodes.topicEdge,
+                nodes.error
+            ]
         }
     }
 }

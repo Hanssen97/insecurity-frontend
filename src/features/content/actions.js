@@ -155,13 +155,20 @@ export const sagas = {
   },
 
   getSearchResult: function*(action) {
-    const searchResult = yield call(API.search, action.query);
-    yield put({
-      type: actiontypes.GET_SEARCH_RESULT_SUCCESS,
-      info: 'Search completed',
-      query: action.query,
-      searchResult,
-    })
+    // const data = yield call(API.search, action.query);
+    // console.log(data);
+    // if (data.error || data.result.error) {
+    //   yield put({
+    //     type: actiontypes.GET_SEARCH_RESULT_FAILURE,
+    //     error: data.error.message || data.result.error,
+    //   });
+    // } else {
+    //   yield put({
+    //     type: actiontypes.GET_SEARCH_RESULT_SUCCESS,
+    //     info: 'Search completed',
+    //     searchResult: data.result,
+    //   });
+    // }
   },
 
   actionWatcher: function*() {

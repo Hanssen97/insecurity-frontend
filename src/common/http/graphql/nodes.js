@@ -96,6 +96,14 @@ export const topicNode = {
         ]
     }
 }
+
+export const topicEdge = {
+    edge: {
+        fields: [
+            topicNode,
+        ]
+    }
+}
   
 export const categoryTopics = {
     edges: {

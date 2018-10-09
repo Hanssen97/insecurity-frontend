@@ -19,6 +19,7 @@ class CategoryView extends Component {
       id: "",
       fullPath: "",
     }
+
   }
 
   componentDidMount() {
@@ -35,7 +36,9 @@ class CategoryView extends Component {
     const fullPath = this.props.location.pathname;
     const id = fullPath.replace(/[/]/g, '');
     this.props.getCategory(id);
-
+    
+    console.log("ID:",id)
+    
     this.setState({
       id,
       fullPath,
@@ -45,6 +48,8 @@ class CategoryView extends Component {
 
 
   render() {
+
+
     let view = null;
     let {content, feedback} = this.props;
 
