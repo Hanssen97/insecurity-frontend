@@ -10,26 +10,34 @@
 * **Jørgen G Bakløkken** - [Bzerkk](https://github.com/Bzerkk)
 
 ---
+
+# Prerequisites
+
+### NodeJS
+[NodeJS](https://nodejs.org/en/) is a JavaScript run-time environment which can executes JavaScript outside the browser. 
+
+## NpmJS
+[Node Package Manager](https://www.npmjs.com/) is a package manager for NodeJS which structures packages and dependencies in out project.
+
+---
 # Install guide
 
 ## Setting up the backend
-pull the latest version of the
-[Server repo](https://github.com/klyve/forum-server)
+Pull the latest version of the [Server repo](https://github.com/klyve/forum-server)
 and follow the instructions provided in the readme of the repository
-
 ---
 ## Setting up the frontend
-to get started, navigate to the root directory and run
+ - Clone this repository
+ - Clone the backend repository found at 
 
-### `npm install`
-create the file `src/config.js` and put in the adress in the form
+### - Run `npm install` in the root folder to install dependencies
+In the root folder create a file: `src/config.js` and put in the address in the form where the address is the ip adress for the the server that runs the backend repository. If ran locally it would be localhost. Port by default is `8080` in the [backend repository](https://github.com/klyve/forum-server).
+
 ```json
 {
   "SERVER_ADDRESS" : "http://adress:port/api/graphql"
 }
 ```
 
-do
-#### `npm start`
-and navigate to http://localhost:3000
-to view it in the browser
+#### - Run `npm start` in the root folder
+Navigate to http://localhost:3000 to view the application in the browser
