@@ -6,6 +6,8 @@ import { translate } from 'react-i18next';
 import Typography from '@material-ui/core/Typography';
 import OwnerHeader from '../OwnerHeader/index';
 
+import {unWrapText} from '../../../../../common/utils/text';
+
 
 import './index.min.css';
 
@@ -44,7 +46,7 @@ class TopicPreview extends PureComponent {
                 <Typography
                 className="description"
                 >
-                    {description}
+                    {unWrapText(description)}
                 </Typography>
             </div>
 

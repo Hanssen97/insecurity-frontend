@@ -40,6 +40,8 @@ $containerWidth: 90%;
     .Description {
       font-size: 18px;
       padding-bottom: 15px;
+      word-wrap: normal;
+      white-space: pre-wrap;
     }
   }
 

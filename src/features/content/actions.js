@@ -2,6 +2,8 @@ import { put, call, takeEvery, takeLatest } from 'redux-saga/effects'
 
 import * as API from '../../common/http/api/API';
 
+import {wrapText} from '../../common/utils/text';
+
 
 export const actiontypes = {
   POST_TOPIC_REQUEST: 'POST_TOPIC_REQUEST',
@@ -27,7 +29,6 @@ export const actiontypes = {
   POST_COMMENT_REQUEST: 'POST_COMMENT_REQUEST',
   POST_COMMENT_SUCCESS: 'POST_COMMENT_SUCCESS',
   POST_COMMENT_FAILURE: 'POST_COMMENT_FAILURE',
-
 }
 
 
@@ -68,8 +69,7 @@ export const actions = {
 
 export const sagas = {
   postTopic: function*(action) {
-    const data = yield call(API.createTopic, action.category, action.title, action.body);
-    console.log(data);
+    const data = yield call(API.createTopic, action.category, action.title, wrapText(action.body));
     if (data.error || data.topic.id.error) {
       yield put({
         type: actiontypes.POST_TOPIC_FAILURE,
@@ -85,7 +85,8 @@ export const sagas = {
   },
 
   getTopic: function*(action) {
-    const data = yield call(API.getTopic, action.topic);
+    let data = yield call(API.getTopic, action.topic);
+
     if (data.error || data.topic.error) {
       yield put({
         type: actiontypes.GET_TOPIC_FAILURE,
@@ -136,9 +137,8 @@ export const sagas = {
   },
 
   postComment: function*(action) {
-    const data = yield call(API.createComment, action.topic, action.comment);
-    console.log(data);
-    
+    const data = yield call(API.createComment, action.topic, wrapText(action.comment));
+
     if (data.error || data.comment.error) {
       yield put({
         type: actiontypes.POST_COMMENT_FAILURE,

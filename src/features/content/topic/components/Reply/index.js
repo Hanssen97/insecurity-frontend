@@ -7,6 +7,8 @@ import Typography from '@material-ui/core/Typography';
 
 import OwnerHeader from '../OwnerHeader/index';
 
+import {unWrapText} from '../../../../../common/utils/text';
+
 import './index.min.css';
 
 
@@ -40,7 +42,7 @@ class Reply extends PureComponent {
         />
 
         <div className="Body">
-            <Typography component="p" color='inherit'>{text}</Typography>
+            <Typography component="pre" multiline color='inherit'>{unWrapText(text)}</Typography>
             <Typography component="p" onClick={this.props.onReply}><b>{this.texts.actions.reply}</b></Typography>
         </div>
 
