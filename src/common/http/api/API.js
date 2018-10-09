@@ -129,34 +129,3 @@ export const search = (query) => {
     }), 1000);
   }).then(data => data)
 }
-
-
-export const fetchSettings = (uId) => {
-  return new Promise((resolve, reject) => {
-    setTimeout(() => resolve({
-      username: "morten",
-      email: "morten@morten.no",
-      profilePicture: "https://cdn0.tnwcdn.com/wp-content/blogs.dir/1/files/2018/05/Wyvern-programming-languages-in-one.jpg",
-    }), 100);
-  }).then(data => data)
-}
-
-export const changeUsername = (username) => {
-  return new Promise((resolve, reject) => {
-    setTimeout(() => resolve({
-      username,
-      email: "morten@morten.no",
-      profilePicture: "https://cdn0.tnwcdn.com/wp-content/blogs.dir/1/files/2018/05/Wyvern-programming-languages-in-one.jpg",
-    }), 100);
-  }).then(data => data)
-}
-
-// export const changeLanguage = (language) => {
-//   return new Promise((resolve, reject) => {
-//     setTimeout(() => resolve({
-//       username: "morten",
-//       language,
-//       profilePicture: "https://cdn0.tnwcdn.com/wp-content/blogs.dir/1/files/2018/05/Wyvern-programming-languages-in-one.jpg",
-//     }), 100);
-//   }).then(data => data)
-// }

@@ -30,11 +30,6 @@ export const actions = {
     type: actiontypes.GET_SETTINGS_REQUEST,
     info: "fetching current settings",
   }),
-  changeUsername: (username) => ({
-    type: actiontypes.CHANGE_USERNAME_REQUEST,
-    info: "changing username",
-    username,
-  }),
   changeEmail: (email, password) => ({
     type: actiontypes.CHANGE_EMAIL_REQUEST,
     info: "changing email",
@@ -70,16 +65,6 @@ export const sagas = {
           user: data.user,
         });
       }
-  },
-
-  changeUsername: function*(action) {
-    const settings = yield call(API.changeUsername, action.username);
-    yield put({
-      type: actiontypes.CHANGE_USERNAME_SUCCESS,
-      info: 'username changed',
-      username: action.username,
-      settings,
-    })
   },
 
   changeEmail: function*(action) {
@@ -153,7 +138,6 @@ export const sagas = {
 
   actionWatcher: function*() {
     yield takeEvery(actiontypes.GET_SETTINGS_REQUEST, sagas.getSettings);
-    yield takeEvery(actiontypes.CHANGE_USERNAME_REQUEST, sagas.changeUsername);
     yield takeEvery(actiontypes.CHANGE_EMAIL_REQUEST, sagas.changeEmail);
     yield takeEvery(actiontypes.CHANGE_PASSWORD_REQUEST, sagas.changePassword);
     yield takeEvery(actiontypes.CHANGE_LANGUAGE_REQUEST, sagas.changeLanguage);

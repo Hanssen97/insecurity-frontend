@@ -9,7 +9,6 @@ import SettingsView from './settings/View';
 
 const mapDispatchToProps = {
   getSettings: actions.getSettings,
-  changeUsername: actions.changeUsername,
   changeEmail: actions.changeEmail,
   changePassword: actions.changePassword,
   changeLanguage: actions.changeLanguage,

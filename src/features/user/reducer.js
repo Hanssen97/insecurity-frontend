@@ -22,13 +22,6 @@ export default function user(state = initialState, action) {
       };
     }
 
-    case actiontypes.CHANGE_USERNAME_SUCCESS: {
-      return {...state,
-        user: action.user,
-        info: action.info
-      };
-    }
-
     case actiontypes.CHANGE_EMAIL_SUCCESS: {
       return {...state,
         user: action.user,

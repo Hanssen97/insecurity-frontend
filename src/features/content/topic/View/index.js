@@ -46,6 +46,9 @@ class Topic extends Component {
     }
 
     let topic = this.props.content.topic;
+    
+    console.log(topic.comments.edges)
+
     let comments = topic.comments.edges.map((reply, key) => {
       return (
         <Reply
