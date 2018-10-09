@@ -6,6 +6,7 @@ import Paper from '@material-ui/core/Paper';
 
 import TextPanel from '../components/TextPanel';
 import PasswordPanel from '../components/PasswordPanel';
+import LanguagePanel from '../components/LanguagePanel';
 
 
 import './index.min.css';
@@ -20,7 +21,7 @@ class SettingsView extends Component {
       profilePicture: "",
     }
 
-    this.props.getSettings("morten");
+    this.props.getSettings();
     this.getLocales();
   }
 
@@ -46,13 +47,17 @@ class SettingsView extends Component {
     }
   }
 
-  render() {
-    const {username, email, profilePicture} = this.props.user.settings;
+  changeLanguage = (language) => {
+    console.log(language)
+  }
 
+  render() {
+    const {username, email, profilePicture, settings} = this.props.user.user;
+    
     return (
       <Paper className="SettingsView">
 
-        <img src={profilePicture} alt=''/>
+        <img src="media/authBackground_low.jpg" alt=''/>
 
         <div className="Panels">
           <TextPanel
@@ -62,6 +67,7 @@ class SettingsView extends Component {
             saveText={this.texts.save}
             onSubmit={value => this.changeUsername(value)}
             />
+
           <TextPanel
             title={this.texts.email.title}
             description={this.texts.email.description}
@@ -69,12 +75,21 @@ class SettingsView extends Component {
             saveText={this.texts.save}
             onSubmit={value => this.changeEmail(value)}
             />
+
           <PasswordPanel
             title={this.texts.password.title}
             description={this.texts.password.description}
             saveText={this.texts.save}
             onSubmit={(pwd1, pwd2) => this.changePassword(pwd1, pwd2)}
             />
+
+            <LanguagePanel
+              title="Language"
+              description="Change the language for this account"
+              saveText={this.texts.save}
+              onSubmit={(language) => this.changeLanguage(language)}
+            />
+
         </div>
 
 

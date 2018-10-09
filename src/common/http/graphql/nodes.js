@@ -104,3 +104,20 @@ export const categoryTopics = {
         ],
     }
 }
+
+export const access = {
+    access: {
+        fields: [
+            "name",
+        ]
+    }
+}
+
+export const groups = {
+    groups: {
+        fields: [
+            "name",
+            access,
+        ]
+    }
+}

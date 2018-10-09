@@ -1,10 +1,13 @@
 import { actiontypes } from './actions';
 
 const initialState = {
-  settings: {
+  user: {
     username: "",
     email: "",
     profilePicture: "",
+    settings: {
+      language: "",
+    }
   },
   info: "Fetching settings",
 }
@@ -14,7 +17,7 @@ export default function user(state = initialState, action) {
 
     case actiontypes.GET_SETTINGS_SUCCESS: {
       return {...state,
-        settings: action.settings,
+        user: action.user,
         info: action.info
       };
     }

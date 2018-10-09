@@ -48,6 +48,8 @@ export const getUser = () => {
             fields: [
                 "username",
                 "email",
+                nodes.access,
+                nodes.groups,
                 nodes.settings,
                 nodes.error,
             ]

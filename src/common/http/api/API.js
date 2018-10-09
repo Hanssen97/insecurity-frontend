@@ -1,5 +1,5 @@
-import * as queries from '../graphql/queries';
 import gotQL from 'gotql';
+import * as queries from '../graphql/queries';
 import config from '../../../config.json';
 
 const address = config.SERVER_ADDRESS;
@@ -59,6 +59,12 @@ export const getTopic = (id) => {
 export const createTopic = (category, title, body) => {
   return gotQL.mutation(address, queries.createTopic(category, title, body), options())
   .then(response => ({topic: response.data.createTopic}))
+  .catch(error => ({error}))
+}
+
+export const getSettings = () => {
+  return gotQL.query(address, queries.getUser(), options())
+  .then(response => ({user: response.data.me}))
   .catch(error => ({error}))
 }
 

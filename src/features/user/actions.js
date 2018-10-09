@@ -1,9 +1,5 @@
 import { put, call, takeEvery } from 'redux-saga/effects'
-import {
-    fetchSettings,
-    changeUsername,
-    changeEmail,
-  } from '../../common/http/api/API';
+import * as API from '../../common/http/api/API';
 
 
 export const actiontypes = {
@@ -26,10 +22,9 @@ export const actiontypes = {
 
 
 export const actions = {
-  getSettings: (userId) => ({
+  getSettings: () => ({
     type: actiontypes.GET_SETTINGS_REQUEST,
     info: "fetching current settings",
-    userId,
   }),
   changeUsername: (username) => ({
     type: actiontypes.CHANGE_USERNAME_REQUEST,
@@ -49,18 +44,25 @@ export const actions = {
 }
 
 export const sagas = {
-    getSettings: function*(action) {
-      const settings = yield call(fetchSettings, action.userId);
-      yield put({
-        type: actiontypes.GET_SETTINGS_SUCCESS,
-        info: 'settings fetched',
-        userId: action.userId,
-        settings,
-      })
+    getSettings: function*() {
+      const data = yield call(API.getSettings);
+
+      if (data.error || data.user.error) {
+        yield put({
+          type: actiontypes.GET_SETTINGS_FAILURE,
+          error: data.error.message || data.user.error,
+        });
+      } else {
+        yield put({
+          type: actiontypes.GET_SETTINGS_SUCCESS,
+          info: 'Fetched settings',
+          user: data.user,
+        });
+      }
   },
 
   changeUsername: function*(action) {
-    const settings = yield call(changeUsername, action.username);
+    const settings = yield call(API.changeUsername, action.username);
     yield put({
       type: actiontypes.CHANGE_USERNAME_SUCCESS,
       info: 'username changed',
@@ -70,7 +72,7 @@ export const sagas = {
   },
 
   changeEmail: function*(action) {
-    const settings = yield call(changeEmail, action.email);
+    const settings = yield call(API.changeEmail, action.email);
     yield put({
       type: actiontypes.CHANGE_EMAIL_SUCCESS,
       info: 'email changed',
@@ -80,7 +82,7 @@ export const sagas = {
   },
 
   changePassword: function*(action) {
-    const settings = yield call(fetchSettings, action.userId);
+    const settings = yield call(API.fetchSettings, action.userId);
     yield put({
       type: actiontypes.CHANGE_PASSWORD_SUCCESS,
       info: 'password changed',
