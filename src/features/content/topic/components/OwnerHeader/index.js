@@ -23,7 +23,6 @@ class OwnerHeader extends PureComponent {
     this.texts = t('feature.content.topic.components.ownerheader', {returnObjects: true});
   }
 
-
   render() {
     let {type, repliedTo, owner, image, date} = this.props;
 
