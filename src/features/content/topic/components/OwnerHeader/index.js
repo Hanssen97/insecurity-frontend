@@ -39,7 +39,7 @@ class OwnerHeader extends PureComponent {
 
         <Typography
           className="Text"
-          variant="subheading"
+          variant="h4"
           >
           {text}
         </Typography>
@@ -47,7 +47,7 @@ class OwnerHeader extends PureComponent {
 
         <Typography
           className="Date"
-          variant="subheading"
+          variant="h4"
         >
           {new Date(date).toLocaleString()}
         </Typography>
