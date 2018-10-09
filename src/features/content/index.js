@@ -18,6 +18,7 @@ const searchActions = {
 const topicActions = {
   postTopic: actions.postTopic,
   getTopic: actions.getTopic,
+  postComment: actions.postComment,
 }
 
 const categoryActions = {

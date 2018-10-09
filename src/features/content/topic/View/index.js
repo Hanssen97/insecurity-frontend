@@ -22,13 +22,18 @@ class Topic extends Component {
   componentDidMount() {
     const fullPath = this.props.location.pathname;
     const id = fullPath.replace(/ *\/[^)]*\/ */g, '');
-    this.props.getTopic(id);
-
-    
+    this.props.getTopic(id);    
 
     this.setState({
       id,
     });
+  }
+
+  postCommment = () => {
+    console.log(this.props);
+    console.log("posting comment");
+    this.props.postComment(this.state.id, "Test comment");
+
   }
 
   render() {
@@ -56,6 +61,7 @@ class Topic extends Component {
     return (
       <Paper className="Topic">
         <div className="Post">
+          <button onClick={this.postCommment}>COMMENT</button>
           <div className="Header">
             <Typography
               className="Title"

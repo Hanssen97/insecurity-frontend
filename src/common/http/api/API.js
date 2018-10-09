@@ -68,6 +68,15 @@ export const getSettings = () => {
   .catch(error => ({error}))
 }
 
+
+export const createComment = (topic, body) => {
+  return gotQL.mutation(address, queries.createMessage(topic, body), options())
+  .then(response => ({comment: response.data.createMessage}))
+  .catch(error => ({error}))
+}
+
+
+
 // export const changeLanguage = () => {
 //   return gotQL.query(address, queries.getUser(), options())
 //   .then(response => ({user: response.data.me}))

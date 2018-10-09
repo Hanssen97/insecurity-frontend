@@ -23,6 +23,11 @@ export const actiontypes = {
   GET_SEARCH_RESULT_REQUEST: 'GET_SEARCH_RESULT_REQUEST',
   GET_SEARCH_RESULT_SUCCESS: 'GET_SEARCH_RESULT_SUCCESS',
   GET_SEARCH_RESULT_FAILURE: 'GET_SEARCH_RESULT_FAILURE',
+
+  POST_COMMENT_REQUEST: 'POST_COMMENT_REQUEST',
+  POST_COMMENT_SUCCESS: 'POST_COMMENT_SUCCESS',
+  POST_COMMENT_FAILURE: 'POST_COMMENT_FAILURE',
+
 }
 
 
@@ -38,6 +43,12 @@ export const actions = {
     type: actiontypes.GET_TOPIC_REQUEST,
     info: "fetching topic...",
     topic,
+  }),
+  postComment: (topic, comment) => ({
+    type: actiontypes.POST_COMMENT_REQUEST,
+    info: "posting comment...",
+    topic,
+    comment,
   }),
   getCategory: (id) => ({
     type: actiontypes.GET_CATEGORY_REQUEST,
@@ -124,6 +135,23 @@ export const sagas = {
     }
   },
 
+  postComment: function*(action) {
+    const data = yield call(API.createComment, action.topic, action.comment);
+    console.log(data);
+    if (data.error || data.comment.error) {
+      yield put({
+        type: actiontypes.POST_COMMENT_FAILURE,
+        error: data.error.message || data.comment.error,
+      });
+    } else {
+      yield put({
+        type: actiontypes.POST_COMMENT_SUCCESS,
+        info: 'Posted comment',
+        comment: data.comment,
+      });
+    }
+  },
+
   getSearchResult: function*(action) {
     const searchResult = yield call(API.search, action.query);
     yield put({
@@ -140,6 +168,7 @@ export const sagas = {
     yield takeEvery(actiontypes.GET_CATEGORY_REQUEST, sagas.getCategory);
     yield takeLatest(actiontypes.GET_CATEGORIES_REQUEST, sagas.getCategories);
     yield takeEvery(actiontypes.GET_SEARCH_RESULT_REQUEST, sagas.getSearchResult);
+    yield takeEvery(actiontypes.POST_COMMENT_REQUEST, sagas.postComment);
   }
 
 }

@@ -138,3 +138,19 @@ export const getTopic = (id) => {
         }
     }
 }
+
+export const createMessage = (topic, body) => {
+    return {
+        operation: {
+            name: "createMessage",
+            args: {
+                topic,
+                body,
+            },
+            fields: [
+                "body",
+                nodes.error
+            ],
+        }
+    }
+}

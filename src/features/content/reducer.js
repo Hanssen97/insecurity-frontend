@@ -66,6 +66,13 @@ export default function content(state = initialState, action) {
       };
     }
 
+    case actiontypes.POST_COMMENT_SUCCESS: {
+      return {...state,
+        info: action.info,
+        
+      };
+    }
+
     case actiontypes.GET_SEARCH_RESULT_SUCCESS: {
       return {...state,
         info: action.info,
