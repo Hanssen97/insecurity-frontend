@@ -35,6 +35,7 @@ class Login extends Component {
     this.checkLoggedIn();
   }
   componentDidUpdate() {
+    this.getLocales();
     this.checkLoggedIn();
   }
 

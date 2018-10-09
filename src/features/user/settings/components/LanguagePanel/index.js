@@ -20,27 +20,34 @@ class LanguagePanel extends Component {
     super(props);
     this.state = {
       language: '',
+      change: false,
+    }
+  }
+
+  componentDidUpdate() {
+    if (this.state.language !== this.props.current && !this.state.change) {
+      this.setState({language: this.props.current})
     }
   }
 
   submit = () => {
     this.props.onSubmit(this.state.language);
     this.setState({
-      open: false,
+     open: false,
     })
   }
 
-    handleChange = event => {
-        this.setState({ [event.target.name]: event.target.value });
-    };
+  handleChange = (event) => {
+    this.setState({ language: event.target.value, change: true });
+  };
 
-    handleClose = () => {
-        this.setState({ open: false });
-    };
+  handleClose = () => {
+    this.setState({ open: false });
+  };
 
-    handleOpen = () => {
-        this.setState({ open: true });
-    };
+  handleOpen = () => {
+    this.setState({ open: true });
+  };
 
   render() {
     return (
@@ -64,9 +71,6 @@ class LanguagePanel extends Component {
                     name: 'language',
                     id: 'language',
                 }}>
-                <MenuItem value="">
-                    <em>None</em>
-                </MenuItem>
 
                 <MenuItem value="en">English</MenuItem>
                 <MenuItem value="no">Norwegian</MenuItem>

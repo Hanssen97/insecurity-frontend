@@ -17,7 +17,6 @@ import User from './components/User';
 import './index.min.css';
 
 
-
 class MainLayout extends Component {
   constructor(props) {
     super(props);
@@ -29,6 +28,21 @@ class MainLayout extends Component {
     this.getLocales();
   }
 
+  componentDidUpdate() {
+    this.getLocales();
+  }
+
+  changeLanguage = () => {
+    if (!this.props.user) return;
+
+    let language = this.props.user.user.settings.language;
+    if (this.props.i18n.language === language) return;
+
+    this.props.i18n.changeLanguage(language, (err, t) => {
+      if (err) return console.log('something went wrong loading', err);
+    });
+  }
+
    componentDidMount() {
     let token       = localStorage.getItem("token");
     let {user}      = this.props.session;
@@ -38,14 +52,13 @@ class MainLayout extends Component {
     }
   }
 
-
   getLocales = () => {
     const { t } = this.props;
     this.texts = t('layout.main', {returnObjects: true});
   }
 
-
   render() {
+    this.changeLanguage();
 
     let { user } = this.props.session;
 

@@ -7,7 +7,7 @@ import en from './locales/en';
 i18n
   .init({
     resources: {
-      'nb-NO': {
+      'no': {
         translations: no
       },
       'en': {

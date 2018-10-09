@@ -35,15 +35,17 @@ export const actions = {
     info: "changing username",
     username,
   }),
-  changeEmail: (email) => ({
+  changeEmail: (email, password) => ({
     type: actiontypes.CHANGE_EMAIL_REQUEST,
     info: "changing email",
     email,
+    password,
   }),
-  changePassword: (password) => ({
+  changePassword: (password, newPassword) => ({
     type: actiontypes.CHANGE_PASSWORD_REQUEST,
     info: "changing password",
     password,
+    newPassword,
   }),
   changeLanguage: (language) => ({
     type: actiontypes.CHANGE_LANGUAGE_REQUEST,
@@ -81,31 +83,72 @@ export const sagas = {
   },
 
   changeEmail: function*(action) {
-    const settings = yield call(API.changeEmail, action.email);
+    const res = yield call(API.changeEmail, action.email, action.password);
+    const data = res.settings;
+    if (data.error || data.changeEmail.error) {
+      yield put({
+        type: actiontypes.CHANGE_EMAIL_FAILURE,
+        error: data.error.message || data.changeEmail.error,
+      });
+    } else {
+      yield put({
+        type: actiontypes.CHANGE_EMAIL_SUCCESS,
+        info: 'Fetched settings',
+        user: data.changeEmail,
+      });
+    }
     yield put({
-      type: actiontypes.CHANGE_EMAIL_SUCCESS,
-      info: 'email changed',
-      email: action.email,
-      settings,
+      type: actiontypes.CHANGE_LANGUAGE_SUCCESS,
+      info: 'language changed',
+      data,
     })
   },
 
   changePassword: function*(action) {
-    const settings = yield call(API.fetchSettings, action.userId);
+    console.log(action);
+    const res = yield call(API.changePassword, action.password, action.newPassword);
+    const data = res.settings;
+    
+    if (data.error || data.changePassword.error) {
+      yield put({
+        type: actiontypes.CHANGE_PASSWORD_FAILURE,
+        error: data.error.message || data.changePassword.error,
+      });
+    } else {
+      yield put({
+        type: actiontypes.CHANGE_PASSWORD_SUCCESS,
+        info: 'Fetched settings',
+        user: data.changePassword,
+      });
+    }
     yield put({
-      type: actiontypes.CHANGE_PASSWORD_SUCCESS,
-      info: 'password changed',
-      settings,
+      type: actiontypes.CHANGE_LANGUAGE_SUCCESS,
+      info: 'language changed',
+      data,
     })
   },
 
   changeLanguage: function*(action) {
-    const data = yield call(API.changeLanguage, action.language);
-    // yield put({
-    //   type: actiontypes.CHANGE_LANGUAGE_SUCCESS,
-    //   info: 'language changed',
-    //   data,
-    // })
+    const res = yield call(API.changeLanguage, action.language);
+    const data = res.settings;
+    console.log(data.changeSettings);
+    if (data.error || data.changeSettings.error) {
+      yield put({
+        type: actiontypes.GET_SETTINGS_FAILURE,
+        error: data.error.message || data.changeSettings.error,
+      });
+    } else {
+      yield put({
+        type: actiontypes.GET_SETTINGS_SUCCESS,
+        info: 'Fetched settings',
+        user: data.changeSettings,
+      });
+    }
+    yield put({
+      type: actiontypes.CHANGE_LANGUAGE_SUCCESS,
+      info: 'language changed',
+      data,
+    })
   },
 
   actionWatcher: function*() {

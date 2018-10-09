@@ -19,6 +19,10 @@ class Home extends Component {
     this.getLocales();
   }
 
+  componentDidUpdate() {
+    this.getLocales();
+  }
+
   getLocales = () => {
     const { t } = this.props;
     this.texts = t('feature.content.home', {returnObjects: true});

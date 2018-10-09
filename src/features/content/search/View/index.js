@@ -36,6 +36,7 @@ class SearchView extends Component {
   }
 
   componentDidUpdate() {
+    this.getLocales();
     if(this.props.location.pathname !== this.state.fullPath) {
       this.getSearchQuery();
     }

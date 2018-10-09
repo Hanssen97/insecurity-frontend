@@ -48,8 +48,7 @@ export default function content(state = initialState, action) {
     }
 
     case actiontypes.GET_CATEGORY_SUCCESS: {
-      
-      
+
       let newTopics = action.topics.filter(topic => !(!!state.category.topics.find(t => t.id === topic.id)));
       let topics = [...state.category.topics, ...newTopics];
       

@@ -154,3 +154,57 @@ export const createMessage = (topic, body) => {
         }
     }
 }
+
+export const changeEmail = (email, password) => {
+    return {
+        operation: {
+            name: "changeEmail",
+            args: {
+                email,
+                password,
+            },
+            fields: [
+                "username",
+                "email",
+                nodes.settings,
+                nodes.error
+            ],
+        }
+    }
+}
+
+export const changePassword = (password, newPassword) => {
+    return {
+        operation: {
+            name: "changePassword",
+            args: {
+                password,
+                newPassword,
+            },
+            fields: [
+                "username",
+                "email",
+                nodes.settings,
+                nodes.error
+            ],
+        }
+    }
+}
+
+export const changeSettings = (settings) => {
+    return {
+        operation: {
+            name: "changeSettings",
+            args: {
+                settings
+            },
+            fields: [
+                "username",
+                "email",
+                nodes.settings,
+                nodes.error
+            ],
+        }
+    }
+}
+

@@ -45,7 +45,7 @@ export default function user(state = initialState, action) {
 
     case actiontypes.CHANGE_LANGUAGE_SUCCESS: {
       return {...state,
-        user: action.user,
+        user: {...state.user, ...action.user},
         info: action.info
       };
     }

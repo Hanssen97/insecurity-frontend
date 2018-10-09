@@ -25,29 +25,42 @@ class SettingsView extends Component {
     this.getLocales();
   }
 
+
+  componentDidUpdate() {
+    this.getLocales();
+  }
+
   getLocales = () => {
     const { t } = this.props;
     this.texts = t('feature.user.settings', {returnObjects: true});
   }
 
-
-
-
   changeEmail = (email, password) => {
-    this.props.changeEmail(email);
+    console.log(password);
+    this.props.changeEmail(email, password);
   }
 
-  changePassword = (newPassword, password) => {
-    // do action
+  changePassword = (password, newPassword) => {
+    console.log("PASSSSWOORROROOD");
+    this.props.changePassword(password, newPassword);
   }
 
-  changeLanguage = language => {
+  changeLanguage = (language) => {
     this.props.changeLanguage(language);
+    if (language === "no") {
+      language = "nb-NO";
+    }
+    
+    this.props.i18n.changeLanguage(language, (err, t) => {
+      if (err) return console.log('something went wrong loading', err);
+      t(language);
+    });
   }
 
 
   render() {
-    const {username, email, profilePicture, settings} = this.props.user.user;
+    const {email, profilePicture, settings} = this.props.user.user;
+    
 
     return (
       <Paper className="SettingsView">
@@ -68,12 +81,13 @@ class SettingsView extends Component {
             title={this.texts.password.title}
             description={this.texts.password.description}
             saveText={this.texts.save}
-            onSubmit={(newPassword, password) => this.changePassword(newPassword, password)}
+            onSubmit={(newPassword, password) => this.changePassword(password, newPassword)}
             />
 
           <LanguagePanel
             title="Language"
             description="Change the language for this account"
+            current={settings.language}
             saveText={this.texts.save}
             onSubmit={(language) => this.changeLanguage(language)}
           />

@@ -68,20 +68,31 @@ export const getSettings = () => {
   .catch(error => ({error}))
 }
 
-
 export const createComment = (topic, body) => {
   return gotQL.mutation(address, queries.createMessage(topic, body), options())
   .then(response => ({comment: response.data.createMessage}))
   .catch(error => ({error}))
 }
 
+export const changeEmail = (email, password) => {
+  return gotQL.mutation(address, queries.changeEmail(email, password), options())
+  .then(response => ({settings: response.data}))
+  .catch(error => ({error}))
+}
 
+export const changePassword = (password, newPassword) => {
+  return gotQL.mutation(address, queries.changePassword(password, newPassword), options())
+  .then(response => ({settings: response.data}))
+  .catch(error => ({error}))
+}
 
-// export const changeLanguage = () => {
-//   return gotQL.query(address, queries.getUser(), options())
-//   .then(response => ({user: response.data.me}))
-//   .catch(error => ({error}))
-// }
+export const changeLanguage = (value) => {
+  const language = `{\\"language\\": \\"${value}\\"}`;
+  
+  return gotQL.mutation(address, queries.changeSettings(language), options())
+  .then(response => ({settings: response.data}))
+  .catch(error => ({error}))
+}
 
 
 export const search = (query) => {
@@ -140,22 +151,12 @@ export const changeUsername = (username) => {
   }).then(data => data)
 }
 
-export const changeEmail = (email) => {
-  return new Promise((resolve, reject) => {
-    setTimeout(() => resolve({
-      username: "morten",
-      email,
-      profilePicture: "https://cdn0.tnwcdn.com/wp-content/blogs.dir/1/files/2018/05/Wyvern-programming-languages-in-one.jpg",
-    }), 100);
-  }).then(data => data)
-}
-
-export const changeLanguage = (language) => {
-  return new Promise((resolve, reject) => {
-    setTimeout(() => resolve({
-      username: "morten",
-      language,
-      profilePicture: "https://cdn0.tnwcdn.com/wp-content/blogs.dir/1/files/2018/05/Wyvern-programming-languages-in-one.jpg",
-    }), 100);
-  }).then(data => data)
-}
+// export const changeLanguage = (language) => {
+//   return new Promise((resolve, reject) => {
+//     setTimeout(() => resolve({
+//       username: "morten",
+//       language,
+//       profilePicture: "https://cdn0.tnwcdn.com/wp-content/blogs.dir/1/files/2018/05/Wyvern-programming-languages-in-one.jpg",
+//     }), 100);
+//   }).then(data => data)
+// }

@@ -11,10 +11,11 @@ const mapDispatchToProps = {
 }
 
 function mapStateToProps(state) {
-  const { session, feedback } = state;
+  const { session, user, feedback } = state;
   return {
     session,
-    feedback
+    feedback,
+    user,
   }
 }
 

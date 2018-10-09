@@ -19,18 +19,21 @@ class PasswordPanel extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      password: '',
+      
+      newPassword: '',
       repeatPassword: '',
       confirm: false,
     }
   }
 
-  submit = password => {
+  submit = (password) => {
+    this.props.onSubmit(this.state.newPassword, password);
     this.setState({
-      password: '',
+      newPassword: '',
       repeatPassword: '',
       confirm: false,
     })
+    
   }
 
   render() {
@@ -50,8 +53,8 @@ class PasswordPanel extends Component {
               type="password"
               placeholder="New password"
               disableUnderline
-              value={this.state.password}
-              onChange={e => this.setState({password: e.target.value})}
+              value={this.state.newPassword}
+              onChange={e => this.setState({newPassword: e.target.value})}
             />
 
             <Input
@@ -72,12 +75,12 @@ class PasswordPanel extends Component {
               className="SaveAction"
               color="inherit"
               onClick={() => {
-                if (this.state.password === this.state.repeatPassword) {
+                if (this.state.newPassword === this.state.repeatPassword) {
                   this.setState({ confirm: true })
                 } else {
                   alert("Passwords doesnt match");
                   this.setState({
-                    password: "",
+                    newPassword: "",
                     repeatPassword: "",
                     confirm: false
                   })

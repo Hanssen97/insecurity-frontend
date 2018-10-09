@@ -20,6 +20,10 @@ class SideBar extends PureComponent {
     this.getLocales();
   }
 
+  componentDidUpdate() {
+    this.getLocales();
+  }
+
   getLocales = () => {
     const { t } = this.props;
     this.texts = t('layout.main', {returnObjects: true});
