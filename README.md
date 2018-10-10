@@ -11,6 +11,15 @@
 
 ---
 
+# Demo
+
+A demo is available at [http://cairn-218923.appspot.com/](http://cairn-218923.appspot.com/) 
+
+Note that the demo doesnt have SSL certificate and is not secure
+
+
+---
+
 # Prerequisites
 
 ### NodeJS
