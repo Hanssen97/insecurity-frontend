@@ -88,7 +88,7 @@ export const changePassword = (password, newPassword) => {
 
 export const changeLanguage = (value) => {
   const language = `{\\"language\\": \\"${value}\\"}`;
-   
+
   return gotQL.mutation(address, queries.changeSettings(language), options())
   .then(response => ({settings: response.data}))
   .catch(error => ({error}))

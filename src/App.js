@@ -30,7 +30,7 @@ const sagaMiddleware = createSagaMiddleware();
 // Create store
 const store = createStore(
   combineReducers(reducers),
-  applyMiddleware(logger),
+//  applyMiddleware(logger),
   applyMiddleware(sagaMiddleware)
 )
 
