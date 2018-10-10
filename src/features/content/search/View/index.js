@@ -82,7 +82,9 @@ class SearchView extends Component {
     }
 
     let topics = searchResult.topic.edges.map((topic, key) => {
-      const {owner, body, date, likes, category, title} = topic.node;
+      const {owner, body, date, likes, category, title, id} = topic.node;
+      console.log(topic.node);
+      console.log(topic.node)
       return (
         <TopicPreview key={key}
             owner={(owner) ? owner.username: ""}
@@ -90,7 +92,7 @@ class SearchView extends Component {
             description={body}
             date={date}
             likes={likes}
-            onClick={() => this.props.history.push(`/${category}/${title}`)}
+            onClick={() => (category.id === "[�,mƭ91") ? this.props.history.push(`/${category.id}/${id}`) : this.props.history.push("/")}
           />
       );
     });

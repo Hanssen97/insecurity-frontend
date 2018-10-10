@@ -26,6 +26,16 @@ export const groups = {
 }
 
 // -----------  Topic -----------
+
+export const category = {
+    category: {
+        fields: [
+            "id",
+            "name",
+        ]
+    }
+}
+
 export const likes = {
     likes: {
         fields: [
@@ -40,6 +50,7 @@ export const topicNode = {
             "id",
             "timestamp",
             owner,
+            category,
             "body",
             "title",
         ]
@@ -119,15 +130,6 @@ export const error = {
 
 export const categoryNode = {
     node: {
-        fields: [
-            "id",
-            "name",
-        ]
-    }
-}
-
-export const category = {
-    category: {
         fields: [
             "id",
             "name",
