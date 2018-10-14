@@ -27,7 +27,10 @@ class MainLayout extends Component {
   }
 
   changeLanguage = () => {
-    if (!this.props.session.user) return;
+    if (!this.props.session.user) {
+      setTimeout(this.changeLanguage, 500);
+      return;
+    }
 
     let language = this.props.session.user.settings.language;
     if (this.props.i18n.language === language || language === '') return;
@@ -43,6 +46,7 @@ class MainLayout extends Component {
 
     if (token && !user) {
       this.props.getUser();
+      this.changeLanguage();
     }
   }
 
@@ -52,7 +56,6 @@ class MainLayout extends Component {
   }
 
   render() {
-    this.changeLanguage();
     this.getLocales();
 
     let { user } = this.props.session;

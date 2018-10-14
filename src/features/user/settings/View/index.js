@@ -49,13 +49,9 @@ class SettingsView extends Component {
 
   changeLanguage = (language) => {
     this.props.changeLanguage(language);
-    if (language === "no") {
-      language = "nb-NO";
-    }
 
     this.props.i18n.changeLanguage(language, (err, t) => {
       if (err) return console.error('Error when changing language:', err);
-      t(language);
     });
   }
 
