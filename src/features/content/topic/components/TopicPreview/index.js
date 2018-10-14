@@ -13,22 +13,14 @@ import './index.min.css';
 
 
 class TopicPreview extends PureComponent {
-  constructor(props) {
-    super(props);
-
-    this.getLocales();
-  }
-
-  componentDidUpdate() {
-    this.getLocales();
-  }
-
   getLocales = () => {
     const { t } = this.props;
     this.texts = t('feature.content.topic.components.topicpreview', {returnObjects: true});
   }
 
   render() {
+    this.getLocales();
+
     let {owner, date, title, description, likes} = this.props;
 
     return (

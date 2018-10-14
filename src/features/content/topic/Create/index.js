@@ -21,16 +21,12 @@ class CreateTopic extends Component {
       description: "",
       category: "",
     }
-
-    this.getLocales();
   }
 
   componentDidUpdate() {
     if (!this.props.session.user) {
-      this.context.router.history.replace("/portal/login");
+      this.context.router.history.replace("/");
     }
-
-    this.getLocales();
   }
 
   componentDidMount() {
@@ -67,7 +63,7 @@ class CreateTopic extends Component {
   }
 
   render() {
-
+    this.getLocales();
     this.handleRedirect();
 
 

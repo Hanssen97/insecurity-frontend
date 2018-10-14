@@ -17,8 +17,6 @@ class Login extends Component {
       password: ""
     }
     document.title = 'Login';
-
-    this.getLocales();
   }
 
   getLocales = () => {
@@ -35,12 +33,13 @@ class Login extends Component {
     this.checkLoggedIn();
   }
   componentDidUpdate() {
-    this.getLocales();
     this.checkLoggedIn();
   }
 
 
   render() {
+    this.getLocales();
+
     return (
       <div className="Login">
         <div className="Form">

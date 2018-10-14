@@ -24,19 +24,13 @@ class MainLayout extends Component {
       showSidebar: false,
       showLogin: false,
     }
-
-    this.getLocales();
-  }
-
-  componentDidUpdate() {
-    this.getLocales();
   }
 
   changeLanguage = () => {
-    if (!this.props.user) return;
+    if (!this.props.session.user) return;
 
-    let language = this.props.user.user.settings.language;
-    if (this.props.i18n.language === language) return;
+    let language = this.props.session.user.settings.language;
+    if (this.props.i18n.language === language || language === '') return;
 
     this.props.i18n.changeLanguage(language, (err, t) => {
       if (err) return console.err('Error when changing language', err);
@@ -59,6 +53,7 @@ class MainLayout extends Component {
 
   render() {
     this.changeLanguage();
+    this.getLocales();
 
     let { user } = this.props.session;
 

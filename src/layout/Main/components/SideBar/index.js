@@ -14,22 +14,14 @@ import './index.min.css';
 
 
 class SideBar extends PureComponent {
-  constructor(props) {
-    super(props);
-
-    this.getLocales();
-  }
-
-  componentDidUpdate() {
-    this.getLocales();
-  }
-
   getLocales = () => {
     const { t } = this.props;
     this.texts = t('layout.main', {returnObjects: true});
   }
 
   render() {
+    this.getLocales();
+    
     const sideList = (
       <div className="Sidebar">
 

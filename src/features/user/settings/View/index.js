@@ -22,17 +22,16 @@ class SettingsView extends Component {
       profilePicture: "",
     }
 
+    document.title = "Settings"
+
     this.props.getSettings();
-    this.getLocales();
   }
 
 
   componentDidUpdate() {
     if (!this.props.session.user) {
-      this.context.router.history.replace("/portal/login");
+      this.context.router.history.replace("/");
     }
-
-    this.getLocales();
   }
 
   getLocales = () => {
@@ -42,7 +41,6 @@ class SettingsView extends Component {
 
   changeEmail = (email, password) => {
     this.props.changeEmail(email, password);
-
   }
 
   changePassword = (password, newPassword) => {
@@ -65,8 +63,9 @@ class SettingsView extends Component {
 
 
   render() {
-    const { username, email, profilePicture, settings} = this.props.user.user;
+    this.getLocales();
 
+    const { username, email, profilePicture, settings} = this.props.user.user;
 
     return (
       <Paper className="SettingsView">

@@ -17,22 +17,16 @@ import './index.min.css';
 class SearchView extends Component {
   constructor(props) {
     super(props);
-    document.title = 'Search Page';
+    document.title = 'Cairn Search';
     this.state = {
       query: "",
       fullPath: "",
     }
-
-    this.getLocales();
   }
 
   getLocales = () => {
     const { t } = this.props;
     this.texts = t('feature.content.search', {returnObjects: true});
-  }
-
-  componentDidMount() {
-    this.getSearchQuery();
   }
 
   componentDidUpdate() {
@@ -55,6 +49,8 @@ class SearchView extends Component {
 
 
   render() {
+    this.getLocales();
+    document.title = `${this.state.query} - Cairn Search`;
 
     if (this.props.feedback.fetching) {
       return (
@@ -65,7 +61,7 @@ class SearchView extends Component {
     }
 
     let {searchResult, query} = this.props.content;
-    
+
     let categories = searchResult.category.edges.map((category, key) => {
       return (
         <CategoryPreview key={key}
@@ -83,8 +79,6 @@ class SearchView extends Component {
 
     let topics = searchResult.topic.edges.map((topic, key) => {
       const {owner, body, date, likes, category, title, id} = topic.node;
-      console.log(topic.node);
-      console.log(topic.node)
       return (
         <TopicPreview key={key}
             owner={(owner) ? owner.username: ""}

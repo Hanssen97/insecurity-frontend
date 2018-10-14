@@ -19,8 +19,6 @@ class Register extends Component {
       passwordRepeat: "",
     }
     document.title = 'Register';
-
-    this.getLocales();
   }
 
   getLocales = () => {
@@ -37,7 +35,6 @@ class Register extends Component {
   }
 
   componentDidUpdate() {
-    this.getLocales();
     this.checkLoggedIn();
   }
 
@@ -62,12 +59,12 @@ class Register extends Component {
     }
     return true;
   }
-  
+
   validateEmail = (email) => {
     var re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     if (!re.test(String(email).toLowerCase())) {
       return false;
-    } 
+    }
     return true;
   }
 
@@ -82,13 +79,15 @@ class Register extends Component {
   validatePassword = (pass1, pass2) => {
     if (pass1 !== pass2 || pass1.length < 4) {
       return false;
-    } 
+    }
     return true;
   }
 
 
 
   render() {
+    this.getLocales();
+
     return (
       <div className="Register">
         <div className="Form">

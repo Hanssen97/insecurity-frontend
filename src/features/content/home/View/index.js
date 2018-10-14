@@ -13,14 +13,8 @@ import './index.min.css';
 class Home extends Component {
   constructor(props) {
     super(props);
-    document.title = 'Home Page';
-
+    document.title = 'Cairn';
     this.props.getCategories();
-    this.getLocales();
-  }
-
-  componentDidUpdate() {
-    this.getLocales();
   }
 
   getLocales = () => {
@@ -30,6 +24,8 @@ class Home extends Component {
 
 
   render() {
+    this.getLocales();
+
     let content;
 
     if (this.props.feedback.fetching && this.props.content.categories.length === 0) {

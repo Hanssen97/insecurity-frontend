@@ -13,7 +13,6 @@ import './index.min.css';
 class CategoryView extends Component {
   constructor(props) {
     super(props);
-    document.title = 'Category Page';
     this.state = {
       name: "",
       id: "",
@@ -36,7 +35,7 @@ class CategoryView extends Component {
     const fullPath = this.props.location.pathname;
     const id = fullPath.replace(/[/]/g, '');
     this.props.getCategory(id);
-    
+
     this.setState({
       id,
       fullPath,
@@ -46,8 +45,6 @@ class CategoryView extends Component {
 
 
   render() {
-
-
     let view = null;
     let {content, session, feedback} = this.props;
 
@@ -58,6 +55,8 @@ class CategoryView extends Component {
         </div>
       )
     } else {
+      document.title = `${content.category.name} - Cairn`;
+
       view = content.category.topics.map((topic, key) => {
         return (!topic) ? null : (
           <TopicPreview key={key}

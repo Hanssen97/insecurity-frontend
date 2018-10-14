@@ -20,7 +20,6 @@ import './index.min.css';
 class Topic extends Component {
   constructor(props) {
     super(props);
-    document.title = 'Topic Page';
     this.state = {
       id: "",
       commentBox: {
@@ -59,6 +58,8 @@ class Topic extends Component {
         </div>
       )
     }
+
+    document.title = `${this.props.content.topic.title} - Cairn`
 
     let topic = this.props.content.topic;
 
